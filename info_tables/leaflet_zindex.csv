@@ -1,4 +1,4 @@
-﻿Level (z-index),Component,Description
+﻿Z_Index,Component,Description
 200,tilePane,"The Basemap. (Google Maps, OpenStreetMaps). This is the ground floor."
 400,overlayPane,"Standard Polygons. If you don't specify a pane, your addPolygons go here."
 500,shadowPane,The little shadows under standard teardrop markers.
