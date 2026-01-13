@@ -111,6 +111,19 @@ leaflet() treats legends as completely independent objects. Because the map laye
 
 For the next sections, we will use a simple subset of U.S. Census Data (ACS 5-year survey estimates) for the **total population** of each U.S. state and county. 
 
+
+To interact with the Census Bureau’s API, we use the `tidycensus` library. This requires an API key.
+
+Request a free key from: **http://api.census.gov/data/key_signup.html**
+
+```{r, eval = FALSE}
+
+census_api_key("your key here", install = TRUE)
+
+```
+
+
+
 `tidycensus` to get the population estimates:
 
 ```{r}
