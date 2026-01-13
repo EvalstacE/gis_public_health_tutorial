@@ -1,0 +1,4 @@
+label,variable,stat_type,denominator,category
+Total Population,B01003_001,count,NA,US Stats
+Median Age,B01002_001,number,NA,US Stats
+Median Household Income,B19013_001,currency,NA,US Stats

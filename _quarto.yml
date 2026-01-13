@@ -47,6 +47,7 @@ book:
     - part: Interactive Maps
       chapters: 
         - chapters/5a_leaflet.qmd
+        - chapters/5b_integrate_shiny.qmd
         
         
   appendices:

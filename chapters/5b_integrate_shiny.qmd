@@ -1,0 +1,248 @@
+
+# Leaflet-Shiny Integrations
+
+
+**Data prep that happens outside of the app:**
+
+```{r, eval = FALSE}
+#| code-fold: true
+
+census_key <- config::get("census_key")
+census_api_key(census_key, overwrite = TRUE)
+
+##--data prep for app
+
+target_year <- 2023
+
+tutorial_us_ref <- tribble(
+  ~label,                       ~variable,      ~stat_type,  ~denominator,  ~category,
+  "Total Population",           "B01003_001",   "number",     NA,           "US Stats",
+  "Median Age",                 "B01002_001",   "number",    NA,            "US Stats",
+  "Median Household Income",    "B19013_001",   "currency",  NA,            "US Stats"
+)
+
+
+us_states_raw <- get_labeled_acs(
+  ref_table   = tutorial_us_ref,
+  counties    = NULL,           
+  state       = NULL,            
+  years       = target_year,
+  survey_type = "acs5",
+  geo_level   = "state"        
+)
+
+
+us_census_final <- calc_acs_percents(us_states_raw) %>%
+  filter(NAME != "Puerto Rico") %>%
+  create_format_cols()
+
+saveRDS(us_census_final, "leaflet_app/us_census_final.rds")
+
+
+non_contiguous_fips <- c("02", "15", "72", "66", "78", "60", "69")
+
+us_state_sf <- states(cb = TRUE, resolution = "20m", progress_bar = FALSE) %>%
+  filter(!STATEFP %in% non_contiguous_fips) %>%
+  select(GEOID) %>%
+  st_transform(crs = 4326)
+
+
+map_data <- us_state_sf %>%
+  left_join(
+    us_census_final %>% 
+      filter(variable == "B01003_001") %>% 
+      select(GEOID, NAME, estimate, formatted_val), 
+    by = "GEOID"
+  )
+
+saveRDS(map_data, "leaflet_app/map_data.rds")
+
+```
+
+
+
+```{=html}
+
+<iframe 
+  src="https://evalue.shinyapps.io/tutorial_leaflet_app/" 
+  width="100%" 
+  height="1000px" 
+  title="Interactive Census Map">
+</iframe>
+
+
+```
+
+
+
+
+### App Code
+
+```{r, eval = FALSE}
+#| code-fold: true
+
+
+#- first sources a 'global' file to 
+##-- bring in libraries and data files
+
+source("global.R")
+
+##############################
+#                            #
+#            UI              #
+#                            #
+##############################
+
+ui <- fluidPage(
+  titlePanel("Leaflet-Shiny Dashboard"),
+  
+  leafletOutput("map", height = "600px"),
+  
+  hr(),
+
+  div(style = "width: 60%; margin: auto;",
+      h4("Selected State Statistics:", style = "text-align: center;"),
+      tableOutput("state_data")
+  )
+)
+
+
+##############################
+#                            #
+#         SERVER             #
+#                            #
+##############################
+server <- function(input, output, session) {
+  
+
+output$map <- renderLeaflet({
+  
+  leaflet(data = map_data) %>%
+
+    addProviderTiles(providers$Esri.WorldGrayCanvas, group = "Esri Gray") %>% 
+    addProviderTiles(providers$CartoDB.Positron,     group = "CartoDB Gray") %>% 
+    addProviderTiles(providers$CartoDB.DarkMatter,   group = "CartoDB Dark") %>% 
+    addProviderTiles(providers$Esri.WorldImagery,    group = "Satellite") %>% 
+
+    addMapPane("states_pane",  zIndex = 250) %>%
+    addMapPane("borders_pane", zIndex = 460) %>%
+    
+
+  addPolygons(
+      group = "State Population",
+      ###--this 'layerID' is the only addition in the leaflet map we need
+      ####--- for shiny to interact with it ---
+      layerId = ~NAME,
+      ######################
+      fillColor = ~pop_pal_1(estimate), color = "transparent",      
+      weight = 0, 
+      fillOpacity = 1,
+      options = pathOptions(pane = "states_pane"),
+      
+      highlightOptions = highlightOptions(
+        weight = 2,               
+        color = "black",           
+        fillOpacity = 1,
+        opacity = 1,
+        bringToFront = TRUE        
+      ),
+      
+      label = ~lapply(
+        paste0(
+          "<b>", NAME, "</b><br>",
+          "<i> Population:</i> ", 
+          scales::comma(estimate, accuracy = 1)
+        ), 
+        htmltools::HTML
+      ),    
+      
+      labelOptions = labelOptions(
+        style = list(
+          "background-color" = "white",  
+          "color" = "black",              
+          "font-size" = "12pt",
+          "padding" = "10px",
+          "border" = "2px solid black",   
+          "border-radius" = "5px",        
+          "box-shadow" = "3px 3px 10px rgba(0,0,0,0.5)" 
+        ),
+        direction = "auto",
+        noHide = FALSE 
+      )
+      
+    ) %>% 
+    
+  addPolygons(
+      fill = FALSE, 
+      color = "black", 
+      weight = 0.75, 
+      opacity = 1,
+      options = pathOptions(pane = "borders_pane", interactive = FALSE)
+    ) %>%
+    
+  addLayersControl(
+      baseGroups = c("Esri Gray", "CartoDB Gray", "CartoDB Dark", "Satellite"),
+      overlayGroups = c("State Population"), 
+      options = layersControlOptions(collapsed = FALSE) 
+    ) %>%
+    
+  addLegend(
+      pal = pop_pal_1, 
+      values = ~estimate, 
+      title = "Population", 
+      position = "bottomright", 
+      opacity = 1
+    )
+  
+})
+  
+  
+  
+  
+####-- this uses/observes the layerID in the map to 
+####--- to update the table
+
+observeEvent(input$map_shape_click, {
+    
+    click_id <- input$map_shape_click$id
+    selected_poly <- map_data %>% filter(NAME == click_id)
+    
+    leafletProxy("map") %>%
+      clearGroup("selection_highlight") %>%
+      addPolygons(
+        data = selected_poly,
+        group = "selection_highlight", 
+        fill = FALSE,                 
+        color = "#a91919",             
+        weight = 4,                    
+        opacity = 1,
+        options = pathOptions(
+          pane = "borders_pane",      
+          interactive = FALSE          
+        )
+      )
+})
+  
+
+  
+  
+output$state_data <- renderTable({
+    click <- input$map_shape_click
+    if (is.null(click)) {
+      return(data.frame(State = "None Selected", Metric = "Welcome!", 
+                        Value = "Please click a state on the map to see stats."))
+    }
+    us_census_final %>%
+      filter(NAME == click$id) %>%
+      select(State = NAME, Metric = label, Value = formatted_val)
+  }, align = "llc", width = "100%", sanitize.text.function = function(x) x)
+}
+
+
+
+
+##-- final call to run the app
+shinyApp(ui, server)
+
+```
+

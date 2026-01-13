@@ -9,3 +9,5 @@ site_libs/
 desktop.ini
 *.DS_Store
 /.quarto/
+
+**/*.quarto_ipynb
