@@ -1,8 +1,0 @@
-﻿Latitude,Longitude
-Horizontal lines (Parallel),Vertical lines (Meridians)
-Measures the distance North and South of the Equator,Measures the distance between East and West (EW) 
-Values range from 0-90 degrees,Values range from 0-180 degrees
-The Equator is at 0 degrees,"The PRIME MERIDIAN runs through Greenwich, England at 0 degrees"
-The +ve values reporesent the NORTHERN Hempisphere (or moving north),The +ve values represent the EASTERN Hemisphere (or moving east)
-the -vs values represent the SOUTHERN Hemisphere (or moving south),the -ve values represent the WESTERN Hemisphere (or moving west)
-"Latitude tells us where we are in the ""Y"" direction","Longitude tells us where we are in the ""X"" direction"

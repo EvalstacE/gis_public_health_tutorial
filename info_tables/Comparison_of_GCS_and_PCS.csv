@@ -1,9 +1,0 @@
-Aspect,Geographic Coordinate System (GCS),Projected Coordinate System (PCS)
-Definition,A spherical coordinate system that defines locations on Earth's surface using latitude and longitude.,A coordinate system that represents Earth’s 3D surface on a 2D plane using map projections.
-Purpose,Provides a global reference framework for defining positions on Earth.,Transforms Earth's curved surface into a flat map for spatial analysis and visualization.
-Components,"Latitude, longitude, and the associated datum (e.g., WGS84).","Projected coordinates (e.g., X and Y values), projection method, and associated datum."
-Measurement Units,"Degrees-Minutes-Seconds (DMS), Decimal Degrees.","Linear units like meters, feet, or kilometers."
-Representation,"Three-dimensional (3D), representing Earth's curved surface.","Two-dimensional (2D), flat representation of Earth’s surface."
-Distortion,No distortion when used in 3D; distortions occur when projected onto a 2D surface.,"Distortions depend on the projection method; can preserve one or two properties (e.g., area, shape, distance, direction)."
-Use Cases,"Global navigation systems, large-scale geographical studies, and GPS.","Thematic maps, local/regional analyses, and detailed cartography."
-Examples,"WGS84, NAD83.","UTM (Universal Transverse Mercator), State Plane Coordinate System."

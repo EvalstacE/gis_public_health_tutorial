@@ -1,5 +1,0 @@
-﻿Aspect,Planar,Cylindrical,Conical
-Surface Used,Plane,Cylinder,Cone
-Distortion,Minimal at the center; increases outward,Minimal along the equator; increases towards poles,Minimal along standard parallels; increases away from them
-Best For,Polar regions or specific central points,Equatorial regions,Mid-latitude areas with east-west extent
-Examples,"Stereographic, Orthographic, Azimuthal Equidistant","Mercator, Transverse Mercator, Equirectangular","Albers Equal-Area Conic, Lambert Conformal Conic"

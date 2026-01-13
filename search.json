@@ -1,0 +1,799 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "GIS in Public Health: R",
+    "section": "",
+    "text": "1 Introduction to GIS and Public Health",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to GIS and Public Health</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#define-gis",
+    "href": "index.html#define-gis",
+    "title": "GIS in Public Health: R",
+    "section": "Define GIS",
+    "text": "Define GIS\nGeographic Information Systems create, manage, analyze, and map data by integrating descriptive information with location data. It is used in numerous fields, including public health and environmental health science to understand patterns, relationships, and geographical contexts.\n\nFunctions and strengths of GIS\nMaps can be fantastic resources for public health professionals. Maps:\n\nCan make data readily accessible for a wide variety of audiences.\nAllow us to locate and visualize data on the Earth’s surface.\nHelp us simplify our surroundings.\n\nWe know that our world is quite complex, but we can take elements that we want to highlight and put them on a map so that we’re only conveying the information that is useful for us. We’re cutting through all the additional noise to convey a very specific message.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to GIS and Public Health</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#spatial-data-for-public-health",
+    "href": "index.html#spatial-data-for-public-health",
+    "title": "GIS in Public Health: R",
+    "section": "Spatial Data for Public Health",
+    "text": "Spatial Data for Public Health\nPlace matters in public health, but why? The place or location provides valuable insights into relevant exposure, disease distribution, and populations including vulnerable populations. Additionally, it provides information about cities, provinces, counties, and countries. Having information about an individual’s residence, work, recreational activities, and movement can help in understanding the source of an exposure or illness and spatial relationship. This information can be used to allocate resources more effectively to improve the public health situation.\nBesides place, person and time are also important attributes in epidemiology, environmental health, or public health because they also help us identify patterns and trends of diseases.\nPersonal characteristics such as age, sex, race, and ethnicity can significantly influence or impact health outcomes. Other personal characteristics such as occupation, diet, smoking, alcohol consumption, medication intake, and family history of disease also contribute to exposure and disease risk.\nTime is important in studying or characterizing illness. For example, it provides valuable information on changes in the number of cases or incidence rates over time or if there is a seasonal pattern of illness. For example, in outbreak investigation, determining the relationship between time and uncertain illness can help in identifying the source of the outbreak.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to GIS and Public Health</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#gis-in-epidemiology",
+    "href": "index.html#gis-in-epidemiology",
+    "title": "GIS in Public Health: R",
+    "section": "GIS in Epidemiology",
+    "text": "GIS in Epidemiology\nEpidemiology identify patterns and trends in disease occurrence and distribution by examining attributes like who, where, and when. For example, epidemiologists calculate measure of disease in population by time such as prevalence or incidence. Prevalence is the proportion of the population that has a disease at a particular time, while incidence is the number of new cases of a disease that occur in a population over a specified period of time. This answer the question of who. Epidemiologists also examine the distribution of disease by place to identify geographic pattern and trends in disease occurrence.\nEpidemiological measures such as rates, ratios, and proportions are used to compare disease occurrence across different geographic areas such as cities, province, territories, counties, municipalities, or countries. This answers the question of where. In the case of when, epidemiologists also examine the distribution of disease by time to identify the temporal patterns and trends in disease occurrence measures. Such as incidents rate, case counts, time series analysis are used to examine changes in disease occurrence over time such as seasonal variation or trends over multiple years.\n\nMapping disease risk across space and time\nWhere is disease occurring?\nWhere is disease spreading?\nLocating disease clusters\nTarget limited resources and interventions in areas that need it most\n\n\nGIS and Social Determinants of Health / Health Equity\nIt can be used to visualize and analyze important social factors such as poverty rates, education levels, housing, transportation, and access to healthy food. These factors are crucial in understanding health disparities and promoting equity in health care. By combining and mapping data related to health economics and population, we can identify areas where interventions are needed to improve overall population health.\nWe can also use GIS to map health equity metric, such as population density, race and ethnicity, and poverty. This information is often available at different geographic levels, ranging from national to local. We can use GIS to investigate spatial and statistical relationship between particular health outcomes and health equity metrics.\nTherefore, GIS technology provides us with the ability to analyze and assess health risk factors as well as social determinants that contribute to overall health outcomes using both empirical and visual frameworks.\nBy quantifying and analyzing data related to exposure, health, economy, and population, we can pinpoint areas that require interventions to enhance the overall health of the population. With the use of GIS, we can visualize complex patterns and relationships that may not be easily observed, enabling us to create a targeted intervention to improve community well-being.\n\n\nGIS in Health Services\nGIS can and has been helpful in planning and providing healthcare services. For example, it can help assess healthcare utilization, identify areas with the highest or lowest burden of disease and greatest health care need. The GIS tool can also be used to calculate the distance between the household and healthcare facility, which can help healthcare providers better understand the healthcare needs of their parents and tailor their services to meet.\n\n\nGIS in Intervention Monitoring\nWe can use GIS mapping to overlay areas of implementation of intervention and health outcomes to hypothesize about the intervention’s effectiveness.\nAs an example, one study analyzed the effectiveness of insecticide treated nets or insecticide treated bed nets in controlling malaria in Laos. They employed GIS map to study the impact of the intervention and found that villages with higher malaria cases had lower intervention coverage and lower adherence to insecticide treated nets.\n\n\nGIS in Disease Surveillance\nGIS has been used to track disease outbreaks and monitor the effectiveness of intervention in controlling outbreaks. For example, one study used geospatial modeling to identify areas with a high risk of microcephaly and zika virus infection in Brazil. This information was then used to target public health intervention.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to GIS and Public Health</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#geography-of-health-risk",
+    "href": "index.html#geography-of-health-risk",
+    "title": "GIS in Public Health: R",
+    "section": "Geography of Health Risk",
+    "text": "Geography of Health Risk\nThe Geography of Risk framework explains how spatial patterns in health risks emerge by considering three interconnected factors: geography of exposure, geography of adaptation, and geography of **susceptibility*. Each of these factors contributes to the overall risk faced by individuals and communities.\nBy understanding these three factors, public health officials can better predict, prevent, and respond to health risks using targeted interventions that address exposure, improve adaptation, and reduce susceptibility.\n\nGeography of Exposure\nThis factor refers to where and how people come into contact with health risks. It considers the physical and environmental hazards present in a particular location, such as pollution, extreme weather events, disease outbreaks, or access to contaminated food and water. Exposure can be shaped by factors such as:\n\nEnvironmental conditions – Proximity to toxic waste sites, poor air quality, or unsafe drinking water.\nClimate and natural disasters – Living in areas prone to hurricanes, wildfires, or floods.\nInfectious disease dynamics – Locations with high population density, poor sanitation, or frequent human-animal interactions that increase disease transmission.\n\nFor example, individuals living in low-lying coastal areas may be at greater risk of flooding, which can lead to waterborne disease outbreaks and displacement.\n\n\nGeography of Adaptation\nThis factor refers to the ability of individuals or communities to respond to and mitigate health risks based on available resources, infrastructure, and policies. Some key determinants include:\n\nHealthcare access – Availability of hospitals, clinics, and emergency services.\nEconomic resources – Wealthier communities can invest in protective measures, such as flood barriers or improved healthcare systems.\nSocial networks and support systems – Strong community ties can facilitate disaster response and access to resources.\nGovernment policies and preparedness – Public health interventions, vaccination campaigns, and emergency response plans affect a community’s resilience.\n\nFor example, two regions exposed to extreme heat may experience different health outcomes depending on their capacity to adapt—cities with robust cooling centers and heat emergency plans will have lower health impacts than those without such infrastructure.\n\n\nGeography of Susceptibility\nThis factor examines who is most vulnerable to health risks based on individual and population characteristics. It considers biological, social, and economic factors that influence a person’s ability to withstand exposure. Key determinants include:\n\nAge and preexisting health conditions – The elderly, infants, and those with chronic illnesses (e.g., asthma, diabetes) are more susceptible to environmental hazards. Socioeconomic status – Low-income populations often lack access to healthcare, nutritious food, and safe housing, increasing their vulnerability.\nOccupational risks – Workers in hazardous industries (e.g., agriculture, construction) may have greater susceptibility to environmental exposures.\nHistorical and structural inequalities – Marginalized communities, such as Indigenous populations or racial minorities, may face disproportionate health risks due to historical disinvestment and systemic barriers to resources.\n\nFor instance, during heatwaves, low-income older adults living in poorly ventilated apartments without air conditioning are more susceptible to heat-related illnesses compared to younger, wealthier individuals with access to cooling.\n\n\n\nGeography of Health Risk\n\n\n\n\nHow These Factors Interact\nThese three factors—exposure, adaptation, and susceptibility — do not act in isolation but interact to create spatial patterns in health risks. For example:\n\nA high-risk region would be one where people are highly exposed (e.g., flood-prone areas), have low adaptation capacity (e.g., poor infrastructure, lack of resources), and include vulnerable populations (e.g., elderly or low-income groups).\nA low-risk region would have lower exposure (e.g., minimal environmental hazards), strong adaptation mechanisms (e.g., disaster preparedness, robust healthcare access), and less susceptibility (e.g., healthier, well-resourced populations).\n\n\n\nExample: Hurricane Katrina (2005)\n\nGeography of Exposure: New Orleans was highly exposed due to its low-lying location and vulnerability to severe storms.\nGeography of Adaptation: Weak infrastructure (e.g., failing levees) and an inadequate emergency response led to catastrophic flooding.\nGeography of Susceptibility: Disproportionate impacts were seen among low-income, elderly, and Black communities, who faced barriers to evacuation and recovery.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to GIS and Public Health</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#the-history-of-health-and-spatial-data-john-snow",
+    "href": "index.html#the-history-of-health-and-spatial-data-john-snow",
+    "title": "GIS in Public Health: R",
+    "section": "The History of Health and Spatial Data: John Snow",
+    "text": "The History of Health and Spatial Data: John Snow\n\n\n\n\nJohn Snow, a pioneer in disease mapping. Image from: https://en.wikipedia.org/wiki/John_Snow\n\n\nThe use of geographic information systems (GIS) in public health has a long and continuously evolving history. One of the earliest and most well-known applications of spatial analysis in public health dates back to the 19th century, during a cholera epidemic in Europe. This period is often regarded as the “inception” of GIS in public health, marking a pivotal moment in medical mapping and epidemiology.\n\nThe use of geographic information systems (GIS) in public health has a long and continuously evolving history. One of the earliest and most well-known applications of spatial analysis in public health dates back to the 19th century, during a cholera epidemic in Europe. This period is often regarded as the “inception” of GIS in public health, marking a pivotal moment in medical mapping and epidemiology.\nThe first cholera pandemic began in 1817 in the Ganges Delta of India and rapidly spread both eastward to Southeast Asia and westward to the Middle East and Europe. By 1831, cholera had reached Germany and England, causing widespread illness and death. At the time, the dominant theory of disease transmission was miasma theory, which held that diseases spread through “bad air” or foul odors. This belief shaped early public health responses, leading to efforts to clean the air rather than address water contamination.\nA major breakthrough in understanding cholera transmission came in 1854 when John Snow, a British physician, used spatial analysis to investigate an outbreak in London. Snow meticulously mapped cholera cases in the Soho district and identified a cluster of cases centered around the Broad Street pump. By overlaying cases on a street map, he demonstrated that those who drank water from this pump were far more likely to contract cholera. His analysis provided strong evidence that cholera was transmitted through contaminated water rather than through the air.\n\n\n\nJohn Snow’s Chelora Map\n\n\nimage source: https://en.wikipedia.org/wiki/File:Snow-cholera-map-1.jpg\nTo confirm his hypothesis, Snow gathered additional data, interviewing affected households and identifying outliers, such as a local brewery where workers drank beer instead of pump water and remained largely unaffected. His findings led to the removal of the Broad Street pump handle, effectively ending the outbreak. Although germ theory had not yet been widely accepted, Snow’s work laid the foundation for modern epidemiology and demonstrated the power of spatial analysis in understanding disease patterns.\nFollowing Snow’s work, public health mapping continued to evolve. In the late 19th and early 20th centuries, maps were increasingly used to study tuberculosis, malaria, and other infectious diseases. The development of computational mapping techniques in the mid-20th century, along with advancements in computer science and remote sensing, further expanded the role of spatial data in health research.\nBy the late 20th and early 21st centuries, the rise of GIS technology allowed public health officials to integrate diverse data sources, including environmental, demographic, and epidemiological data, to track disease patterns, assess health disparities, and inform policy decisions. Today, GIS is widely used in outbreak response, chronic disease surveillance, healthcare access planning, and disaster preparedness.\nFrom John Snow’s hand-drawn cholera maps to modern digital GIS tools, the use of spatial data in public health has continually advanced, reinforcing its role as an essential tool in disease prevention and health planning.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to GIS and Public Health</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1a_GIS_Structure.html",
+    "href": "chapters/1a_GIS_Structure.html",
+    "title": "2  Structure of Spatial Data",
+    "section": "",
+    "text": "What makes spatial data special",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Structure of Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1a_GIS_Structure.html#what-makes-spatial-data-special",
+    "href": "chapters/1a_GIS_Structure.html#what-makes-spatial-data-special",
+    "title": "2  Structure of Spatial Data",
+    "section": "",
+    "text": "Always tagged with location (coordinates that define location, shape, and extent)\n\nA location can be defined as a position in space, and even more so a position with respect to a specific grid system.\n\nComplex (incorporates space and time; three-dimensional space)\nSpatial dependence (spatial autocorrelation)\nHigh dimensional (sometimes)",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Structure of Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1a_GIS_Structure.html#toblers-first-law-of-geography-spatial-autocorrelation",
+    "href": "chapters/1a_GIS_Structure.html#toblers-first-law-of-geography-spatial-autocorrelation",
+    "title": "2  Structure of Spatial Data",
+    "section": "Tobler’s First Law of Geography: Spatial Autocorrelation",
+    "text": "Tobler’s First Law of Geography: Spatial Autocorrelation\n\n\n\nTobler’s First Law of Geography\n\n\nSpatial Autocorrelation (spatial dependence) violates the assumption of independent observations, which is needed in a lot of our very basic statistical analysis.\nSpatial dependence can result in:\n\nClustered data\nLower effective sample sizes\nBias in statistical analyses\n\nWe have to account for this spatial dependence of our observations in our models. If we had a truly independent sample and we observed a spatial pattern in our data, that could reveal a spatial trend of interest. However, because our sample is dependent, the spatial pattern that we observe might truly reflect a spatial trend of interest or it might just be reflecting spatial autocorrelation.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Structure of Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1a_GIS_Structure.html#generalization",
+    "href": "chapters/1a_GIS_Structure.html#generalization",
+    "title": "2  Structure of Spatial Data",
+    "section": "Generalization",
+    "text": "Generalization\nGeneralization is the process of simplifying the complexity of the real world to produce a map. All maps that are created have some level of generalization. You could never map the entire real world onto a two-dimensional piece of paper or a computer screen. The question comes down to: to what degree are we able to generalize or simplify our map without losing any critical data or information in order to communicate our story?\nUltimately, the choices that go into generalization reflects map makers judgments about what is important and what they’re trying to illustrate. This includes the bias that a mapmaker may have and the values that a mapmaker may have.\nTypes of “Geometric Generalization”:\nimages from: https://cartography-playground.gitlab.io/playgrounds/cartographic-generalization/\n\nSelection\n\nselecting what features to include and what features to suppress in your map.\nreduces the number of features by deleting / removing features that the map maker deems as insignificant \n\nSimplification\n\nwhat level of detail do you need in your map?\nreduces unnecessary details by simplifying or abstrating shapes \n\nDisplacement\n\nperformed to avoid geographic interference (overlap), often for the purposes of visual clarity and understanding.\nresolves conflicts like overlaps by repositioning features \n\nSmoothing\n\na reduction in detail to enhance visual clarity and simplicity, particularly around polygon edges.\nrefines and smooths geometries to make them more aesthetically pleasing.\nAgain, the question we must ask ourselves is what level of realistic detail is necessary to include for accurate and adequate representation of the story we want to communicate in our map. \n\nEnhancement\n\nmaking features and shapes that are more recognizable: adjusting the appearances of certain features for easier interpretation. For example, make a river look like a river by using smooth edges and blue colors. Even if a river is not labeled on a map, often times people are able to recognize that it is a water body based on its representation through shape and color.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Structure of Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1a_GIS_Structure.html#two-types-of-spatial-data-vectors-and-rasters",
+    "href": "chapters/1a_GIS_Structure.html#two-types-of-spatial-data-vectors-and-rasters",
+    "title": "2  Structure of Spatial Data",
+    "section": "Two Types of Spatial Data: Vectors and Rasters",
+    "text": "Two Types of Spatial Data: Vectors and Rasters\n\n\n\nVectors vs Rasters\n\n\n\n\n\nVectors vs. Rasters\n\n\nFeature\nRaster\nVector\n\n\n\n\nDefinition\nRaster data is a grid of pixels where each grid square has a single attribute value\nIncludes points, lines, or polygons\n\n\nType\nImage\n\n\n\nGeneralization\nPerforms some simplification or generalizations based on average values within a square of the grid\n\n\n\nResolution\nOne grid cell equals one unit. Every cell has a value. A cell has a given resolution, given as the cell size in ground units (such as square meters). Depending on what the goal or purpose is of the map, higher resolution of a grid may or may not be necessary.\n\n\n\nKey Elements\nCell value; Cell size (resolution); Spatial reference (location information); Raster bands (stacking multiple grids of information)\nPoints (single location); Lines (a set of connected points); Polygons (area marked by enclosing lines)\n\n\nSaving\nSaved as image files (.png or .tiff)\n\n\n\nCommon examples\nSatellite images; Terrain maps; Land cover maps; elevation maps; disease incidence\nAddresses (points); rivers or roads (lines); state or county jurisdiction (polygons)\n\n\nAdvantages\nSimple data structure; easy overlay; various kinds of spatial analysis; uniform size and shape; cheaper technology\nGood representation of reality; compact data structure; topology can be descrived in a network; accurate graphics\n\n\nDisadvantages\nLarge amount of data; projection transformation is difficult; different scales between layers can be a nightmare; may lose information due to generalization\nComplex data structures; simulation may be difficult; some spatial analysis is difficult\n\n\n\n\n\n\nVector data\nVector data is in the form of either points, polygons, or lines. We talked about how points can be either point process data or point reference data, and how the creation of these spatial data requires geometric and content generalization.\n\n\nRaster data\nRaster data is a grid of information where each grid takes on a single value. Raster values are stored as image files.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Structure of Spatial Data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1b_Projections.html",
+    "href": "chapters/1b_Projections.html",
+    "title": "3  Coordinate Reference Systems and Projections",
+    "section": "",
+    "text": "Geographic Coordinate Systems (GCS)\nThe Earth’s reference systems are based on two types of coordinate systems: Geographic coordinate systems and Projected coordinate systems. The geographic coordinate system is a reference system for identifying or measuring locations on Earth’s curved surface, and is a spherical coordinate system. A projected coordinate system or a “map projection” transforms the Earth’s spherical surface onto a two-dimensional cartesian coordinate plane.\nThe Cartesian coordinate plane is a two-dimensional plane defined by two perpendicular number lines: the x-axis (horizontal) and the y-axis (vertical). These axes intersect at a point called the origin (0, 0). The x-axis corresponds to longitude (horizontal lines), and the y-axis corresponds to latitude (vertical lines).\nThe locations in the geographic coordinate system, or GCS, are identified by either latitude or longitude. When measuring coordinates using GPS devices or mobile phones, the reported values are usually in latitude and longitude, and they are associated with World Geodetic System 1984, or WGS 84 datum. Latitude and longitude are measured in either degree-minutes-seconds, DMS, or decimal degrees, or radiance.\nLatitude vs. Longitude\n\n\nLatitude\nLongitude\n\n\n\n\nHorizontal lines (Parallel)\nVertical lines (Meridians)\n\n\nMeasures the distance North and South of the Equator\nMeasures the distance between East and West (EW)\n\n\nValues range from 0-90 degrees\nValues range from 0-180 degrees\n\n\nThe Equator is at 0 degrees\nThe PRIME MERIDIAN runs through Greenwich, England at 0 degrees\n\n\nThe +ve values reporesent the NORTHERN Hempisphere (or moving north)\nThe +ve values represent the EASTERN Hemisphere (or moving east)\n\n\nthe -vs values represent the SOUTHERN Hemisphere (or moving south)\nthe -ve values represent the WESTERN Hemisphere (or moving west)\n\n\nLatitude tells us where we are in the \"Y\" direction\nLongitude tells us where we are in the \"X\" direction",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Coordinate Reference Systems and Projections</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1b_Projections.html#geographic-coordinate-systems-gcs",
+    "href": "chapters/1b_Projections.html#geographic-coordinate-systems-gcs",
+    "title": "3  Coordinate Reference Systems and Projections",
+    "section": "",
+    "text": "Geographic Coordinate Systems",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Coordinate Reference Systems and Projections</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1b_Projections.html#how-a-gcs-is-created",
+    "href": "chapters/1b_Projections.html#how-a-gcs-is-created",
+    "title": "3  Coordinate Reference Systems and Projections",
+    "section": "How a GCS is Created",
+    "text": "How a GCS is Created\nThe Geographic Coordinate System is created and defined by three parts:\n\n\n\nDatum, source:github\n\n\n\nGeoid : represents the actual shape of the Earth, accounting for its irregularities\nEllipsoid : the mathematical modelling of the Earth which is smoothed and theoretical or idealized\nDatum : A datum defines how one aligns the ellipsoid to the geoid. In summary, datum describes the shape of the Earth in mathematical terms and provides the rules or parameters for aligning the ellipsoid with the geoid. This alignment involves specifying the position and orientation of the ellipsoid relative to the geoid. Such orientation allows for consistent and accurate mapping and geolocation by ensuring that a coordinate reference system to the ellipsoid aligns with the physical surface of the Earth as closely as possible",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Coordinate Reference Systems and Projections</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1b_Projections.html#two-types-of-datums-local-and-geocentric",
+    "href": "chapters/1b_Projections.html#two-types-of-datums-local-and-geocentric",
+    "title": "3  Coordinate Reference Systems and Projections",
+    "section": "Two Types of Datums: Local and Geocentric",
+    "text": "Two Types of Datums: Local and Geocentric\n\nLocal Datums\nServe as a basis for measurements over a limited area of the Earth. This enables local variation on the Earth’s surface, such as those caused by large mountain range to accommodate in a local coordinate reference system. Examples of common local datums include:\n\nNorth American Datum of 1927 (NAD27) is best for the Continental US. It is an old datum but is still prevalent today because of the wide use of it in older maps.\nEuropean Datum of 1950 (ED50) is best for Western Europe. It was developed after World War II and still quite popular today. However, it is not used the UK.\nWorld Geodetic System 1972 (WGS72) is best for global maps. It was developed by the US Department of Defense.\n\n\n\nGeocentric Datums\nUse the Earth’s center as the origin of the geographic coordinate system to define global locations. Examples of common Geocentric datums include:\n\nWorld Geodetic System 1984 (WGS84) Developed by the US Department of Defense.\nNorth American Datum of 1983 (NAD83) This is one of the most popular modern datums for the contiguous US.\nEuropean Terrestrial Reference System 1989 (ETRS89) This is the most popular modern datum for much of Europe.\n\n\n\n\nLocal vs Geocentric Datums\n\n\nAspect\nLocal\nGeocentric\n\n\n\n\nDefinition\nAligns ellipsoid closely with geoid in a specific region, ensuring high accuracy locally.\nAligns ellipsoid with Earth's center of gravity, providing global consistency.\n\n\nAccuracy\nHigh accuracy within the specific region; lower accuracy elsewhere.\nConsistent accuracy globally, but less precise for regional details.\n\n\nEllipsoid Alignment\nOptimized for regional geoid features, providing precise local measurements.\nCentered on Earth's mass and gravity, less specific to regional features.\n\n\nScale of Maps\nCritical for large-scale maps with high detail, covering smaller areas.\nBest suited for small-scale maps covering larger geographic areas.\n\n\nUse Cases\nRegional mapping, land surveys, city planning, and infrastructure development.\nGlobal navigation (e.g., GPS), international mapping, and satellite data applications.\n\n\nExamples\nNAD27, NAD83\nWGS84",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Coordinate Reference Systems and Projections</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1b_Projections.html#projected-coordinate-systems-pcs",
+    "href": "chapters/1b_Projections.html#projected-coordinate-systems-pcs",
+    "title": "3  Coordinate Reference Systems and Projections",
+    "section": "Projected Coordinate Systems (PCS)",
+    "text": "Projected Coordinate Systems (PCS)\nOnce your data knows where to draw, it needs to know how. The earth’s surface—and your GCS—are round, but your map—and your computer screen—are flat. That’s a problem. You can’t draw the round earth on a flat surface without deforming it. Imagine peeling an orange and trying to lay the peel flat on a table. You can get close, but only if you start tearing the peel apart. This is where map projections come in. They tell you how to distort the earth—how to tear and stretch that orange peel—so the parts that are most important to your map get the least distorted and are displayed best on the flat surface of the map.\n\n\n\nProjection, source:Esri\n\n\n\nFrom GCS to a 2-D projected map\nProjections preserve certain features (e.g., area, shape, distance, direction) but distort others.\nThe selection of projection depends on the purpose and geographic extent of the analysis.\nDuring the transformation or projection, we attempt to preserve area, direction, shape, and distance. A projected coordinate system, however, can preserve only one or two of these properties. Therefore, projections are often named based on property they preserve.\nFor example: equal area projection preserves area, asymthyl projection preserves direction, equidistance preserves distance, and conformal projection preserves a local shape.\n\nConformal projections (e.g. Mercator) preserve local shapes and angles. It is very good for navigation because lines are drawn in a direction that will appear “straight.” So, it’s very helpful for direction and navigation, but distances and area will be distorted.\n\nFor example: when we use this type of projection to map the US, it helps us understand what is north, south, east, and west very clearly, but it also makes some states appear larger than they are (especially the northern ones), and it makes some distances also appear larger than they are.\n\nEqual-Area projections (e.g. Albers’ equal-area) preserves area. This type of projection is especially helpful if we wanted to calculate and visualize something such as population density - to more accurately represent the total area of a particular region. However, this projection distorts direction significantly, so as an example, this would not be a good map for navigation purposes.\nEquidistance projections preserve distance. This type of projection would be especially important if we wanted to more accurately calculate a measured distance between any two locations. A public health application that would benefit from this type of projection would be, for example: calculating the distance between a power plant and some sort of jurisdiction boundary aggregating incidence or mortality of cancer to evaluate possible relationships between distance / exposure to pollution and cancer.\n\n\n\nWhy distortions can be harmful\nSize matters\nDistortions in map projections can be harmful, not just in terms of accuracy but also in how they shape our perceptions of the world. For example, when we use the World Mercator projection, while countries in the Global South are relatively true to size, the area of countries in the Global North, like the US, Iceland, Greenland, Canada, and Russia, are grossly distorted and appear absolutely huge in comparison.\nWhen we switch our view to an area-preserving projection, it becomes clear just how much smaller these northern countries actually are in comparison to continents like Africa and South America. The difference is striking — Africa, for instance, is much larger than most people realize. The image below is from (https://www.visualcapitalist.com/), illustrating how many countries can fit into Africa to emphasize its true size.\nThis is important to think about because, in our society, we often unconsciously associate size with importance or power. By over-representing the size of northern countries on maps while diminishing the true scale of Africa and South America, these distortions can validate and perpetuate imbalanced perceptions of global power. It can unintentionally downplay the significance of the Global South and over-inflate the influence of countries like the United States. Using maps that preserve area instead of distorting it allows us to better understand the true scale and significance of different regions, which is critical for fostering a more equitable worldview.\n\n\n\n\n\n\nMercator Projection vs. True Area, source: reddit\n\n\n\n\n\n\n\nTrue Size of Africa, source:Visual Capitalist\n\n\n\n\n\n\n\nMethods for projection\nThere are three main types of projections (each with its own strengths in accuracy and weaknesses in distortion): planar, conical, and cylindrical. Below is a summary table and a series of images to describe the major differences and distinct circumstances for when you would want to use one over the other:\n\n\n\nLatitude vs. Longitude\n\n\nAspect\nPlanar\nCylindrical\nConical\n\n\n\n\nSurface Used\nPlane\nCylinder\nCone\n\n\nDistortion\nMinimal at the center; increases outward\nMinimal along the equator; increases towards poles\nMinimal along standard parallels; increases away from them\n\n\nBest For\nPolar regions or specific central points\nEquatorial regions\nMid-latitude areas with east-west extent\n\n\nExamples\nStereographic, Orthographic, Azimuthal Equidistant\nMercator, Transverse Mercator, Equirectangular\nAlbers Equal-Area Conic, Lambert Conformal Conic\n\n\n\n\n\n\n\n\n\n\n\nPlanar\n\n\n\n\n\n\n\nCylindrical\n\n\n\n\n\n\n\nConical",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Coordinate Reference Systems and Projections</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1b_Projections.html#universal-transverse-mercator-utm-and-state-plane-coordinate-systems",
+    "href": "chapters/1b_Projections.html#universal-transverse-mercator-utm-and-state-plane-coordinate-systems",
+    "title": "3  Coordinate Reference Systems and Projections",
+    "section": "Universal Transverse Mercator (UTM) and State Plane Coordinate Systems",
+    "text": "Universal Transverse Mercator (UTM) and State Plane Coordinate Systems\nThe Universal Transverse Mercator (UTM) system is a method for horizontal position representation, meaning it focuses on the Earth’s two-dimensional surface and disregards altitude. It treats the Earth’s surface as an ellipsoid rather than a perfect sphere, providing greater accuracy for mapping.\nUTM is based on the Transverse Mercator projection, which is a conformal (angle-preserving) map projection. Instead of wrapping the map around the globe along the equator (as in the standard Mercator projection), it wraps the map around the globe along a meridian (a line of longitude). This “transverse” orientation is key to reducing distortion for smaller areas.\nUnlike the global latitude and longitude system, the UTM system divides the Earth into 60 longitudinal zones, each spanning 6 degrees of longitude from east to west. Each zone has its own central meridian, which is at the center of the 6° range. Each zone is projected onto a flat plane to create a local coordinate grid, which serves as the basis for determining positions. Locations within the UTM system are specified by the zone number and the X and Y coordinates (also referred to as easting and northing) within that zone.\nThe UTM projection minimizes distortion by focusing on one small slice of the Earth at a time (a single zone). Distortion is smallest along the central meridian of the zone (where the projection is tangent to the Earth) and increases as you move toward the edges of the zone. Within a zone, angles (conformal property) and small shapes are preserved, making it highly accurate for local surveying and mapping.\nThis coordinate system is extensively used because it offers global coverage and precise localization. The UTM system is especially popular for creating local and national topographic maps, as it accommodates areas spanning multiple zones. For example, the United States, Canada, and parts of Europe use the UTM system to address their geographical diversity effectively.\nAdvantages of UTM:\n\nHigh Local Accuracy: By focusing on narrow zones (6° wide), distortion is minimized, especially near the central meridian.\nConformal Projection: It preserves angles and shapes well, making it useful for navigation, military applications, and surveying.\nGlobal Coverage: The system provides seamless mapping across the entire globe, with zones tailored to local regions.\n\nLimitations of UTM:\n\nZone Boundaries: Distortion becomes noticeable at the edges of a zone. This makes mapping across zone boundaries challenging because you must reconcile two separate coordinate systems.\nZone Width: At higher latitudes, the 6° wide zones cover much smaller distances in terms of actual ground coverage (because lines of longitude converge at the poles), which can increase distortion.\n\n\n\n\nConical",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Coordinate Reference Systems and Projections</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1c_ChoosingCRS.html",
+    "href": "chapters/1c_ChoosingCRS.html",
+    "title": "4  Selecting your Coordinate Reference System",
+    "section": "",
+    "text": "Working with Coordinate Reference Systems (CRS) in R\nKey things to remember:\nThe European Survey Control Group (EPSG) maintains definitions of coordinate reference systems and coordinate transformations (global, regional, national, or local).\nHere are two helpful reference websites for EPSG codes:\nHere is a helpful reference to keep handy:\nLet’s bring in the boundary of the lower contiguous US to demonstrate how to work with CRS in R:\noptions(tigris_use_cache = TRUE)\n\n#us state geometry\nus_states &lt;- states(cb = TRUE, progress = F) %&gt;%\n  filter(as.numeric(STATEFP) &lt;= 56) %&gt;%\n  filter(!(STUSPS %in% c(\"AK\", \"HI\")))\n\n#Dissolve counties for USA boundary:\nUS_boundary &lt;- st_union(us_states)",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Selecting your Coordinate Reference System</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1c_ChoosingCRS.html#working-with-coordinate-reference-systems-crs-in-r",
+    "href": "chapters/1c_ChoosingCRS.html#working-with-coordinate-reference-systems-crs-in-r",
+    "title": "4  Selecting your Coordinate Reference System",
+    "section": "",
+    "text": "CRS in R reference",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Selecting your Coordinate Reference System</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1c_ChoosingCRS.html#investigate-crs-associated-with-shapefile",
+    "href": "chapters/1c_ChoosingCRS.html#investigate-crs-associated-with-shapefile",
+    "title": "4  Selecting your Coordinate Reference System",
+    "section": "Investigate CRS associated with shapefile",
+    "text": "Investigate CRS associated with shapefile\nAfter bringing in a shapefile, it’s always important to first investigate its current CRS:\nYou can use the st_crs() function to print it out:\n\nst_crs(US_boundary)\n\nCoordinate Reference System:\n  User input: NAD83 \n  wkt:\nGEOGCRS[\"NAD83\",\n    DATUM[\"North American Datum 1983\",\n        ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"latitude\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"longitude\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4269]]\n\n\nYou can specifically call in the variable $proj4string like this: st_crs()$proj4string, and it will return a more concise description of the CRS:\n\nst_crs(US_boundary)$proj4string\n\n[1] \"+proj=longlat +datum=NAD83 +no_defs\"\n\n\n\n+proj = longlat: tells us there is no projection\n+datum = NAD83: utilizes the North American Datum of 1983 (NAD83)",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Selecting your Coordinate Reference System</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1c_ChoosingCRS.html#changing-the-crs-of-a-shapefile",
+    "href": "chapters/1c_ChoosingCRS.html#changing-the-crs-of-a-shapefile",
+    "title": "4  Selecting your Coordinate Reference System",
+    "section": "Changing the CRS of a shapefile",
+    "text": "Changing the CRS of a shapefile\nUsing the st_transform() function, we can transform a shapefile to any other projection system, utilizing the specific EPSG codes:\n\nUS_boundary_aea &lt;- st_transform(US_boundary, 5070)\nst_crs(US_boundary_aea)$proj4string\n\n[1] \"+proj=aea +lat_0=23 +lon_0=-96 +lat_1=29.5 +lat_2=45.5 +x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs\"\n\n\nAfter running the st_transform() function and and the st_crs(), we can see that the projection worked as expected and this is reflected in the output:\n\n+proj = aea: Albers Equal Area projection\n+lat_1 = 29.5, +lat_2 = 45.5: Standard lines for EPSG 5070\n+datum = NAD83: utilizes the North American Datum of 1983 (NAD83)\n+units = m: indicates the map is now measured in meters\n\nWe can also observe the distortions and optimization of each: In the first map (without projection), distance and directionality are optimized. In the second (projected with Alber’s Equal Area), distance and direction are a bit distorted, but the area is more accurately represented.\n\n\n\n\n\n\nNo Projection\n\n\n\n\n\n\n\nAlbers Equal Area Projection\n\n\n\n\n\n\n\n\n\n\n\n\nWhen making maps in ggplot\n\n\n\nIf you do not know what the projection code is, but you want it to match some other shapefile’s projection, you can insert the st_crs(shp_NAD83)$proj4string into the + coord_sf(crs = ) call:\n\n\n\ncoord_sf(crs = st_crs(&lt;shapefile&gt;)$wkt)\n\n\nggplot(data = one_shapefile) +\n  geom_sf() +\n  coord_sf(crs = st_crs(other_shapefile)$wkt)",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Selecting your Coordinate Reference System</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1d_Privacy.html",
+    "href": "chapters/1d_Privacy.html",
+    "title": "5  Privacy and Confidentiality",
+    "section": "",
+    "text": "Tension: Individual vs. Societal Benefits\nPrivacy and confidentiality should not be an afterthought, but fully integrated into the research design, process, administration, and reporting.\nThis study: Pereira, Stacey, et al. “Do privacy and security regulations need a status update? Perspectives from an intergenerational survey.” PloS one 12.9 (2017): e0184525.\nsurveyed 1310 participants in the US: - (mean age: 36 years, 50% female, 78% non-Hispanic white, 54% college graduates or higher) - categorized by generations: Millennials, Generation X, and Baby Boomers.\nThe authors concluded that the “majority within all generations reported concern about both the privacy and security of their health information (~70%). Thus, there is no intergenerational imperative to relax privacy and security standards, and it would be advisable to take privacy and security of health information more seriously.”\nOnly collect the minimum necessary geographic information to answer research questions.\nUse appropriate anonymization techniques like aggregation, jittering, or geomasking.\nAssess re-identification risks carefully, especially when working with small populations or stigmatized conditions.\nEngage ethical review boards to ensure compliance with legal and ethical standards.\nIndividual vs. Societal Benefit Tension\n\n\nPractices.that.Benefit.Individuals\nPractices.that.Benefit.Society\n\n\n\n\nObservational study\nRandomized control trials and studies\n\n\nRestricted to the least vulnerable\nBroad recruitment\n\n\nSurrogate endpoints\nDefinitive endpoints (e.g. death)\n\n\nSmall N\nLarge N\n\n\nShort follow-up period\nLong follow-up period\n\n\nMultiple concents\nConcent once\n\n\nNo geographic information\nReal-time location information",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Privacy and Confidentiality</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1d_Privacy.html#ethical-and-legal-frameworks",
+    "href": "chapters/1d_Privacy.html#ethical-and-legal-frameworks",
+    "title": "5  Privacy and Confidentiality",
+    "section": "Ethical and Legal Frameworks",
+    "text": "Ethical and Legal Frameworks\nThe National Commission for the Protection of Human Services of Biomedical and Behavioral Research was created in response to egregious violations of human rights from research scandals (Tuskegee, Willowbrook, Jewish Chronic Disease Hospital).\n\n\nThe Belmont Report (1978)\nEstablished three core ethical principles:\n\nBeneficence – Minimizing risks and balancing them with benefits.\nJustice – Fair selection of research participants and equitable distribution of benefits and burdens.\nRespect for Persons (Autonomy) – Includes informed consent and the protection of privacy and confidentiality.\n\n\n\n\nCouncil for International Organizations of Medical Sciences (CIOMS)\nProvides guidelines for investigators from technologically-advanced countries conducting research in less developed communities\n\nDeals with special / vulnerable populations\nStronger emphasis on justice than Belmont Report\nStresses the importance of the fair distribution of research benefits\nAlso emphasizes privacy\n\n\n\n\nHIPAA Privacy Rule (1996)\nLater strengthened under the HITECH Act (2013)\n\nHIPAA established strict regulations on the handling of Protected Health Information (PHI), which includes:\n\n18 specific identifiers considered PHI (what you would expect - but also includes dates, phone numbers, emails, fingerprints, full face photos, etc.)\nAny geographic subdivisions smaller than a state (e.g., counties, census tracts, ZIP codes) linked to individual health information.\nProvides safe harbor methods for de-identifying data, such as removing specific geographic details or using statistical techniques.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Privacy and Confidentiality</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1d_Privacy.html#privacy-vs.-security",
+    "href": "chapters/1d_Privacy.html#privacy-vs.-security",
+    "title": "5  Privacy and Confidentiality",
+    "section": "Privacy vs. Security",
+    "text": "Privacy vs. Security\nPrivacy: Individuals’ rights to control their personal information and its use. Those accessing, using, or disclosing that information have an obligation to respect those rights by using fair and safe practicies\nSecurity: Measures taken to protect health data from unauthorized access, modification, or misuse.\n\nIntegrity: protecting and ensuring integrity of the data itself\nAvailability: making sure that data is accessible to those that need it\nConfidentiality\n\nConfidentiality: The duty of researchers and institutions to protect data from unauthorized access, use, disclosure, modification, disruption. The duty to respectfully handle health data that was provided in confidence - not breaching any individual’s trust",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Privacy and Confidentiality</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1d_Privacy.html#challenges-in-protecting-spatial-health-data",
+    "href": "chapters/1d_Privacy.html#challenges-in-protecting-spatial-health-data",
+    "title": "5  Privacy and Confidentiality",
+    "section": "Challenges in Protecting Spatial Health Data",
+    "text": "Challenges in Protecting Spatial Health Data\nRisk of Re-Identification:\n\nCombining geographic coordinates with demographic information (age, gender, income, etc.) can make individuals identifiable.\nThe risk is particularly high in small geographic areas or when studying sensitive conditions.\n\nPublic Concerns About Data Privacy:\n\nSurveys indicate that ~70% of people are concerned about privacy and security of their health data.\nOlder individuals tend to express greater concern.\n\nEthical Dilemmas in Data Use:\n\nThere is an inherent tension between protecting individuals’ privacy and maximizing the public health benefits of spatial data.\nExample: Including real-time location data in studies can improve disease tracking but also increases privacy risks.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Privacy and Confidentiality</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1d_Privacy.html#protecting-spatial-health-data",
+    "href": "chapters/1d_Privacy.html#protecting-spatial-health-data",
+    "title": "5  Privacy and Confidentiality",
+    "section": "Protecting Spatial Health Data",
+    "text": "Protecting Spatial Health Data\nIn public health research, de-identification is a critical process used to protect individual privacy. Traditional studies remove personally identifiable information (PII) such as names, birth dates, phone numbers, and other identifiers, replacing them with random identification codes to limit re-identification risks.\nHowever, spatial data presents additional privacy concerns because it includes location information, which can be used to pinpoint an individual’s home or workplace. Even without direct identifiers, combining spatial data with other demographic details (e.g., age, smoking status, number of children, car ownership) can make re-identification easier. This is referred to as  reverse geocoding (or, re-identification) \n\nThe more personal attributes (e.g., age, sex, income, marital status) linked to a location, the easier it is to identify individuals.\nStudies show that basic attributes (e.g., age + sex) are not highly identifying, but\ncombining multiple factors (age, disability, income, schooling) increases uniqueness up to 95%, making individuals easily identifiable\nMonitoring location patterns over time (e.g., frequent visits to specific places) can reveal personal details and habits, further increasing re-identification risks.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Privacy and Confidentiality</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1d_Privacy.html#techniques-for-privacy-protection-in-map-making",
+    "href": "chapters/1d_Privacy.html#techniques-for-privacy-protection-in-map-making",
+    "title": "5  Privacy and Confidentiality",
+    "section": "Techniques for Privacy Protection in Map-Making",
+    "text": "Techniques for Privacy Protection in Map-Making\nDo not show a map\n\nThis seems obvious, but nevertheless, an important consideration, especially if the map is not an inherently or intrinsically critical tool to communicate your message. If there are other reasonable ways to communicate your message, the risk of potentially violating individual privacy and confidentiality may far outweigh the benefits of the map itself.\n\nRandom Perturbation (Jittering)\n\nShifting spatial points randomly within a predefined radius.\nUsed to obscure precise locations while maintaining general geographic patterns.\nPros: Retains broad spatial trends.\nCons: Can distort local-level analysis, especially in environmental exposure studies.\n\nDonut Geomasking\n\nA refinement of jittering where points are displaced beyond a minimum distance to prevent clustering around the original location.\nHelps balance anonymity and spatial accuracy.\n\nSpatial Aggregation\n\nReporting data at coarser geographic scales (e.g., ZIP codes instead of precise addresses).\nPros: Strong protection against re-identification.\nCons: Can obscure fine-scale variations important in epidemiological research.\n\nTransformation Techniques\n\nSystematic shifting of points by fixed increments, rotations, or scaling transformations.\nPros: Preserves relative spatial relationships.\nCons: Can be reverse-engineered if transformation parameters are disclosed.\n\nRemoving Identifiable Map Features\n\nExcluding street maps, county boundaries, or other features that could help pinpoint locations.\n\nCreate a False Coordinate System\n\nAdjusts spatial data while preserving relative distances and directions.\nEnsures that locations remain unidentifiable in real-world contexts.\n\nAccess Controls and Restricted Data Use\n\nLimiting data access to approved researchers under strict confidentiality agreements.\nExample: The National Hospital Care Survey restricts use of spatial health data to on-site researchers at controlled facilities.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Privacy and Confidentiality</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1d_Privacy.html#examples",
+    "href": "chapters/1d_Privacy.html#examples",
+    "title": "5  Privacy and Confidentiality",
+    "section": "Examples",
+    "text": "Examples\n\nPoor Example:\n\n👎 🚫 A Lancet study (2015) mapped tuberculosis patients’ homes in Pakistan without privacy protections.\n\nMuch Better Exmaple:\n\n✅ A study on particulate matter pollution in Los Angeles jittered participant home locations to obscure exact addresses while maintaining overall patterns.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Privacy and Confidentiality</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1e_Bias.html",
+    "href": "chapters/1e_Bias.html",
+    "title": "6  Bias in spatial data",
+    "section": "",
+    "text": "Ecological Fallacy\nBias can impact research and its interpretations in many different ways. In spatial data analysis, there are four categories in particular that are the most common, that we should be particularly mindful of and thoughtful in addressing or reducing their influences. Understanding these spatial analysis challenges is crucial in public health research. By recognizing and addressing the ecological fallacy, MAUP, boundary problem, and small numbers problem, researchers can ensure more accurate and reliable analyses, leading to better-informed public health decisions.\nAggregated data can mask individual variations, leading to incorrect assumptions about individual behaviors based on group statistics. For instance, a study might find a high correlation between two variables at the regional level, but this does not necessarily imply that the same relationship exists at the individual level within those regions.\nIn public health, relying solely on aggregated data without considering individual-level variations can lead to misguided policies. For example, if a region shows high rates of a particular health outcome, it might be tempting to assume that all individuals in that region are at equal risk, which may not be the case.\nTo avoid ecological fallacies, it’s essential to analyze data at the appropriate level. When possible, individual-level data should be used to draw conclusions about individual behaviors. If only aggregate data is available, researchers should be cautious in making inferences about individuals.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Bias in spatial data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1e_Bias.html#ecological-fallacy",
+    "href": "chapters/1e_Bias.html#ecological-fallacy",
+    "title": "6  Bias in spatial data",
+    "section": "",
+    "text": "The ecological fallacy arises when inferences about individual behavior are drawn from aggregate data, leading to potential misinterpretations. This occurs because relationships observed at the group level may not hold true at the individual level.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Bias in spatial data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1e_Bias.html#modifiable-areal-unit-problem-maup",
+    "href": "chapters/1e_Bias.html#modifiable-areal-unit-problem-maup",
+    "title": "6  Bias in spatial data",
+    "section": "Modifiable Areal Unit Problem (MAUP)",
+    "text": "Modifiable Areal Unit Problem (MAUP)\n\naltering the boundaries of spatial units (like districts or regions) can drastically change the results of spatial analysis, even with the same data\nintroduces bias due to variability in the data within and between units of analysis\n\nScale Effect and Aggregation\nZoning Effect\n\n\n{.lightbox width = 50%}\n\nMitigation Strategies\n\nConduct sensitivity analyses using multiple zoning schemes and scales to assess the robustness of findings.\nWhere possible, use individual-level data to minimize aggregation biases.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Bias in spatial data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1e_Bias.html#boundary-problem",
+    "href": "chapters/1e_Bias.html#boundary-problem",
+    "title": "6  Bias in spatial data",
+    "section": "Boundary Problem",
+    "text": "Boundary Problem\nThe boundary problem arises when artificial boundaries imposed on continuous spatial phenomena lead to biased analyses. These boundaries can create a) edge effects, where data outside the study area are ignored and influence the results / conclusions or b) shape effects (similar to MAUP’s Zoning Effects), .\n\nEdge Effects\n\nIgnoring data beyond artificial boundaries can lead to incomplete or biased analyses, especially when the phenomenon under study does not adhere to these boundaries.\nWhen we cut our bound our data to a specific shape, we might be losing critical information that is happening outside of that shape.\nFor example: A study on air pollution confined to a city’s administrative boundaries might overlook pollution sources just outside the city limits (air pollution does not reasonalbly adhere to any sort of administrative boundary), leading to an incomplete understanding of pollution patterns.\n\nShape effects\n\nThe shape of the study area can influence spatial analyses, potentially leading to misinterpretations\ndepending on what shapes you choose to “cut” or “slice” or “bin” your data, you may get very different results, especially for spatial processes like clustering\nRelated to MAUP’s\nGerrymandering is exploitation of a shape effect\n\nMitigation Strategies\n\nExtend the study area beyond artificial boundaries to capture relevant data.\nUse methods like repeated random boundary estimation to assess the stability of findings.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Bias in spatial data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/1e_Bias.html#small-numbers-problem",
+    "href": "chapters/1e_Bias.html#small-numbers-problem",
+    "title": "6  Bias in spatial data",
+    "section": "Small Numbers Problem",
+    "text": "Small Numbers Problem\n\nThe small numbers problem occurs when analyses are based on small populations or case counts, leading to high variability and potential misinterpretations.\nIn areas with small populations, even a slight change in case numbers can lead to significant fluctuations in rates, making it challenging to distinguish between random variation and actual trends.\nFor example: A rural county with a small population might show a high disease rate due to a few cases, but this rate may not be statistically significant or indicative of a broader trend.\nMitigation Strategies\n\nAggregate data over longer time periods to increase case counts and stabilize rates.\nUse statistical techniques that account for variability in small populations, such as Bayesian hierarchical models.",
+    "crumbs": [
+      "Introduction to GIS",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Bias in spatial data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/2a_ShapefileComps.html",
+    "href": "chapters/2a_ShapefileComps.html",
+    "title": "7  Shapefile structure and file extentions",
+    "section": "",
+    "text": "Load and inspect shapefile data\nUsing the st_read, we will bring in the geometries for Montana counties.\nSee more on sf functions in this section, here\nMT_counties &lt;- st_read(here::here(\"data/shapefiles/MT_counties\", \"MT_counties.shp\"))",
+    "crumbs": [
+      "Types of Spatial Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Shapefile structure and file extentions</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/2a_ShapefileComps.html#inspect-the-shapefile",
+    "href": "chapters/2a_ShapefileComps.html#inspect-the-shapefile",
+    "title": "7  Shapefile structure and file extentions",
+    "section": "Inspect the shapefile",
+    "text": "Inspect the shapefile\n\nclass(MT_counties)\n\n[1] \"sf\"         \"data.frame\"\n\nstr(MT_counties$geometry)\n\nsfc_POLYGON of length 56; first list element: List of 1\n $ : num [1:2596, 1:2] 637491 637491 637491 637491 637491 ...\n - attr(*, \"class\")= chr [1:3] \"XY\" \"POLYGON\" \"sfg\"\n\nst_crs(MT_counties)$proj4string\n\n[1] \"+proj=lcc +lat_0=44.25 +lon_0=-109.5 +lat_1=49 +lat_2=45 +x_0=600000 +y_0=0 +datum=NAD83 +units=m +no_defs\"",
+    "crumbs": [
+      "Types of Spatial Data",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Shapefile structure and file extentions</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/2b_Points.html",
+    "href": "chapters/2b_Points.html",
+    "title": "8  Point Data",
+    "section": "",
+    "text": "Considerations for Point Data in Public Health\nWhen we talk about point data, we mean that the locations themselves (coordinates) ARE the data. The point / location marks something very specific such as the existence of an object or of a disease case, and/or the the exact location that an event occurred.\nAssessing patterns in point data can help us answer really important questions, can can provide insights on many things: from figuring out if disease cases are clustered around specific areas or locations, to assessing temporal and spatial trends over time, and much more.\nIn public health, our main interests in point data lie in:\nPoints can also represent a calculated statistic, referred to as a geostatistical or point-referenced data\nDisease ascertainment\nExposure misclassification\nPrivacy and Confidentiality",
+    "crumbs": [
+      "Types of Spatial Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Point Data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/2b_Points.html#considerations-for-point-data-in-public-health",
+    "href": "chapters/2b_Points.html#considerations-for-point-data-in-public-health",
+    "title": "8  Point Data",
+    "section": "",
+    "text": "ascertainment = available / reported / collected data\nregistries improve ascertainment\nstigma reduces ascertainment\nascertainment changes throughout space and time\n\n\n\nPoints usually represent a home address or the location of a clinic. This would not accurately reflect someone’s full (or arguably sometimes, most significant) exposure sources such as:\nOccupational exposures\nTransportation exposures\nmuch more…\n\n\n\nmore detail in this chapter: chapter link",
+    "crumbs": [
+      "Types of Spatial Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Point Data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/2b_Points.html#point-patterns",
+    "href": "chapters/2b_Points.html#point-patterns",
+    "title": "8  Point Data",
+    "section": "Point Patterns",
+    "text": "Point Patterns\nPoint pattern data: randomness (point process) lies in the event locations - We are interested in the spatial pattern of these events - How are the locations themselves distributed within a region of interest?\nGeostatistical/point-referenced data: randomness lies in the value of the measurement taken at each location - We consider the sample locations fixed (e.g., selected by researcher) - We are interested in the measured value at that location, - not the location itself - e.g. air quality index at monitoring stations\n\nSpatial Process\nWhen we say “spatial processes”, what we are referring to is how we can describe how the observed spatial pattern may have been generated.\nAs a baseline, we consider all processes to have some element of  stochasticity,  a fancy word for randomness.\nThe map we generate to display our points is the realization of such a process. In theory, if we applied the same process again, and again, and again, to infinity and beyond, we would have a slightly different map each time because of the element of this natural randomness. This concept directly relates to randomly sampling from a theoretical “population” with a known distribution. Even though the samples are coming from the same “population,” each time we grab a random sample, there will be some level of variability due to the intrinsic randomness within a population.\n\n\nComplete Spatial Randomness (CPR)\nThe concept of “complete spatial randomness” is, in a way, analogous to thinking about what our “null hypothesis” is. Except, instead of thinking about the “null” scenario in terms of distributions or densities of the values themselves, we are looking at it through a lens of spatial patterns.\nIn other words, if there were absolutely no detectable patterns in the spatial distribution of our points, what would that look like?\nThis is our theoretical starting point to think about when evaluating a point / spatial process. There are two hypotheses associated with CSR: 1. No regions where events more or less likely to occur 2. Cases occur independently of one another",
+    "crumbs": [
+      "Types of Spatial Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Point Data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/2b_Points.html#jittering-points",
+    "href": "chapters/2b_Points.html#jittering-points",
+    "title": "8  Point Data",
+    "section": "Jittering Points",
+    "text": "Jittering Points\nJittering is a technique used to offset / change the location of the locations of points radomly, to preserve privacy while still maintaining spatial process / trends.\nBelow is a short script that brings in some point data and demonstrates how to apply this technique using the st_jitter function within the sf package.",
+    "crumbs": [
+      "Types of Spatial Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Point Data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/2b_Points.html#point-intensity-aka-density",
+    "href": "chapters/2b_Points.html#point-intensity-aka-density",
+    "title": "8  Point Data",
+    "section": "Point Intensity (aka density)",
+    "text": "Point Intensity (aka density)\nA measure of how many events occur within any specific area. Essentially, this is density. The specified area could be in terms of a grid (squares), circles, essentially any shape as long as we can calculate its area.\n\n\n\n\n\n\nPoint-Process\n\n\n\n\n\n\n\nPoint-Process\n\n\n\n\n\n\nIntensity Estimate: “Quadrants”\nIf we have underlay a grid - where each quadrant is a set area - we can calculate the point density (intensity) within each, and use those density values to visualize through the use of color, shape, size, etc.\nAdvantages of this approach: - Simple - An improvement compared to the “constant intensity” assumption\nDisadvantages:\n\nAltering the shape and size of the quadrants can lead to wildly different estimates and insights\nPatterns within quadrants are ignored and lost\nDoes NOT borrow information from neighboring quadrants *\nMeaning, if the intensity within quadrant A is somehow related to the intensity that we see within quadrant B, there is no way to account for this.\n\n\n\n\nIntensity Estimate: “Moving Window”\nA “moving window intensity estimate” refers to a method of calculating the average intensity (or another statistical measure) within a sliding window of data points, where the window moves through a given region.\nThe biggest advantage is that this provides a much smoother estimate of intensity over the given region, because you lose the rigid boundaries of the quadrants.\nHowever, we still lose and ignore information within each window. And so‐‐ again‐‐ you have to think carefully about the size of your area you’re looking at, the size and shape of the window, and whether it’s important to change the scale or change your approach altogether.\nSliding window: The “window” is a fixed-size subset of the data that moves along the data sequence, calculating the desired statistic (like mean, median, standard deviation) for each window position\nWindow size selection: Choosing the appropriate window size is crucial, as a small window can be sensitive to noise while a large window might miss subtle changes in the data\nEdge effects: When the window reaches the beginning or end of the data, special handling might be needed to avoid skewed calculations.\n\n\nKernel Density: A Type of “Moving Window Estimate”\n AKA: KDE \nThe most defining feature of the KDE moving window intensity estimate is that it accounts for spatial relationships within a defined search window.\nAdvantages of KDE:\n\nIt avoids the abrupt cutoffs of simple moving window approaches, where all points inside the window are counted equally.\nIt provides a smoother, more continuous estimation of density.\nIt captures spatial patterns more effectively than standard moving window estimate, especially in cases where events cluster in space.\n\n Search Window == “Kernel.”  The center of the kernel == \\(S\\)\nLarger radius of kernel/search window == smoother intensity estimate. Why? Because, the further out we look, the more we are averaging out across the surface. If you have an extremely small search window, it’s almost as if you lose the strength of this approach: you no longer account for neighboring information. This will result in a “rougher” looking surface - similar to a quadrant.\nExample Application in Public Health: If you were analyzing the intensity of disease cases across a geographic region:\n\nA simple moving window method might just count cases within a 5-km radius of each location.\nA kernel density approach would assign higher weight to cases near the center of the search area and lower weight to those near the edge.\nThis helps in identifying hotspots more accurately, reflecting the reality that nearby cases influence disease spread more than distant ones.\n\nHow it works:\n\nYou define a search window, \\(S\\) (size and shape) that then “moves across” the study area. - This window includes events (e.g., points, cases, incidents) that fall within a certain range. - The intensity at any given window \\(S\\) is estimated based on how many events fall within the search window.\nWeight Events by Distance to Other Events - Simply counting points in a search window ignores the fact that closer events are often more relevant than those further away. - This is based on Tobler’s First Law of Geography: - “Everything is related to everything else, but near things are more related than distant things.” - To incorporate this principle, KDE assigns weights to events based on their distance from the center of each \\(S\\)\n\nCloser points → Higher weight\nFarther points → Lower weight\n\nApply Kernel Function: - A kernel function is applied to assign these weights. - A common choice is the Gaussian (Normal) kernel, which creates a smooth intensity surface by giving high weight to events near the center of \\(S\\) and tapering off gradually.",
+    "crumbs": [
+      "Types of Spatial Data",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Point Data</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/2c_Rasters.html",
+    "href": "chapters/2c_Rasters.html",
+    "title": "9  Rasters",
+    "section": "",
+    "text": "Raster Formats\nTo recap from previous chapters: Vector data is made up of points, lines, and polygons Raster data is made up of points or grid cells with assigned values\nRaster Formats\n\n\nFormat\nCompression\nGeoreferencing\nMulti.band\nUseage\n\n\n\n\nTIFF (GeoTIFF)\nLossless (LZW, ZIP, or none)\n✅ Yes (GeoTIFF)\n✅ Yes\nRemote sensing, GIS, high-resolution spatial analysis\n\n\nNetCDF\nEfficient multidimensional storage\n✅ Yes\n✅ Yes\nClimate modeling, time-series spatial data, scientific computing\n\n\nJPEG\nLossy (high compression)\n❌ No\n❌ No\nWeb maps, lightweight raster images\n\n\nPNG\nLossless\n❌ No\n❌ No\nTransparent overlays, cartographic display\nRasters can be stored and downloaded in a variety of formats, most commonly:\nThe challenge: Figuring out when raster data is useful or not to your mapping goals\nThe same real- world scenario can be represented in both a raster or a vector representation.\nExamples of information that is best represented as a raster:",
+    "crumbs": [
+      "Types of Spatial Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Rasters</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/2c_Rasters.html#raster-formats",
+    "href": "chapters/2c_Rasters.html#raster-formats",
+    "title": "9  Rasters",
+    "section": "",
+    "text": ".TIFF: Tagged Image File Format\n\none of the most widely used in GIS and remote sensing\nsupports high-resolution images and can store multiple bands (RGB, infrared, DEMs, etc.)\noften georeferenced (GeoTIFF) for spatial analysis in GIS software\nuse cases: satellite imagery and aerial photos, Digital Elevation Models (DEM), land cover classification and environmental modellin\nCons: can result in very large file sizes\n\n.netCDF: Network Common Data Form\n\na self-describing format used for multidimensional data\ncommonly used in climate modeling, atmospheric research, and oceanographic data\nsupports multiple dimensions (latitude, longitude, altitude, time)\nhandles large multidimensional dataets (time series, 3D spatial models)\nmore efficient storage and compression (HDF-based structure)\nhighly compatible with computing tools and software (R, Python, MATLAB, C, etc.)\nCons: not always natively supported by GIS software (might need to convert to a GeoTIFF); steeper learning curve for beginners\nuse cases: climate models and weather forecasting (NASA and NOAA datasets, e.g.); sea surface temperature, wind patterns, other oceanic data; long-term environmental monitoring (e.g. precipitation trends over time); 3D spatial models (e.g. atmospheric data with altitude layers integrated)\n\n.JPG: Joint Photographic Experts Group\n\nlossy-compresssed raster format that reduces file size but sacrifices image quality\nhighly compressed with small file size\ngood for web mapping applications\nwidely supported across platforms\ndoes not support multi-band or georeferencing\nunsuitable for spatial analyses but good for display (such as using as a basemap)\n\n.PNG: Portable Network Graphics\n\nlossless raster format\noften used for web visualization and cartographic outputs\nsupports transparency (useful for overlays in maps)\nlarger file size compared to .JPG\ndoes not support multi-band or georeferencing\nunsuitable for spatial analyses but good for display (such as using as a basemap)\n\n\n\n\n\n\n\nElevation\nTerrain\nLand cover\nDisease risk or incidence?\n\ntypically, we are only ever able to visualize disease incidence and risk as vectorized data, generalized to arbitrary and artificial administrative boundaries. However, it we have the individual-level point data, rasterizing disease risk can provide a very interesting visualization as it will transcend issues related to the MAUP (link to bias chapter here) bias problems.\nrasterizing diseases can enable us to see the fine scale variation of risk across a smooth surface, and\nwe can generate rasters of disease risk and assess them as potential functions of other variables, such as investigating the raster of malaria cases as a function of temperature. In this case, it would make sense to keep this data as a raster.",
+    "crumbs": [
+      "Types of Spatial Data",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Rasters</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3a_MapParts.html",
+    "href": "chapters/3a_MapParts.html",
+    "title": "10  Critical Parts of a Map",
+    "section": "",
+    "text": "Before making your map:\nThere are three main types of maps:\nGeneral purpose map / Reference map / Base map\nThematic map / special-purpose or statistical map\nCartometric / Specialized map\nMaps are not always necessary Is the most important message intrinsically spatially related? Are there other, perhaps more effective, ways to communicate your message? If you decide a map is the best way forward:\n1. Identify your purpose and goals\n2. Define the scale\nNOTE: the required scale of your map will also help you determine the best coordinate reference system and/or projection.\n3. Identify your audience\nWill the map be used for an ordinary person? * Less is more.\nIs the map intended for a more specific, technical audience? * More detail might be helpful.\n4. Identify the real-world features that you need to show\n5. Choose how to represent those features\n6. Apply projection and spatial referencing systems (discussed in previous chapters: see here and here for choosing the best CRS)\n7. Classify and color any data appropriately for your map’s purpose\n8. Finalize and annotate the map",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Critical Parts of a Map</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3a_MapParts.html#before-making-your-map",
+    "href": "chapters/3a_MapParts.html#before-making-your-map",
+    "title": "10  Critical Parts of a Map",
+    "section": "",
+    "text": "What do you want to convey?\nHow accurate does the map need to be?\n\ne.g. Is the map intended for precise navigation and surveying? Or,\nIs the map instead only intended to portray a spatial trend?\n\n\n\n\nThis ties into the purpose above regarding the question: how accurate does this need to be?\nIs this a map intended to display a large area (such as an entire country or state)? = “small scale map”\nOr is this map intended to highlight a much more specific area, like a neighborhood? = “large scale map”\n\n\n\n\nSmall Scale vs. Large Scale Maps\n\n\n\n\n\n\n\n\n\n\n\nFirst we need to decide the type of map that best suits our purpose and audience\nThen we need to understand how brains typically process visual information\nConsider the elements that we want people to notice first\nWhat do we want them to remember the most after looking at the map?\nThis will inform our visual hierarchy\n\n\n\n\n\n\n\n\nElements of a Map",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Critical Parts of a Map</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3a_MapParts.html#map-elements",
+    "href": "chapters/3a_MapParts.html#map-elements",
+    "title": "10  Critical Parts of a Map",
+    "section": "Map Elements",
+    "text": "Map Elements\n\nNorth arrow\nUsually the top part of the map represents the North orientation. It is still important to include a clear North arrow to indicate the orientation. It is also important to make sure that the north arrow is not too large, prominent, or elaborated, as this may distract the viewer’s attention from the map content.\nAnother way to show location and orientation is by portraying graticules (lines of latitude and logitude). Using graticules is particularly helpful when there is an ambiguity about the direction of North. The graticules can help to clarify spatial orientation. It serves as a directional indicator and should complement the map content. Similar to the North arrow design, you should be mindful that graticules are not too prominent or complicated and that they doe not compete with the map content.\n\n\nScale\nThere are three ways to convey the scale of your map:\n\nRatio: 1:1000\nSentence/word: One centimeter represents 1000 meters\nGraphic:\n\n\n\n\nGraphic Scale\n\n\n\n\nBest practice: Always include the graphic scale bar. Never a bad idea to also include a sentence.\n\n\nTitle\nAll maps must have a title that clearly and concisely explain the purpose of the map. The title is the first element that catches a viewer’s eye. Care should be taken to most effectively represent the intent of the map with the title text.\nThe title design should include/be:\n\nplaced at the top / top-center or directly above the legend\nlarge font\nlimited to one line if possible\nno need to tell people it’s a map\neasily identifiable as a title of the map\ninclude descriptive text about the location and purpose of the map\ntheme should be included if necessary\n\n\n\nLegend\nThe legend explains the meaning of all map symbols.\nA legend of a map should include/be:\n\nplaced within a white space of the map\ntitle for the legend\ndo not need to explicitly state the word ‘legend’\nshould not obstruct any other map elements\nlegend symbols exactly match how they appear on the map\nitems ordered logically\nsymbols representing map features placed to the left of the explanatory text\n\nLabels\nLabels play a vital role in highlighting significant elements of a map. By using diverse colors, types, sizes, and spacing, we can differentiate and distinguish the map content effectively.\nInset map\nInset maps can be very helpful in providing additional information or context for the location and scale of the main map. It is essentially a secondary map area that displays the relation to a larger map area.\nInset maps are also used to show areas that are related to the primary map, but are located at far off locations. For example, often maps of Alaska and Hawaii are included as insets to a map of the contiguous United States.\nNeatlines and Framelines\nFancy words for a border. Both frame lines and neatlines are typically thin and black line boxes. If you find they are helpful or necessary, always maintain an equal distance between the map and all borders.\nNeatlines are boarding boxs that surround map elements such as the title, legend, text boxes, etc.\nFramelines refer to a border around the entire map. Use a neatline especially if there is limited contrast between the map and the background of the page.\nMap Credits It is always important to credit the source of the data that you use. Generally the credits are dispalyed with fairly small text at the bottom of a map - use simple font to display this information (serif fonts are much harder to read when they are small).\nCredit should include: - source of spatial and attribute data - information on data processessing - date of map creation and publication - applicable dates to the data visualized in the map - Projection of the map\nIllustrations are almost never helpful and should not be used. On old maps, it’s common to see elements or illustrations of sea creatures, sea monsters, and waves within water bodies. However, such illustrations are not common in modern maps. Illustrations create clutter and distract from the map’s content.  Always aim for simplicity  - with only the necessary elements that help communicate the primary aim of the map.\nTypography/Text\nTypography can be found in multiple places and throughout all the elements on the map, such as titles, headings, captions, legends and labels. Different typefaces, sizes and spacing can convey the messages more effectively. For example, the use of bold letters can result in more pronounced effects depending on the map. The use of sans font is recommended over serif font.\nTypography includes decisions around: - establishing visual hierarchy of elements - Color - Typeface - Size - Spacing - Style (bold, italic)\nTypography can:\n\nHelp establish visual hierarchy\nClassify attributes\n\nTypography best practices:\n- Use one single typeface / font throughout the map - Use a single color - Use a single style - UNLESS you want to create visual hierarchy - Sans type &gt; Serif type",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Critical Parts of a Map</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3b_Choropleths.html",
+    "href": "chapters/3b_Choropleths.html",
+    "title": "11  Choropleth Maps",
+    "section": "",
+    "text": "Classification and Binning\nChoropleth Maps A choropleth map plots the raw geographic topology and colors each geographic entity according to the value of the variable being visualized. However, based on color alone, it is difficult to make more detailed quantitative comparisons.\nDisadvantages of Choropleth Maps\nThere are many ways to deal with this problem through other types of maps.\nLet’s start by just plotting the census tracts\nFantastic. This is just plotting the geometry of the shapefile (polygons of census tracts in Montana). Pretty boring map, though.\nWe can dive a bit further, and use a choropleth map to visualize median household income by tract. We will use the fill = &lt;variable&gt; call to tell ggplot to fill in the geometry by that variable.\nWell, this is not as boring as the first map. However, if being able to visually differentiate and compare median income among different counties was important, this would be a bit hard to do here.\nIncome data might be one case where we may consider a divergent color scale. This can be a good option for scenarios where you’d like to emphasize both extremes of a spectrum of values. In this case, it might be interesting to have the lowest and the highest earning census tracts stick out.\nJust a quick trick here: If you’re going to be creating multiple maps with the same theme, you can make a list of those theme arguments and then apply the plot_theme object you created to each map, just by adding a + plot_theme$theme , instead of having to type or copy/paste these out a million times. Another huge benefit is that this allows you to make adjustments to only one theme call, instead of having to go back and adjust for each individual plot.\nI think this map does a better job of drawing your eyes to the wealthiest and the poorest tracts, in terms of median household income. We also added a theme_void() argument to get rid of the coordinate grid in the background.\nHow we decide to classify the data we are displaying in a choropleth map can drastically change the message and the story that is conveyed.\nHow we classify and portray the variable of interest is therefore subject to the map makers decision.\nSo…\nCommon classification methods",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Choropleth Maps</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3b_Choropleths.html#classification-and-binning",
+    "href": "chapters/3b_Choropleths.html#classification-and-binning",
+    "title": "11  Choropleth Maps",
+    "section": "",
+    "text": "Warning\n\n\n\nUse caution and thoughtfulness around this decision!\n\n\n\n\n\n\nClassifying Data\n\n\n\n\n\nEqual Interval\n\nBreak spacing is constant, and will occur every specified ‘X’ units.\nThere will be different counts of observations within each group. In the photo above, the breaks are evenly spread out, but we can see that many more observations will be included in the first couple breaks than the last two.\nA good method to use if you wanted to highlight the outliers within a distribution of data.\n\nQuantile (equal count)\n\nIn a quantile classification, we break up the distribution by “nth” percentile.\nUnlike the equal interval, there will be the same number of observations that fall into each percentile break.\nThe spacing of the breaks are obviously not even. Instead, they are broken up into, for example, every 20th, 10th, etc., percentile.\n\nNatural breaks (Jenks)\n\nThis is an optimization method\nGroups are aranged so that there is less variation in each class\n\nStandard Deviation\n\nThis method starts by first calculating the mean of your observations.\nThen, each standard deviation from that mean becomes the “break” or class\nThis might result in a different number of classifications that other methods.\n\nPretty Breaks\n\nThe main defining feature of this method is that it creates rounded numbers for your breaks.\nThis method might be picky about the number of classes, because it needs to be able to group your data into these “pretty” breaks.\n\nUnclassified\n\nUSE if you want to let the data speak for itself, without any manipulation. Or, if you want to let subtle differences remain as such through color.\nCan reduce subjective bias that may be introduced through classification\nDO NOT USE if you want to be able to carefully compare one location to another, or\nget precise numbers from reading your map\n\n\n\nCreate the breaks in R for your maps:\n\n\n\n\n\n\ncreate breaks\n\n\n\n\n\n\n\ncreate breaks\n\n\n\n\n\n\n\n\nJenks Breaks\n\n\nShow the code\nlibrary(sf)\nlibrary(tigris)\nlibrary(ggplot2)\nlibrary(cowplot)\nlibrary(gridExtra)\nlibrary(classInt)\n\n# Use classIntervals to create the \"jenks\" breaks: \nbreaksJ = classIntervals(income$estimate, n = 5, style = \"jenks\")\n\n# Format the break points if needed before using cut() **optional**\nformatted_breaksJ &lt;- format(breaksJ$brks, scientific = FALSE, big.mark = \",\")\n\nincome$breaksJ &lt;- cut(income$estimate, \n                       breaks = breaksJ$brks, \n                       include.lowest = TRUE, \n                       labels = paste(\"(\", head(formatted_breaksJ, -1), \n                                       \" - \", tail(formatted_breaksJ, -1), \")\"))\n\njenks &lt;- ggplot(income) +\n  geom_sf(aes(fill = breaksJ)) +\n  scale_fill_manual(values = c(\"#d73027\", \"#fdae61\", \"#ffffbf\", \"#a6d96a\", \"#1a9641\")) +\n  ggtitle(\"Jenks\")+\n  theme_classic()+\n  plot_theme$theme\n\njenks\n\n\n\n\n\n\n\n\n\n\n\n\nQuantile Breaks\n\n\nShow the code\n# Use classIntervals to create the \"quantile\" breaks: \nbreaksQ = classIntervals(income$estimate, n = 5, style = \"quantile\")\n\n# Format the break points if needed before using cut() **optional**\nformatted_breaksQ &lt;- format(breaksQ$brks, scientific = FALSE, big.mark = \",\")\n\nincome$breaksQ &lt;- cut(income$estimate, \n                       breaks = breaksQ$brks, \n                       include.lowest = TRUE, \n                       labels = paste(\"(\", head(formatted_breaksQ, -1), \n                                       \" - \", tail(formatted_breaksQ, -1), \")\"))\n\nquant &lt;- ggplot(income) +\n  geom_sf(aes(fill = breaksQ)) +\n  scale_fill_manual(values = c(\"#d73027\", \"#fdae61\", \"#ffffbf\", \"#a6d96a\", \"#1a9641\")) +\n  ggtitle(\"Quantile\")+\n  theme_classic()+\n  plot_theme$theme\n\nquant\n\n\n\n\n\n\n\n\n\n\n\n\nEqual Interval Breaks\n\n\nShow the code\n# Use classIntervals to create the \"equal interval\" breaks: \nbreaksEQ = classIntervals(income$estimate, n = 5, style = \"equal\")\n\n# Format the break points if needed before using cut() **optional**\nformatted_breaksEQ &lt;- format(breaksEQ$brks, scientific = FALSE, big.mark = \",\")\n\nincome$breaksEQ &lt;- cut(income$estimate, \n                       breaks = breaksEQ$brks, \n                       include.lowest = TRUE, \n                       labels = paste(\"(\", head(formatted_breaksEQ, -1), \n                                       \" - \", tail(formatted_breaksEQ, -1), \")\"))\n\nEQ &lt;- ggplot(income) +\n  geom_sf(aes(fill = breaksEQ)) +\n  scale_fill_manual(values = c(\"#d73027\", \"#fdae61\", \"#ffffbf\", \"#a6d96a\", \"#1a9641\")) +\n  ggtitle(\"Equal Interval\")+\n  theme_classic()+\n  plot_theme$theme\n\nEQ\n\n\n\n\n\n\n\n\n\n\n\n\nStandard Deviation Breaks\n\n\nShow the code\n# Use classIntervals to create the \"standard deviation\" breaks: \nbreaksSD = classIntervals(income$estimate,  style = \"sd\")\n\n# Format the break points if needed before using cut() **optional**\nformatted_breaksSD &lt;- format(breaksSD$brks, scientific = FALSE, big.mark = \",\")\n\nincome$breaksSD &lt;- cut(income$estimate, \n                       breaks = breaksSD$brks, \n                       include.lowest = TRUE, \n                       labels = paste(\"(\", head(formatted_breaksSD, -1), \n                                      \" - \", tail(formatted_breaksSD, -1), \")\"))\n\n\nAs discussed earlier, the standard deviation method likely will result in a different number of classifications than before. We do not specify the number of “breaks” or “classes” ourselves. Rather, the mean is calculated and the number of classifications of standard deviations from that mean will depend on the distribution of our data.\nLet’s take a peak so we understand how much our palette needs to either grow or shrink:\n\nlibrary(dplyr)\nglimpse(income$breaksSD)\n\n Factor w/ 8 levels \"(   5,823.041  -   23,021.636 )\",..: 3 4 3 4 4 3 3 3 2 3 ...\n\n\nOk, so this tells us that it generated 8 classes. With our divergent color palette here, we will make sure the palette is relatively centered by adding one more color in each category:\n\nSD &lt;- ggplot(income) +\n  geom_sf(aes(fill = breaksSD)) +\n  scale_fill_manual(values = c(\"#d73027\", \"#f46d43\", \"#fdae61\", \n                               \"#fee08b\", \"#ffffbf\",  \n                               \"#a6d96a\", \"#1a9641\",\"#006837\")) +  \n  ggtitle(\"Standard Deviation\")+\n  theme_classic()+\n  plot_theme$theme\n\nSD\n\n\n\n\n\n\n\n\n\n\nCompare Classifications Histograms\nLet’s take a look and see how each classification is applied to the distribution of median houshold income by census tract:\n\n\n\n\n\n\n\n\n\n\n\n\nCompare Classifications Histograms\n\nHow we decide to classify the data we are displaying in a choropleth map can drastically change the message and the story that is conveyed.\nHow we classify and portray the variable of interest is subject to the map maker’s decision.\nUse caution and thoughtfulness!",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Choropleth Maps</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3c_Choropleth_Alts.html",
+    "href": "chapters/3c_Choropleth_Alts.html",
+    "title": "12  Alternatives to Choropleths",
+    "section": "",
+    "text": "Centroids as data points\nWe will bring in the same data as before: median household income by census tract in Montana:\nShow the code\nlibrary(sf)\nlibrary(tigris)\nlibrary(ggplot2)\nlibrary(cowplot)\nlibrary(gridExtra)\nlibrary(classInt)\nlibrary(dplyr)\n\n\n# Bring in shapefiles\nincome &lt;- st_read(here::here(\"data/shapefiles/income\", \"income.shp\"))\n\n# Remove tracts without income data\nincome &lt;- income[complete.cases(st_drop_geometry(income)), ]\nTribalNations &lt;- st_read(here::here(\"data/shapefiles/TribalNations\", \"TribalNations.shp\"))\n\n# Project to same CRS:\nincome &lt;- st_transform(income, crs = 32100)\nTribalNations &lt;- st_transform(TribalNations, crs = 32100)",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Alternatives to Choropleths</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3c_Choropleth_Alts.html#centroids-as-data-points",
+    "href": "chapters/3c_Choropleth_Alts.html#centroids-as-data-points",
+    "title": "12  Alternatives to Choropleths",
+    "section": "",
+    "text": "1. Create centroids\n\n# Compute centroids\nincome_centroids &lt;- st_centroid(income)\n\n\n\n2. Create standard deviation breaks for centroids\n\n\nShow the code\n# Compute standard deviation classification breaks\nmean_income &lt;- mean(income_centroids$estimate, na.rm = TRUE)\nsd_income &lt;- sd(income_centroids$estimate, na.rm = TRUE)\n\n# Create categories for SD-based classification\nincome_centroids &lt;- income_centroids %&gt;%\n  mutate(\n    SD_category = case_when(\n      estimate &lt;= (mean_income - (1.5*sd_income)) ~ \"Poorest (&lt; -1.5 SD)\",\n      estimate &gt;= (mean_income + (1.5*sd_income)) ~ \"Richest (&gt; +1.5 SD)\",\n      TRUE ~ \"Middle\" \n    )\n  )\n\n\n\n\n\nPlot data as points\n\n\nShow the code\n# Filter only the richest and poorest tracts based on SD\nrichest_poorest &lt;- income_centroids %&gt;%\n  filter(SD_category %in% c(\"Poorest (&lt; -1.5 SD)\", \"Richest (&gt; +1.5 SD)\")) %&gt;%\n  arrange(desc(estimate))\n\n\n# Plot only richest and poorest centroids based on SD classification\nsd_plot &lt;- ggplot() +\n  geom_sf(data = income, fill = \"#021628\", color = alpha(\"#345460\",0.3), alpha = 0.3) +\n  geom_sf(data = TribalNations, fill = \"white\", color = \"white\", alpha = 0.5) + \n  geom_sf(data = richest_poorest, \n          aes(fill = SD_category),\n          shape = 21,\n          color = \"black\",\n          alpha = 0.9, \n          size = 4) +  \n  scale_fill_manual(name = \"Median Household \\nIncome\",\n                    values = c(\"Poorest (&lt; -1.5 SD)\" = \"#f47d59\", \n                               \"Richest (&gt; +1.5 SD)\" = \"#a1de5f\")) +\n\n  labs( title = \"Lowest and Highest Median Household Incomes\",\n        subtitle = \"Census Tracts in Montana\",\n        caption = \"categorized based on +/- 1.5 standard deviations\\n from the average median household income \\nacross census tracts in Montana\") +\n  theme_void()\n\nsd_plot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nChoropleth: Unclassified\n\n\n\n\n\n\n\nChoropleth Subset: highlights high values\n\n\n\n\n\n\n\nGeostatistical Points: centroids from census tracts\n\n\n\n\n\n\n\n\n\nDorling Cartogram",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Alternatives to Choropleths</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3c_Choropleth_Alts.html#dorling-cartograms",
+    "href": "chapters/3c_Choropleth_Alts.html#dorling-cartograms",
+    "title": "12  Alternatives to Choropleths",
+    "section": "Dorling cartograms",
+    "text": "Dorling cartograms\nWhat the dorling does is very similar to the process above, but instead of plotting the exact center location of the census tract, it prioritizes reducing overlap. Of course, this distorts the location of the census tracts, but its algorithms try their darnedest to preserve the general location. And honestly, I think it does a pretty good job.\n-   the biggest benefit I see with this approach is that you can very quickly understand **the proportion** and **the quantity** of census tracts with high levels of poverty without having to look deeper into a data table.\n\n-   This \"take-away\" is near impossible to obtain in the first point map, because so many of the census tracts sit very close to each other, and many of the points end up overlapping. Because the larger points stick out, it exaggerates a notion that we have a very high proportion of census tracts with high poverty rates, which is not entirely true.\n\n-   While it does distort their locations a bit, I can still get a decent sense of where the most burdened communities are located throughout the state.\n\n-   So, it sort of has the best of both worlds here: it does not emphasize area of census tract over the value it contains (like in choropleths), and it also allows us to see the overall proportion of communities where poverty rates are high (unlike pure centroid-based plots).",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Alternatives to Choropleths</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3d_Color.html",
+    "href": "chapters/3d_Color.html",
+    "title": "13  Color and Cartography",
+    "section": "",
+    "text": "Three dimensions of color: Hue, Saturation, Value\nNotes from a lecture by Dr. Joan Casey, postdoctoral scholar at UC Berkeley and Associate Professor of Epidemiology at the University of Washington.\nMap makers can manipulate all three of these dimensions on maps to convey different messages.\nWhen choosing how to display color and which dimensions of color to utilize, always consider:\nHUE is what most people think of as color. Hue is what is related to the wavelength on the electromagnetic spectrum. In other words: moving from orange, to yellow, to green, to blue, to indigo, etc.\nVALUE is related to light versus dark. It applies to hues, as well as shades of gray.\nSATURATION, sometimes called “chroma”, refers to the intensity of a color. Gray tones do not have saturation. So down here, on the left, you’re seeing this purple rectangle that’s showing movement from this very light, not intense purple, all the way to the high end, a very intense purple color.\nPeople are generally better at differentiating between levels of saturation than between hues.\nSo here on the right, you see hue value in saturation. Just presented, again, the four hues across the top, then, four levels of color value, and then four gradations of saturation on the bottom row. So generally, humans are better at differentiating between levels of saturation than between hues. And so it’s a good thing to keep in mind when you’re creating a map. There’s also the fact that a lot of us associate various things with different hues. And that’s somewhat less the case with levels of saturation.",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Color and Cartography</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3d_Color.html#three-dimensions-of-color-hue-saturation-value",
+    "href": "chapters/3d_Color.html#three-dimensions-of-color-hue-saturation-value",
+    "title": "13  Color and Cartography",
+    "section": "",
+    "text": "Will people with colorblindness be able to interpret your map?\nAre you displaying different categorical variables, or differences in intensity of quantitative data?\nWhat may people interpret or associate with your color choices? e.g. bright reds and oranges are often associated with a subjective view of something “bad.”\nIs the use of color critical to understanding or interpretting the map? Could we consider using a consistent grey scale instead?\n\n\n\n\n\n\n\n\n\n\n\n\nHue\n\n\n\n\n\n\n\nValue\n\n\n\n\n\n\n\nSaturation",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Color and Cartography</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3d_Color.html#using-color-in-maps",
+    "href": "chapters/3d_Color.html#using-color-in-maps",
+    "title": "13  Color and Cartography",
+    "section": "Using Color in Maps",
+    "text": "Using Color in Maps\n\nUse saturation for differences in intensity : best for quantitative data\n\nour perceptions of color rank are subjective, and can often fail at ranking colors in the correct order\nFor example, in a map that uses a scale of greens to yellows to oranges to reds to show intensity from least to greatest, respectively: one person might initially view the yellow a being the highest, while another person might associate red with being the highest.\nThis color scale would also be impossible for someone who is red-green colorblind to interpret\n\nUse hue for differences in category: best for qualitative data",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Color and Cartography</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3e_ColorPalettes.html",
+    "href": "chapters/3e_ColorPalettes.html",
+    "title": "14  Color Palettes in R",
+    "section": "",
+    "text": "Explore color palettes with Color Brewer\nColor Brewer Website",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Color Palettes in R</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3e_ColorPalettes.html#explore-color-palettes-with-color-brewer",
+    "href": "chapters/3e_ColorPalettes.html#explore-color-palettes-with-color-brewer",
+    "title": "14  Color Palettes in R",
+    "section": "",
+    "text": "Color Brewer Tip",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Color Palettes in R</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3e_ColorPalettes.html#viridis",
+    "href": "chapters/3e_ColorPalettes.html#viridis",
+    "title": "14  Color Palettes in R",
+    "section": "Viridis",
+    "text": "Viridis\nThe scale_fill_viridis_c() function in ggplot2 is part of the viridis color palette, which provides perceptually uniform, colorblind-friendly, and well-differentiated color scales for continuous data. This function works with fill aesthetics in ggplot to map continuous values to a color gradient.\n\n\n\nViridis color palettes",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Color Palettes in R</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/3e_ColorPalettes.html#cartocolor",
+    "href": "chapters/3e_ColorPalettes.html#cartocolor",
+    "title": "14  Color Palettes in R",
+    "section": "CARTOcolor",
+    "text": "CARTOcolor\nThe rcartocolor package uses the popular color schemes from “CARTO”, a leading location intelligence platform known for its exceptional design standards. While Viridis is optimized for scientific distinctness, CARTO palettes are designed specifically for maps, with softer, aesthetically pleasing scales that work really well against most standard map backgrounds.\nTo use these palettes for continuous data (gradients), call scale_fill_carto_c()",
+    "crumbs": [
+      "Map Basics",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Color Palettes in R</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/4a_census_data.html",
+    "href": "chapters/4a_census_data.html",
+    "title": "15  Census Data in R: tidycensus",
+    "section": "",
+    "text": "Custom workflow for extracting census data\nThe following workflow demonstrates a reproducible method for extracting, cleaning, and calculating demographic indicators for counties using the US Census API.\nThis approach builds upon the core concepts and functions from Kyle Walker, the developer of tidycensus and the online book:\nWalker Data: Analyzing US Census Data",
+    "crumbs": [
+      "Maps from APIs",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Census Data in R: tidycensus</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/4a_census_data.html#custom-workflow-for-extracting-census-data",
+    "href": "chapters/4a_census_data.html#custom-workflow-for-extracting-census-data",
+    "title": "15  Census Data in R: tidycensus",
+    "section": "",
+    "text": "The Motivation: “Don’t Repeat Yourself”\nIn previous iterations of this work, I found myself constantly violating a core tenet of programming: DRY (Don’t Repeat Yourself).\nI would write a script to fetch Population data, then copy-paste that entire block to fetch Housing data, and copy-paste it again for Income data. I’d get lost in the variable table codes and in interpreting the raw data outputs from get_acs(). The result was a script cluttered with repetitive logic. If I decided to change how I calculated a percentage or handled a missing value, I had to hunt down and fix it in five different places.\nMaybe I’m just really bad at utilizing the existing powers and processes captured in tidycensus().\nRegardless, here it is…\nInstead of writing repetitive code for every subject (Housing, Income, Population), we created a custom “topic-based” pipeline.  The pipeline abstracts logic into a standardized process that loops through metadata files: handling the heavy lifting automatically, consistently, and all in one place.\nPrimary Resource:",
+    "crumbs": [
+      "Maps from APIs",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Census Data in R: tidycensus</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/4a_census_data.html#setup-project-scope-and-api-configuration",
+    "href": "chapters/4a_census_data.html#setup-project-scope-and-api-configuration",
+    "title": "15  Census Data in R: tidycensus",
+    "section": "Setup: Project Scope and API Configuration",
+    "text": "Setup: Project Scope and API Configuration\nTo interact with the Census Bureau’s API, we use the tidycensus package. This requires a valid API key.\n\nPrerequisites: You must request a free key from http://api.census.gov/data/key_signup.html.\nSecurity Note: We use the config package to store the API key securely, rather than hard-coding it into the script.\n\nWe bring in other required libraries, and we also define our project scope and global variables used throughout.\nBy setting the state, target counties, and years in the global environment, we ensure consistent querying across all topics.\n\nlibrary(tidycensus)\nlibrary(tidyr)\nlibrary(dplyr)\nlibrary(stringr)\nlibrary(purrr)\nlibrary(dplyr)\nlibrary(here)\nlibrary(config)\n\n## these options below a) forces R to print full decimals \n###-- without defaulting to scientific notation\n###-- and b) caches tigris data for quicker uploads\noptions(scipen = 99999, tigris_use_cache = TRUE)\n\n## after safely storing your key in a .config file, \n###-- read it in like this\ncensus_key &lt;- config::get(\"census_key\")\n\n## , then you can use that variable to set the key:\ncensus_api_key(census_key, overwrite = TRUE)\n\n## set global variables\nstate_code   &lt;- \"MT\"\ncounties &lt;- c(\"Lewis and Clark\", \"Jefferson\", \"Broadwater\", \"Powell\", \"Meagher\")\ntarget_years &lt;- c(2013, 2018, 2023)",
+    "crumbs": [
+      "Maps from APIs",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Census Data in R: tidycensus</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/4a_census_data.html#setup-creating-the-variable-maps",
+    "href": "chapters/4a_census_data.html#setup-creating-the-variable-maps",
+    "title": "15  Census Data in R: tidycensus",
+    "section": "Setup: Creating the Variable Maps",
+    "text": "Setup: Creating the Variable Maps\nBefore we can fetch data, we need to tell R exactly what to fetch and how to treat it. Instead of hard-coding Census variables (like DP05_0001E) deeply into our scripts, we define them in “Variable Map” files.\nThese are CSV files that act as a “Data Dictionary.”\nThey define:\n\nlabel: The human-readable name for your chart (e.g., “Population Under 5”).\nvariable: The specific US Census code.\nstat_type: Instructions for the calculator (is it a count, a currency, or a pre-calculated percent?).\ndenominator: Which variable acts as the “Total” for calculating percentages (e.g., Total Population).\n\nYou can create these CSVs using tribble() in R and save them to a directory. For example, I stored all of mine in a directory called “variable_maps/”\nYou can call this directory and it’s sub-files however you want to. You can change the names of the variables. But note that the rest of the script below is based specifically around these column keys.\nHere is a small example of how a variable map .csv is created and structured for the topic “Population”\n\npop_ref_data &lt;- tribble(\n  ~label,                          ~variable,       ~stat_type,  ~denominator,    ~category,\n  \n  # --- BASIC COUNTS ---\n  \"Total Population\",              \"B01003_001\",    \"count\",     NA,              \"Population\",\n  \"Median Age\",                    \"B01002_001\",    \"number\",    NA,              \"Population\",\n  \n  # --- AGE GROUPS  ---\n  \"Pop Under 5 Years\",             \"S0101_C01_002\", \"count\",     \"S0101_C01_001\", \"Population\",\n  \"Pop 5 to 17 Years\",             \"S0101_C01_003\", \"count\",     \"S0101_C01_001\", \"Population\", \n  \"Pop 18 to 24 Years\",            \"S0101_C01_004\", \"count\",     \"S0101_C01_001\", \"Population\", \n  \"Pop 65 Years and Over\",         \"S0101_C01_030\", \"count\",     \"S0101_C01_001\", \"Population\", \n\n  # --- DENOMINATORS ---\n  \"Total Pop (Denom)\",             \"B01003_001\",    \"denom\",     NA,              \"Population\",\n  \"Total Pop (Age Denom)\",         \"S0101_C01_001\", \"denom\",     NA,              \"Population\"\n)\n\n# Save this variable map df to your directory\nwrite_csv(pop_ref_data, here(\"variable_maps/population_vars_map.csv\"))",
+    "crumbs": [
+      "Maps from APIs",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Census Data in R: tidycensus</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/4a_census_data.html#the-core-logic-fetching-mapped-acs-census-data",
+    "href": "chapters/4a_census_data.html#the-core-logic-fetching-mapped-acs-census-data",
+    "title": "15  Census Data in R: tidycensus",
+    "section": "The Core Logic: Fetching “mapped” ACS Census Data",
+    "text": "The Core Logic: Fetching “mapped” ACS Census Data\nThe standard get_acs() function is powerful but returns raw data.\nFor a dashboard or report, we need more than just counts; it is super helpful to also return much needed context (human-readable table ID labels, general categories, meta-data on the type of estimate it is, what denominator or “universe” is used to calculate it, etc…).\nEnter… custom function: get_labeled_acs()\n\nHow it works:\n\nSplits Requests: It separates variables into batches (Profile DP, Subject S, and Base B) to prevent API errors, as different table types cannot always be requested together.\nIterates Over Years: It automatically loops through the years defined in our setup (e.g., 2013, 2018, 2023).\nJoins Metadata: Crucially, it merges the API results with our “Variable Maps” (CSVs). This attaches the human-readable labels (e.g., “Total Population”) and calculation instructions (e.g., “Denominator is DP05_0001”) directly to the data.\n\nget_labeld_acs() function:\n\n\nShow the code\nget_labeled_acs &lt;- function(ref_table, counties, state = \"MT\", years = target_years, survey_type = \"acs5\", \n                            geo_level = \"county\") {\n  \n  # 1. Split variables by type to create batches\n  vars_dp &lt;- ref_table %&gt;% filter(str_starts(variable, \"DP\")) %&gt;% pull(variable)\n  vars_s  &lt;- ref_table %&gt;% filter(str_starts(variable, \"S\")) %&gt;% pull(variable)\n  vars_b  &lt;- ref_table %&gt;% filter(!str_starts(variable, \"DP\") & !str_starts(variable, \"S\")) %&gt;% pull(variable)\n  \n  # 2. Iterate through years\n  map_dfr(years, function(y) {\n    message(paste(\"&gt;&gt;&gt; Fetching data for\", y, \"...\"))\n    results_list &lt;- list()\n    \n    # --- First batch: detailed table variables (`B` prefix) ---\n    if (length(vars_b) &gt; 0) {\n      tryCatch({ \n        results_list[[\"B\"]] &lt;- get_acs(\n          geography   = geo_level, \n          state       = state, \n          county      = counties, \n          year        = y, \n          survey      = survey_type,\n          variables   = vars_b, \n          output      = \"tidy\", \n          cache_table = TRUE, \n          show_call   = FALSE\n        ) \n      }, error = function(e) message(paste(\"   [!] B-Table batch failed for\", y, \":\", e$message)))\n    }\n    \n    # --- Second batch: data profile variables (`DP` prefix) ---\n    if (length(vars_dp) &gt; 0) {\n      tryCatch({ \n        results_list[[\"DP\"]] &lt;- get_acs(\n          geography   = geo_level, \n          state       = state, \n          county      = counties, \n          year        = y, \n          survey      = survey_type,\n          variables   = vars_dp, \n          output      = \"tidy\", \n          cache_table = TRUE, \n          show_call   = FALSE\n        ) \n      }, error = function(e) message(paste(\"   [!] DP-Table batch failed for\", y, \":\", e$message)))\n    }\n    \n    # --- Thrid batch: subject table variables (`S` prefix) ---\n    if (length(vars_s) &gt; 0) {\n      tryCatch({ \n        results_list[[\"S\"]] &lt;- get_acs(\n          geography   = geo_level, \n          state       = state, \n          county      = counties, \n          year        = y, \n          survey      = survey_type,\n          variables   = vars_s, \n          output      = \"tidy\", \n          cache_table = TRUE, \n          show_call   = FALSE\n        ) \n      }, error = function(e) message(paste(\"   [!] S-Table batch failed for\", y, \":\", e$message)))\n    }\n    \n    # --- SAFETY CHECK ---\n    # If ALL batches failed, we can't continue for this year.\n    if (length(results_list) == 0) {\n      warning(paste(\"!!! All batches failed for year\", y))\n      return(NULL)\n    }\n    \n    # Combine all successful data pulls\n    combined_data &lt;- bind_rows(results_list)\n\n    # Create a grid of all Counties x all Variables in the map\n    ##-- variables from failed batches still appear in the df (filled as NA)\n    distinct_geos &lt;- combined_data %&gt;% distinct(GEOID, NAME)\n    \n    full_grid &lt;- expand_grid(\n      distinct_geos,\n      variable = ref_table$variable\n    )\n    \n    # Final Join and Clean\n    full_grid %&gt;%\n      left_join(combined_data, by = c(\"GEOID\", \"NAME\", \"variable\")) %&gt;%\n      mutate(year = y, join_id = str_remove(variable, \"E$\")) %&gt;%\n      ##-- append the 'metadata' labels from our custom reference tables\n      left_join(ref_table %&gt;% mutate(join_id = str_remove(variable, \"E$\")), \n                by = \"join_id\", relationship = \"many-to-many\") %&gt;%\n      mutate(\n        variable = coalesce(variable.y, variable.x),\n        census_survey = \"acs\",\n        survey_type = survey_type\n        \n        ) %&gt;%\n    \n      select(\n        GEOID, NAME, census_survey, survey_type,\n        year, category, label, variable, estimate, \n        moe, stat_type, denominator\n      )\n  })\n}",
+    "crumbs": [
+      "Maps from APIs",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Census Data in R: tidycensus</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/4a_census_data.html#the-dynamic-percent-calculation-logic",
+    "href": "chapters/4a_census_data.html#the-dynamic-percent-calculation-logic",
+    "title": "15  Census Data in R: tidycensus",
+    "section": "The Dynamic Percent Calculation Logic",
+    "text": "The Dynamic Percent Calculation Logic\nRaw census counts (e.g., “250 people”) are often less useful for comparison than percentages (e.g., “12% of the population”).\nEnter… custom function: calc_acs_percents()\n\nHow it works\n\n**Performs a “self-join:** The dataframe looks up its own data. For every row marked as a”count” (e.g., Children in Poverty), it finds the corresponding “denominator” value (e.g., Total Children) for that specific county and year.\nCalculates the percent: (Estimate / Denominator) * 100\nIgnores other data types: this only selects the estimates that are true “counts,” and ignores all others like rates, ratios, percents, or currency (e.g., “Unemployment Rate”, “Median Income”, “Percent of population in poverty”)\n\ncalc_acs_percents() function:\n\n\nShow the code\ncalc_acs_percents &lt;- function(df) {\n  \n  required_cols &lt;- c(\"GEOID\", \"year\", \"variable\", \"estimate\", \"denominator\", \"stat_type\")\n  if (!all(required_cols %in% names(df))) {\n    stop(\"Dataframe is missing required columns (denominator, stat_type, etc.)\")\n  }\n  \n  ##-- isolate just the values needed to serve as denominators\n  denom_lookup &lt;- df %&gt;%\n    select(GEOID, year, variable, denom_value = estimate) %&gt;%\n    distinct(GEOID, year, variable, .keep_all = TRUE) \n  \n  ##-- join and calculate based on the 'denominator' code column\n  df_calculated &lt;- df %&gt;%\n    left_join(denom_lookup, \n              by = c(\"GEOID\", \"year\", \"denominator\" = \"variable\")) %&gt;%\n    mutate(\n      est_percent = case_when(\n        ##-- if the estimate is a 'count' -&gt; calculate the %\n        stat_type == \"count\" & !is.na(denom_value) & denom_value &gt; 0 ~ (estimate / denom_value) * 100,\n        ##-- otherwise, don't... just return NA\n        TRUE ~ NA_real_\n      ),\n      est_percent = round(est_percent, 2)\n    )\n  \n  return(df_calculated)\n}",
+    "crumbs": [
+      "Maps from APIs",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Census Data in R: tidycensus</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/4a_census_data.html#automation-the-master-processor",
+    "href": "chapters/4a_census_data.html#automation-the-master-processor",
+    "title": "15  Census Data in R: tidycensus",
+    "section": "Automation: The Master Processor",
+    "text": "Automation: The Master Processor\nTo avoid repeating code, we wrap the previous two steps into a single “Master Processor”\nEnter… custom function: build_acs_topic()\nThis function acts as the conductor of the final pipeline. It requires two specific inputs:\n\nTopic Name: A label for the dataset (e.g., “Housing”)\nVariable Map Filename: The specific CSV file in the “variable_maps/” folder (or whatever you called it) that corresponds to that topic (e.g., housing_vars_map.csv).\n\nImportant: The function relies on the “map_filename” to find the correct “instructions” for the API. It validates that the CSV exists and contains the necessary columns (stat_type, denominator) before attempting to fetch any data.\n\nHow it works:\n\nValidates the map file.\nRuns get_labeled_acs() to pull the raw data\nRuns calc_acs_percents() to calculate derived metrics\nReturns a fully polished, ready-to-analyze dataset\n\nBy standardizing this process, you ensure that “Housing” data is treated with the exact same mathematical rigor as “Income” data, eliminating the risk of copy-paste errors between topics.\nbuild_acs_topic() function:\n\n\nShow the code\nbuild_acs_topic &lt;- function(topic_name, map_filename, \n                            counties, state, years, \n                            survey_type = \"acs5\", \n                            geo_level = \"county\") {\n  \n  full_path &lt;- here(\"variable_maps\", map_filename)\n  message(paste(\"\\n=== PROCESSING TOPIC:\", topic_name, \"(\", survey_type, \") ===\"))\n  \n  if (!file.exists(full_path)) {\n    warning(paste(\"Map file not found:\", full_path))\n    return(NULL)\n  }\n  \n  ref_table &lt;- read_csv(full_path, show_col_types = FALSE)\n  \n  if (!all(c(\"stat_type\", \"denominator\") %in% names(ref_table))) {\n    stop(\"CSV is missing 'stat_type' or 'denominator' columns!\")\n  }\n  \n  ##-- fetch\n  raw_data &lt;- get_labeled_acs(ref_table, counties, state, years, survey_type, geo_level)\n  if (is.null(raw_data)) return(NULL)\n  message(paste(\"Columns returned by fetch:\", paste(names(raw_data), collapse=\", \")))\n  \n  ##-- final output\n  clean_data &lt;- calc_acs_percents(raw_data)\n  message(paste(\"Successfully processed\", nrow(clean_data), \"rows.\"))\n  return(clean_data)\n}",
+    "crumbs": [
+      "Maps from APIs",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Census Data in R: tidycensus</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/4a_census_data.html#putting-it-all-together-running-the-final-pipeline",
+    "href": "chapters/4a_census_data.html#putting-it-all-together-running-the-final-pipeline",
+    "title": "15  Census Data in R: tidycensus",
+    "section": "Putting it All Together: Running the Final Pipeline",
+    "text": "Putting it All Together: Running the Final Pipeline\nThis is the “Control Center” of the script.\nWe first define a list of the topics we want to process.\nIf we ever need to add a new category (e.g., “Transportation”), we simply create a new CSV map and add it here.\n\ntopic_list &lt;- tribble(\n          ~topic,   ~map_filename,\n  \"Population\"  ,  \"population_vars_map.csv\",\n  \"Housing\"     ,  \"housing_vars_map.csv\",\n  \"Income\"      ,  \"income_vars_map.csv\",\n  \"Education\"   ,  \"education_vars_map.csv\",\n  \"Employment\"  ,  \"employment_vars_map.csv\",\n  \"Health\"      ,  \"health_vars_map.csv\"\n)\n\nThen we simply run the code below, using purrr::map2() to iterate through this list, processing every topic automatically.\n\n##-- county-level data\ncnty_census_data &lt;- topic_list %&gt;%\n  mutate(data = map2(topic, map_filename, function(t, f) {\n    build_acs_topic(t, f, counties, state_code, target_years)\n  }))\n\n##-- census tract data\ntract_census_data &lt;- topic_list %&gt;%\n  mutate(data = map2(topic, map_filename, function(t, f) {\n    build_acs_topic(t, f, counties = lc_county, state_code, target_years, geo_level = \"tract\")\n  }))\n\n\nThe Final Outputs and Storage\nThe result of the pipeline is a nested list containing all our data.\nWe can now:\n\nExtract individual datasets (e.g., final_pop) for specific analysis.\nBind them together into a single combined dataframe\nExport to CSV for future use like bringing them into a Shiny dashboard, Power BI, etc.\n\n\n# Create a named list for easy access\ncnty_results_5yr  &lt;- setNames(cnty_census_data$data, cnty_census_data$topic)\ntract_results_5yr &lt;- setNames(tract_census_data$data, tract_census_data$topic)\n\n# Combine them all into a single df\ncnty_census_5yr_df  &lt;- bind_rows(cnty_results_5yr) \ntract_census_5yr_df &lt;- bind_rows(tract_results_5yr) \n\ncomplete_census_df &lt;- bind_rows(cnty_census_5yr_df, tract_census_5yr_df) %&gt;%\n##-- another custom function that calculates broader education categories like \"BS or Higher\"\n  bind_education_summary() \n\n##-- you can also access/save them directly by name if you want\ncnty_pop   &lt;- cnty_results_5yr[[\"Population\"]]\ncnty_house &lt;- cnty_results_5yr[[\"Housing\"]]\ncnty_inc   &lt;- cnty_results_5yr[[\"Income\"]]\ncnty_edu   &lt;- cnty_results_5yr[[\"Education\"]]\ncnty_emp   &lt;- cnty_results_5yr[[\"Employment\"]]\ncnty_hlth  &lt;- cnty_results_5yr[[\"Health\"]]\n\n\n# Save it for later use, bring in the other applications, etc...\n\nwrite.csv(\n  complete_census_df, \n  file = here(\"_data/census_data/complete_census_df.csv\"), \n  row.names = FALSE\n)",
+    "crumbs": [
+      "Maps from APIs",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Census Data in R: tidycensus</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/5a_leaflet.html#from-static-to-interactive-ggplot-vs.-leaflet",
+    "href": "chapters/5a_leaflet.html#from-static-to-interactive-ggplot-vs.-leaflet",
+    "title": "16  Introduction to Leaflet",
+    "section": "From Static to Interactive: ggplot() vs. leaflet()",
+    "text": "From Static to Interactive: ggplot() vs. leaflet()\nIn the previous sections, we relied on the power of ggplot2’s integration with the sf package via ggplot() + geom_sf(..).\nConceptually, how you build maps in ggplot2 translates very well to leaflet, though there are key differences we will discuss.\nIn a nutshell, building maps in leaflets requires you to be much more explicit in everything you build in comparison to ggplot that handles a lot of logic automatically within its defaults.\n\nLayering Logic\nIn ggplot2, you build your map by adding layers on top of one another. You might start with a base layer, add your geom_sf() polygons, and then perhaps add some points or text on top.\nLeaflet conceptually works the same way:\n\nThe first object you add is the “canvas” (the bottom layer, often a basemap)\nSubsequent objects (polygons, lines, points, annotations) are added on top of the previous ones\nThe order of your code determines the order of the drawing.\n\n\n\nThe Syntax Shift: Operator\nThe primary syntactic difference lies in how we bind these layers together.\n\nIn ggplot2: We use the plus sign (+) to add layers to a plot object.\nIn leaflet: We use the pipe operator (%&gt;% or |&gt;) to chain functions together.\n\nThink of the pipe in Leaflet exactly as you use it in dplyr for data manipulation:\n\nyou are passing your map object into the next function to add a new feature.\n\n\n\nCoordinate Reference Systems (CRS)\nIn the prior sections on building static maps, we stressed the importance of choosing the “correct” CRS (e.g., using an Albers Equal Area projection to ensure that counties in the north aren’t visually distorted compared to those in the south). In ggplot2, you have total control over this projection.\nLeaflet is different. Because Leaflet is built for web mapping (like Google Maps or OpenStreetMap), it relies on a standardized tiling system.\n\nDisplay: Leaflet effectively forces the map display into Web Mercator (EPSG: 3857). You generally do not change this.\nInputs: Leaflet expects your data objects (i.e. your shapefiles) to be in WGS84 (EPSG: 4326)\n\nWhile the leaflet package in R is smart enough to attempt to automatically re-project your sf data on the fly, mapping in leaflet will work better for you if you transform everything to WGS84 before feeding it into the map.\n\n\nColor Scales and Legends are Handled Differently\n\nColor Scales\nIn ggplot2, mapping a variable to color is as simple as aes(fill = value_variable). ggplot handles the logic of converting quantitative numbers to a gradient color scale automatically, or users can utilize a function like scale_fill_manual() to further customize the palette used.\nleaflet() requires users to build color scales and mapping manually. The best way I’ve found to do this is to create a “palette function” that translates a domain of numbers into a range of colors.\n\n\nLegends\nSimilar to color scale handling, ggplot() automatically handles the breaks, labels, and positioning of the legend for you. You can also use the behavior of adding custom + theme(...) elements to tailor the text size, color, and positioning.\nleaflet() treats legends as completely independent objects. Because the map layers and the legend are separate HTML elements, they do not “talk” to each other.\n\nYou must explicitly add the legend using %&gt;% addLegend(...).\nYou have to tell the legend again which palette function and which data values to use. If you change the palette for your polygons but forget to update the legend, they will mismatch.\nThe legend floats on top of the map. You can set the corner you want it placed in, but it does not draw outside of the map – it covers and float on top of whatever is underneath it. You can use custom javascript and .css styling to customize it, but leaflet’s base arguments for addLegend() do not natively support adjusting text size, color, etc.",
+    "crumbs": [
+      "Interactive Maps",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Introduction to Leaflet</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/5a_leaflet.html#data-preparation-u.s.-census-data",
+    "href": "chapters/5a_leaflet.html#data-preparation-u.s.-census-data",
+    "title": "16  Introduction to Leaflet",
+    "section": "Data Preparation: U.S. Census Data",
+    "text": "Data Preparation: U.S. Census Data\nFor the next sections, we will use a simple subset of U.S. Census Data (ACS 5-year survey estimates) for the total population of each U.S. state and county.\ntidycensus to get the population estimates:\n\nus_cnty_pops &lt;- get_acs(\n  geography = \"county\",\n  variables = \"B01003_001\",\n  year = 2023,\n  survey = \"acs5\"\n)\n\nus_st_pops &lt;- get_acs(\n  geography = \"state\",\n  variables = \"B01003_001\",\n  year = 2023,\n  survey = \"acs5\"\n)\n\ntigris to get the county and state polygons:\n\n##--for the purpose of simplifying this demo, we'll exclude non-contiguous polygons...\nnon_contiguous_fips &lt;- c(\"02\", \"15\", \"72\", \"66\", \"78\", \"60\", \"69\")\n\nus_cnty_sf &lt;- counties(cb = TRUE, resolution = \"20m\", progress_bar = FALSE) %&gt;%\n  filter(!STATEFP %in% non_contiguous_fips) %&gt;%\n  select(GEOID)\n\nus_st_sf &lt;- states(cb = TRUE, resolution = \"20m\", progress_bar = FALSE) %&gt;%\n  filter(!STATEFP %in% non_contiguous_fips) %&gt;%\n  select(GEOID)\n\nThen we can join the attributes to the geometry using the “GEOID” field.\n\nus_cnty_joined &lt;- us_cnty_sf %&gt;%\n  left_join(us_cnty_pops, by = \"GEOID\")\n\nus_st_joined &lt;- us_st_sf %&gt;%\n  left_join(us_st_pops, by = \"GEOID\")",
+    "crumbs": [
+      "Interactive Maps",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Introduction to Leaflet</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/5a_leaflet.html#simple-map-build",
+    "href": "chapters/5a_leaflet.html#simple-map-build",
+    "title": "16  Introduction to Leaflet",
+    "section": "1. Simple Map Build",
+    "text": "1. Simple Map Build\n\n\n\n\n\n\n\n\n\n\n\n\n\nShow the code\n# Static map using ggplot() + goem_sf()\nggp1 &lt;- ggplot() +    \n  geom_sf(data = us_st_joined, aes(fill = estimate), color = \"#f1f0ea\") + \n  scale_fill_carto_c(\n    palette = \"Teal\", \n    name = \"Total Population\"\n  ) +\n  theme_void()\n\n\n\n\n\n\n\n\n\n\n\n\nShow the code\n# Interactive map using leaflet()\n\n##-- set CRS to WGS94\nus_st_leaf &lt;- st_transform(us_st_joined, crs = 4326)\nus_cnty_leaf &lt;- st_transform(us_cnty_joined, crs = 4326)\n\n##-- map color scale for polygon fill\npop_pal_1 &lt;- colorNumeric(\n  palette = rcartocolor::carto_pal(n = 7, name = \"Teal\"), \n  domain = us_st_joined$estimate\n)\n\n##-- simple leaflet() map call: \nleaf1 &lt;- leaflet(data = us_st_leaf) %&gt;% \n  addTiles() %&gt;%\n  addPolygons(                          \n    fillColor = ~pop_pal_1(estimate),\n    color = \"#f1f0ea\",\n    weight = 0.3,\n    fillOpacity = 1,\n    opacity = 0.5\n  ) %&gt;% \n  addLegend(\n    pal = pop_pal_1,             \n    values = ~estimate,          \n    title = \"Total Population\",  \n    opacity = 1,                 \n    position = \"bottomright\"     \n  )",
+    "crumbs": [
+      "Interactive Maps",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Introduction to Leaflet</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/5a_leaflet.html#the-power-of-leaflet",
+    "href": "chapters/5a_leaflet.html#the-power-of-leaflet",
+    "title": "16  Introduction to Leaflet",
+    "section": "The power of leaflet()",
+    "text": "The power of leaflet()\nThe following sections give a brief overview of the interactivity in leaflet that really starts to shine.",
+    "crumbs": [
+      "Interactive Maps",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Introduction to Leaflet</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/5a_leaflet.html#basemaps-a.k.a.-provider-tiles",
+    "href": "chapters/5a_leaflet.html#basemaps-a.k.a.-provider-tiles",
+    "title": "16  Introduction to Leaflet",
+    "section": "Basemaps a.k.a. “Provider Tiles”",
+    "text": "Basemaps a.k.a. “Provider Tiles”\nIn the first map, we used addTiles() that defaults to OpenStreetMap (OSM) tiles.\nMore often than not, this default is too colorful and too busy for epi-focussed maps. We want a quieter background that lets the data stand out.\nThe good news: there are dozens of free alternatives available.\nThe most straightforward list of options comes from the built-in providers list in R. You can see all available names by running names(providers) in your console, or by visiting the Leaflet Providers Preview site.\nWhen building the map, addTiles() becomes: addProviderTiles(...)\nImportant note here: many map providers require you to register and get an API key or token that you need to bring in for it to work.\nProviders like “OpenStreetMap”, “CartoDB,” and “Esri” do not require an API key, so will work seamlessly out-of-the-box without needing to take any additional steps.\n\n\n\n\n\n\nA few “go-to” basemaps →\n\n\n\n\n\nFor the most “bare-bones” and simple look:\n\nEsri.WorldGrayCanvas: A very minimalist, grayscale background\nCartoDB.Positron: Very similar to Esri’s Gray Canvas, but with a tad more detail added like major roadways and more detailed area labels for cities and towns.\n\nCartoDB.PositronNoLabels: same as above but without labels\nCartoDB.DarkMatter: dark mode\nCartoDB.DarkMatterNoLabels: dark mode no labels\n\n\nIf references like roads or geogrpahic features are important:\n\nEsri.OceanBasemap: basic detail of topography and geographic features with colors for forested areas, waterbodies, major roads and boundaries.\nEsri.WorlTerrain: very simple shaded relief of topography\nCartoDB.Voyager: if roads and major geographic markers are still helpful, but still less colorful and busy as the OpenStreetMap\n\nCartoDB.VoyagerNoLabels: same-same, no labels\n\n\n\n\n\n\n\nShow the code\n##-- simple leaflet() map call: \nleaf_base &lt;- leaflet(data = us_st_leaf) %&gt;% \n  addPolygons(                          \n    fillColor = ~pop_pal_1(estimate),\n    color = \"#f1f0ea\",\n    weight = 1.5,\n    fillOpacity = 1,\n    opacity = 0.6\n  ) \n\n# Add basemaps\nleaf_base_opts &lt;- leaf_base %&gt;%\n  addProviderTiles(providers$Esri.WorldGrayCanvas, group = \"Esri Gray\") %&gt;%\n  addProviderTiles(providers$CartoDB.Positron,     group = \"CartoDB Gray\") %&gt;%\n  addProviderTiles(providers$CartoDB.DarkMatter,   group = \"CartoDB Dark\") %&gt;%\n  addProviderTiles(providers$CartoDB.Voyager,      group = \"CartoDB Voyager\") %&gt;%\n  addProviderTiles(providers$Esri.WorldImagery,    group = \"Satellite\") %&gt;%\n  \n  addLayersControl(\n      baseGroups = c(\n        \"Esri Gray\", \"CartoDB Gray\", \"CartoDB Dark\", \n        \"CartoDB Voyager\", \"Satellite\"\n        ),\n      overlayGroups = c(\"County Population\"),\n      options = layersControlOptions(collapsed = FALSE) \n    )\n  \n  \n\nleaf_base_opts",
+    "crumbs": [
+      "Interactive Maps",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Introduction to Leaflet</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/5a_leaflet.html#hovers-and-pop-ups",
+    "href": "chapters/5a_leaflet.html#hovers-and-pop-ups",
+    "title": "16  Introduction to Leaflet",
+    "section": "Hovers and Pop-ups",
+    "text": "Hovers and Pop-ups\nA map that reacts to your mouse just feels more “alive,” and highlightOptions() is a great way to get that feel.\nI love using this argument because it gives the user immediate visual feedback, like the map is saying, “Yes, this is the specific county you are pointing at.” It is especially intuitive if you eventually pair your map with a Shiny app (where a click triggers a table update, for example), but honestly, even as a stand-alone feature, I think this hover-highlighting effect looks nice.\n\nCustomizing the Pop-ups\nWhen it comes to the text labels themselves, labelOptions() allows you to pass most standard CSS styling arguments to the text box.\nHowever, I’ve found that I’m rarely satisfied with just the default styling options.\nTo really control the look, like making the county name bold or adding a line break before the a value, we use a simple trick: combining paste0() with lapply() and htmltools::HTML.\nBelow is an example of how to combine highlightOptions() for the interaction, and labelOptions() (with some custom CSS for the label) for a much sexier tooltip.\n\n\nShow the code\n##-- simple leaflet() map call: \nleaf_labels &lt;- leaflet(data = us_st_leaf) %&gt;% \n  \n  addProviderTiles(providers$Esri.WorldGrayCanvas, group = \"Esri Gray\") %&gt;%\n  \n  addPolygons(                          \n    fillColor = ~pop_pal_1(estimate),\n    color = \"#f1f0ea\",\n    weight = 1.5,\n    fillOpacity = 0.8,\n    opacity = 0.6,\n      \n  # --- highlights polygon on hover ---\n    highlightOptions = highlightOptions(\n      weight = 2,               \n      color = \"black\",           \n      fillOpacity = 1,        \n      bringToFront = TRUE        \n    ),\n    \n  # --- Pop-Up styling ---      \n    label = ~lapply(\n        paste0(\n          \"&lt;b&gt;\", NAME, \"&lt;/b&gt;&lt;br&gt;\",\n          \"&lt;i&gt; Population:&lt;/i&gt; \", \n          scales::comma(estimate, accuracy = 1)\n        ), \n        htmltools::HTML\n      ),\n  \n   # --- additional css styling options ---     \n    labelOptions = labelOptions(\n      style = list(\n        \"background-color\" = \"white\",  \n        \"color\" = \"black\",              \n        \"font-size\" = \"12pt\",\n        \"padding\" = \"10px\",\n        \"border\" = \"2px solid black\",   \n        \"border-radius\" = \"5px\",        \n        \"box-shadow\" = \"3px 3px 10px rgba(0,0,0,0.5)\" \n      ),\n      direction = \"auto\",\n      noHide = FALSE \n    )\n  ) \n\n\nleaf_labels",
+    "crumbs": [
+      "Interactive Maps",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Introduction to Leaflet</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/5a_leaflet.html#controlling-layer-views",
+    "href": "chapters/5a_leaflet.html#controlling-layer-views",
+    "title": "16  Introduction to Leaflet",
+    "section": "Controlling Layer Views",
+    "text": "Controlling Layer Views\n\nControlling Layers with “groups” “panes” and “layer controls”\nSometimes, more is just… more. And messy.\nWe’ve all seen maps that try to do too much at once: layering points over polygons over lines until the result is a muddy and unreadable. As the map-maker, you shouldn’t have to force your user to choose between seeing the “State” level data or the “County” level data, or details like roads. You can give them the power to choose and select the layers they want to see, just like most Esri maps natively support.\nIn Leaflet, we can accomplish this with Panes, Groups and Layer Controls.\nThe first step happens inside your addPolygons() (or addMarkers) function. You need to assign a specific name to that specific shapefile using the group argument.\nThink of this like just tagging your shapefiles. You are telling Leaflet: “Okay, all these big shapes? They belong to Team ‘State Population’. And all these smaller shapes? They belong to Team ‘County Population’.”\nOnce your layers are tagged, you give the user a remote control to toggle layers with addLayersControl().\nThere are two types of controls you can add here:\n\nbaseGroups (Radio Buttons): These are mutually exclusive. Logic dictates you can only see one at a time (e.g., choosing between “Satellite” vs. “Street” background).\noverlayGroups (Checkboxes): These are additive. You can stack as many as you want on top of each other.\n\nBy default, Leaflet turns everything on when the map loads. If you have overlapping layers (like States covering Counties), this can be problematic. Add a hideGroup() function at the very end of the map’s pipe chain to tell the map: “Load this layer in the background, but keep it invisible until the user checks the box.”\n\n\nWhere do “panes” come in?\nIf “Groups” are about tagging what is visible, “Panes” are about where it’s visible.\nBy default, Leaflet it stacks the shapefiles in the exact order you write them in your code (%&gt;%). The last thing added gets plopped on top.\nOnce you add in the layer controls, this creates a problem: if a user toggles the “Counties” layer off and on, Leaflet effectively “re-adds” it to the map. Suddenly, your counties might reappear on top of your state borders, making the “State” layer invisible as it’s drawn behind it.\nMap Panes solve this by creating permanent slots (think: sheets of glass) at specific heights.\n\nWe assign a Z-Index to each pane we want to control. A higher number means it floats higher up toward the user’s eye.\nThen we tell the shapefile: “No matter when you load, you always live in this_pane.”\n\n\n\nShow the code\nleaf_layer_select &lt;- leaflet() %&gt;% \n  addProviderTiles(providers$Esri.WorldGrayCanvas) %&gt;% \n  \n  addMapPane(\"borders_pane\", zIndex = 460) %&gt;%\n  addMapPane(\"cntys_pane\",   zIndex = 450) %&gt;%\n  addMapPane(\"states_pane\",  zIndex = 250) %&gt;%\n\n\n  addPolygons(\n    data = us_st_leaf,\n    fillColor = ~pop_pal_1(estimate),\n    color = \"black\", \n    weight = 0.75,  \n    fillOpacity = 0.9,\n    options = pathOptions(pane = \"states_pane\"),\n    group = \"State Population\",\n    \n    highlightOptions = highlightOptions(\n      weight = 1.5,               \n      color = \"black\",           \n      fillOpacity = 1,\n      opacity = 1,\n      bringToFront = TRUE        \n    ),\n    \n    label = ~lapply(\n        paste0(\n          \"&lt;b&gt;\", NAME, \"&lt;/b&gt;&lt;br&gt;\",\n          \"&lt;i&gt; Population:&lt;/i&gt; \", \n          scales::comma(estimate, accuracy = 1)\n        ), \n        htmltools::HTML\n      ),    \n    \n    labelOptions = labelOptions(\n      style = list(\n        \"background-color\" = \"white\",  \n        \"color\" = \"black\",              \n        \"font-size\" = \"12pt\",\n        \"padding\" = \"10px\",\n        \"border\" = \"2px solid black\",   \n        \"border-radius\" = \"5px\",        \n        \"box-shadow\" = \"3px 3px 10px rgba(0,0,0,0.5)\" \n      ),\n      direction = \"auto\",\n      noHide = FALSE \n    )\n\n  ) %&gt;% \n  \n  addPolygons(\n    data = us_cnty_leaf,    \n    fillColor = ~cnty_pop_pal(estimate),\n    color = \"black\", \n    weight = 0.35, \n    opacity = 0.35,\n    fillOpacity = 1,\n    options = pathOptions(pane = \"cntys_pane\"),\n    group = \"County Population\",\n    \n    highlightOptions = highlightOptions(\n      weight = 0.65,               \n      color = \"black\",           \n      fillOpacity = 1,        \n      bringToFront = TRUE        \n    ),\n    \n    label = ~lapply(\n        paste0(\n          \"&lt;b&gt;\", NAME, \"&lt;/b&gt;&lt;br&gt;\",\n          \"&lt;i&gt; Population:&lt;/i&gt; \", \n          scales::comma(estimate, accuracy = 1)\n        ), \n        htmltools::HTML\n      ),    \n    \n    labelOptions = labelOptions(\n      style = list(\n        \"background-color\" = \"white\",  \n        \"color\" = \"black\",              \n        \"font-size\" = \"10pt\",\n        \"padding\" = \"10px\",\n        \"border\" = \"2px solid black\",   \n        \"border-radius\" = \"5px\",        \n        \"box-shadow\" = \"3px 3px 10px rgba(0,0,0,0.5)\" \n      ),\n      direction = \"auto\",\n      noHide = FALSE \n    )\n    \n  ) %&gt;% \n  \n  \n  addPolygons(\n    data = us_st_leaf,\n    fill = FALSE, \n    color = \"black\", \n    weight = 0.75, \n    opacity = 1,\n    options = pathOptions(\n      pane = \"borders_pane\", \n      interactive = FALSE  \n    )\n  ) %&gt;%\n  \n  addLayersControl(\n      overlayGroups = c(\"State Population\", \"County Population\"),\n      options = layersControlOptions(collapsed = FALSE) \n    ) %&gt;% \n\n  hideGroup(c(\"County Population\"))\n\n\n\nleaf_layer_select\n\n\n\n\n\n\n\n\nControlling Layers with Zoom\n\n\nShow the code\nshow_cnty_js &lt;- \"\nfunction(el, x) {\n  var map = this;\n  \n  var statesLayer = map.layerManager.getLayerGroup('States');\n  var countiesLayer = map.layerManager.getLayerGroup('Counties');\n  \n  if(countiesLayer) map.removeLayer(countiesLayer);\n  \n  function checkZoom() {\n    var z = map.getZoom();\n    \n    if (z &gt; 5) {\n      if(statesLayer) map.removeLayer(statesLayer);\n      if(countiesLayer) map.addLayer(countiesLayer);\n    } else {\n      if(countiesLayer) map.removeLayer(countiesLayer);\n      if(statesLayer) map.addLayer(statesLayer);\n    }\n  }\n  \n  map.on('zoomend', checkZoom);\n  \n  if(statesLayer) {\n    statesLayer.eachLayer(function(layer) {\n      layer.on('click', function(e) {\n        // Zoom to the bounds of the clicked state\n        map.fitBounds(e.target.getBounds());\n      });\n    });\n  }\n}\n\"\n\n\n\nleaf_cnty_zoom &lt;- leaflet() %&gt;% \n  addProviderTiles(providers$Esri.WorldGrayCanvas) %&gt;% \n  \n    addMapPane(\"cntys_pane\",  zIndex = 450) %&gt;%\n    addMapPane(\"states_pane\", zIndex = 250) %&gt;%\n    addMapPane(\"borders_pane\", zIndex = 460) %&gt;%\n  \n\n  addPolygons(\n    data = us_st_leaf,\n    fillColor = ~pop_pal_1(estimate),\n    group = \"States\",       \n    color = \"black\", \n    weight = 1, \n    fillOpacity = 0.9,\n    options = pathOptions(pane = \"states_pane\"),\n    \n    highlightOptions = highlightOptions(\n      weight = 1.5,               \n      color = \"black\",           \n      fillOpacity = 1,\n      opacity = 1,\n      bringToFront = TRUE        \n    ),\n    \n    label = ~lapply(\n        paste0(\n          \"&lt;b&gt;\", NAME, \"&lt;/b&gt;&lt;br&gt;\",\n          \"&lt;i&gt; Population:&lt;/i&gt; \", \n          scales::comma(estimate, accuracy = 1)\n        ), \n        htmltools::HTML\n      ),    \n    \n    labelOptions = labelOptions(\n      style = list(\n        \"background-color\" = \"white\",  \n        \"color\" = \"black\",              \n        \"font-size\" = \"12pt\",\n        \"padding\" = \"10px\",\n        \"border\" = \"2px solid black\",   \n        \"border-radius\" = \"5px\",        \n        \"box-shadow\" = \"3px 3px 10px rgba(0,0,0,0.5)\" \n      ),\n      direction = \"auto\",\n      noHide = FALSE \n    )\n\n  ) %&gt;% \n  \n  addPolygons(\n    data = us_cnty_leaf,    \n    group = \"Counties\",     \n    fillColor = ~cnty_pop_pal(estimate),\n    color = \"white\", \n    weight = 0.5, \n    fillOpacity = 1,\n    options = pathOptions(pane = \"cntys_pane\"),\n    \n    highlightOptions = highlightOptions(\n      weight = 1,               \n      color = \"black\",           \n      fillOpacity = 1,        \n      bringToFront = TRUE        \n    ),\n    \n    label = ~lapply(\n        paste0(\n          \"&lt;b&gt;\", NAME, \"&lt;/b&gt;&lt;br&gt;\",\n          \"&lt;i&gt; Population:&lt;/i&gt; \", \n          scales::comma(estimate, accuracy = 1)\n        ), \n        htmltools::HTML\n      ),    \n    \n    labelOptions = labelOptions(\n      style = list(\n        \"background-color\" = \"white\",  \n        \"color\" = \"black\",              \n        \"font-size\" = \"10pt\",\n        \"padding\" = \"10px\",\n        \"border\" = \"2px solid black\",   \n        \"border-radius\" = \"5px\",        \n        \"box-shadow\" = \"3px 3px 10px rgba(0,0,0,0.5)\" \n      ),\n      direction = \"auto\",\n      noHide = FALSE \n    )\n    \n  ) %&gt;% \n  \n  \n  addPolygons(\n    data = us_st_leaf,\n    fill = FALSE, \n    color = \"black\", \n    weight = 1, \n    opacity = 1,\n    options = pathOptions(\n      pane = \"borders_pane\", \n      interactive = FALSE  \n    )\n  ) %&gt;%\n  \n  onRender(show_cnty_js)\n\n\n\nleaf_cnty_zoom\n\n\n\n\n\n\nAs we learned earlier, choropleth maps are often not the best choice. So we can use varying point sizes instead by abstracting the polygon’s central points.",
+    "crumbs": [
+      "Interactive Maps",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Introduction to Leaflet</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/zz_sf_references.html",
+    "href": "chapters/zz_sf_references.html",
+    "title": "Appendix A — sf package: quick references",
+    "section": "",
+    "text": "The sf package provides a set of tools for working with geospatial data in R. For details and a look under the hood of this package, see: sf github page\nHuge shout out to the creators of the sf package and those who continue to improve upon it - for making spatial analyses free and accessible and feasible:\n\n\n\n\n\n🙏 sf creators:\n\n\n\nPebesma, E., & Bivand, R. (2023). Spatial Data Science: With Applications in R. Chapman and Hall/CRC. https://doi.org/10.1201/9780429459016\nPebesma, E., 2018. Simple Features for R: Standardized Support for Spatial Vector Data. The R Journal 10 (1), 439-446, https://doi.org/10.32614/RJ-2018-009\n\n\n\n\nBelow is a subset of the most common sf functions that I use for basic mapping with simple features. For a complete list, check out this reference guide to download and keep: sf package cheat sheet\nAlso, this: online sf guide:\nYou can run this code to get an output of all possible methods to pass an sf object to:\n\nmethods(class = \"sf\")\n\n\n\n\n\nst_read\nUse this to bring in a saved shapefile within a directory on your drive\n\nMT_counties &lt;- st_read(here::here(\"data/shapefiles/MT_counties\", \"MT_counties.shp\"))\n\n\n\n\n\n\nst_as_sf()\nCreates an sf object from a non-geospatial dataframe\n\n\n\n\n\nst_crs()\nRetrieve coordinate reference system from sf or sfc object\n\nadd $proj4string for a more concise report\n\n\nst_crs(MT_counties)$proj4string\n\n[1] \"+proj=lcc +lat_0=44.25 +lon_0=-109.5 +lat_1=49 +lat_2=45 +x_0=600000 +y_0=0 +datum=NAD83 +units=m +no_defs\"\n\n\n\n\n\n\n\nst_transform()\nTransform or convert coordinates of simple feature; set the coordinate reference system (crs) using EPSG code\n\nMT_counties_projected &lt;- st_transform(MT_counties, crs = 32100)\n\nst_crs(MT_counties_projected)$proj4string\n\n[1] \"+proj=lcc +lat_0=44.25 +lon_0=-109.5 +lat_1=49 +lat_2=45 +x_0=600000 +y_0=0 +datum=NAD83 +units=m +no_defs\"\n\n\nUTM Zone Projections:\n\nMT_counties_projected_zone11 &lt;- st_transform(MT_counties, crs = 26911)\nMT_counties_projected_zone12 &lt;- st_transform(MT_counties, crs = 26912)\n\n\n#|code-fold: true\n\nunprojected &lt;- ggplot() + \n  geom_sf(data = MT_counties, fill = \"grey90\") + \n  ggtitle(\"unprojected (GCS)\") +\n  theme_void()\n\nprojected &lt;- ggplot() + \n  geom_sf(data = MT_counties_projected, fill = \"grey90\") + \n  ggtitle(\"projected (ESPG:32100)\") +\n  theme_void()\n\nprojected_zone11 &lt;- ggplot() + \n  geom_sf(data = MT_counties_projected_zone11, fill = \"grey90\") +\n  ggtitle(\"projected for Zone 11N (ESPG:26911)\") +\n  theme_void()\n\nprojected_zone12 &lt;- ggplot() + \n  geom_sf(data = MT_counties_projected_zone12, fill = \"grey90\") +\n  ggtitle(\"projected for Zone 12N (ESPG:26912)\") +\n  theme_void()\n\n# Create the 2x2 grid of plots\ngrid_plot &lt;- plot_grid(\n  unprojected, projected, \n  projected_zone11, projected_zone12, \n  ncol = 2, nrow = 2, align = \"hv\"\n)\n\n# Add vertical and horizontal separators\ngrid_plot +\n  draw_line(x = c(0.5, 0.5), y = c(0, 1), color = \"black\", size = 0.5) + # Vertical line\n  draw_line(x = c(0, 1), y = c(0.5, 0.5), color = \"black\", size = 0.5)   # Horizontal line\n\n\n\n\n\n\n\n\n\n\n\n\n\nst_centroid()\n\n\n\n\n\nst_bbox()\n\n\n\n\n\nst_make_grid()\n\n\n\n\n\nst_buffer()\n\n\n\n\n\nst_crop()\n\n\n\n\n\nst_join()\nPerforms a spatial left or inner join between “x” and “y”\n\n\n\n\n\nst_union()\ncreates a single geometry from multiple geometries, consisting of all geometry elements\n\n\n\n\n\nst_intersection()\ncreates a geometry from the shared portion of “x” and “y”\n\n\n\n\n\nst_difference()\ncreates a gemoetry from “x” that does not intersect with “y”",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>`sf` package: quick references</span>"
+    ]
+  }
+]

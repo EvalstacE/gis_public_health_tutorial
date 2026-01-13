@@ -1,5 +1,0 @@
-﻿Format,Compression,Georeferencing,Multi-band,Useage
-TIFF (GeoTIFF),"Lossless (LZW, ZIP, or none)",✅ Yes (GeoTIFF),✅ Yes,"Remote sensing, GIS, high-resolution spatial analysis"
-NetCDF,Efficient multidimensional storage,✅ Yes,✅ Yes,"Climate modeling, time-series spatial data, scientific computing"
-JPEG,Lossy (high compression),❌ No,❌ No,"Web maps, lightweight raster images"
-PNG,Lossless,❌ No,❌ No,"Transparent overlays, cartographic display"

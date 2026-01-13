@@ -1,7 +1,0 @@
-Aspect,Local,Geocentric
-Definition,"Aligns ellipsoid closely with geoid in a specific region, ensuring high accuracy locally.","Aligns ellipsoid with Earth's center of gravity, providing global consistency."
-Accuracy,High accuracy within the specific region; lower accuracy elsewhere.,"Consistent accuracy globally, but less precise for regional details."
-Ellipsoid Alignment,"Optimized for regional geoid features, providing precise local measurements.","Centered on Earth's mass and gravity, less specific to regional features."
-Scale of Maps,"Critical for large-scale maps with high detail, covering smaller areas.",Best suited for small-scale maps covering larger geographic areas.
-Use Cases,"Regional mapping, land surveys, city planning, and infrastructure development.","Global navigation (e.g., GPS), international mapping, and satellite data applications."
-Examples,"NAD27, NAD83",WGS84

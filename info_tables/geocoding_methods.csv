@@ -1,4 +1,0 @@
-Method,Strengths,Weaknesses,Sources
-arcgis,"High accuracy, global coverage, supports batch geocoding, integrates well with ArcGIS ecosystem, handles address parsing.",Requires an API key and Esri subscription for full functionality; usage limits and potential costs; slower than local methods for large datasets.,"Esri's ArcGIS Online services, Esri World Geocoding Service, custom geocoders via ArcGIS."
-osm,"Free and open-source, no API key required, works well for global locations, supports batch geocoding.",Can be slower and less reliable for batch geocoding; coverage and accuracy vary by region; limited support for structured address input.,"OpenStreetMap Nominatim API, other OSM-based geocoding services."
-census,"Free, official US government data, highly accurate for US addresses, batch geocoding supported.",US-only; requires an API key; formatting and coverage depend on Census Bureau data; occasional lag in data updates.,US Census Bureau's Geocoder API.
