@@ -1,0 +1,7 @@
+﻿Level (z-index),Component,Description
+200,tilePane,"The Basemap. (Google Maps, OpenStreetMaps). This is the ground floor."
+400,overlayPane,"Standard Polygons. If you don't specify a pane, your addPolygons go here."
+500,shadowPane,The little shadows under standard teardrop markers.
+600,markerPane,Icons & Markers. Points generally need to sit on top of polygons.
+650,tooltipPane,Hover labels.
+700,popupPane,Pop-ups. The click-to-read boxes. These must be on top of everything.

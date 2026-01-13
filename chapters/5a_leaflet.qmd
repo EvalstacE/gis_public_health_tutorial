@@ -309,7 +309,7 @@ leaf1 <- leaflet(data = us_st_leaf) %>%
 The following sections give a brief overview of the interactivity in leaflet that really starts to shine.
 
 
-## Basemaps a.k.a. "Provider Tiles"
+### Basemaps (aka "Provider Tiles")
 
 
 In the first map, we used `addTiles()` that defaults to **OpenStreetMap (OSM) tiles.**
@@ -397,13 +397,13 @@ leaf_base_opts
 
 
 
-## Hovers and Pop-ups
+### Hovers and Pop-ups
 
 A map that reacts to your mouse just feels more *"alive,"* and `highlightOptions()` is a great way to get that feel. 
 
 I love using this argument because it gives the user immediate visual feedback, like the map is saying, "Yes, this is the specific county you are pointing at." It is especially intuitive if you eventually pair your map with a Shiny app (where a click triggers a table update, for example), but honestly, even as a stand-alone feature, I think this hover-highlighting effect looks nice.
 
-### Customizing the Pop-ups
+#### Customizing the Pop-ups
 
 When it comes to the text labels themselves, `labelOptions()` allows you to pass most standard CSS styling arguments to the text box.
 
@@ -470,17 +470,17 @@ leaf_labels
 
 
 
-## Controlling Layer Views
+### Controlling Layer Views
 
-### Controlling Layers with "groups" "panes" and "layer controls" 
+#### Controlling Layers with "groups" "panes" and "layer controls" 
 
-Sometimes, more is just... more. And messy.
+Sometimes, more is just... more. 
 
 We’ve all seen maps that try to do too much at once: layering points over polygons over lines until the result is a muddy and unreadable. As the map-maker, you shouldn't have to force your user to choose between seeing the "State" level data or the "County" level data, or details like roads. You can give them the power to choose and select the layers they want to see, just like most Esri maps natively support.
 
 In Leaflet, we can accomplish this with **Panes**, **Groups** and **Layer Controls**.
 
-The first step happens inside your `addPolygons()` (or addMarkers) function. You need to assign a specific name to that specific shapefile using the group argument.
+The first step happens inside your `addPolygons()` (or addMarkers) function. You need to assign a unique "group" name to that specific shapefile using the group  argument.
 
 Think of this like just tagging your shapefiles. You are telling Leaflet: *"Okay, all these big shapes? They belong to Team 'State Population'. And all these smaller shapes? They belong to Team 'County Population'."*
 
@@ -498,7 +498,7 @@ By default, Leaflet turns **everything on when the map loads**. If you have over
 
 
 
-### Where do "panes" come in?
+#### Where do "panes" come in?
 
 If "Groups" are about tagging *what* is visible, "Panes" are about *where* it's visible.
 
@@ -506,11 +506,70 @@ By default, Leaflet it stacks the shapefiles in the exact order you write them i
 
 Once you add in the layer controls, this creates a problem: if a user toggles the "Counties" layer off and on, Leaflet effectively "re-adds" it to the map. Suddenly, your counties might reappear on top of your state borders, making the "State" layer invisible as it's drawn behind it. 
 
-**Map Panes** solve this by creating permanent slots (think: sheets of glass) at specific heights.
+**Map Panes** solve this by creating permanent slots at specific heights.
 
-* We assign a **Z-Index** to each pane we want to control. A higher number means it floats higher up toward the user's eye.
+* We assign a **Z-Index** to each pane we want to control using `addMapPane()`. A higher number means it floats higher up toward the user's eye.
 
 * Then we tell the shapefile: "No matter when you load, you always live in *this_pane.*"
+
+For example...
+
+```{r, eval = FALSE}
+
+##-- even though the "counties_sf" is drawn second in 
+###-- the pipe chain, because we mapped it to a "lower" z-index pane
+####-- as the state boundaries, it will always be drawn underneath it
+
+leaflet() %>% 
+  
+  addMapPane("higher_pane_name", zIndex = 460) %>%
+  addMapPane("lower_pane_name",  zIndex = 450) %>%
+  
+  addPolygons(
+    data = state_boundaries_sf,
+    options = pathOptions(pane = "higher_pane_name")
+    ...
+  ) %>%
+  
+  addPolygons(
+    data = counties_sf,
+    options = pathOptions(pane = "lower_pane_name")
+    ...
+  ) %>%
+  
+```
+
+
+
+
+Leaflet reserves specific Z-index levels for its standard parts to ensure the map always works (e.g., Pop-ups must always be on top, or they would be covered by the map shapes).
+
+Here are the default Z-index scores you need to know if you want to enforce different panes:
+
+
+```{r, echo = FALSE}
+
+
+leaflet_zindex <- read.csv(file = here::here("info_tables/leaflet_zindex.csv"))
+
+leaflet_zindex_table <- leaflet_zindex %>%
+  kbl(caption = "Leaflet's Default Reserved Z-Index Panes",
+      align = "ccl") %>%
+  column_spec(1, bold = TRUE) %>% 
+  row_spec(0, font_size = 20, bold = TRUE) %>%
+  kable_styling(
+    bootstrap_options = c("striped"),
+    full_width = FALSE, 
+    position = "center", 
+    font_size = 18)
+
+leaflet_zindex_table
+
+```
+
+
+
+### Putting it all together
 
 
 ```{r}
@@ -518,7 +577,12 @@ Once you add in the layer controls, this creates a problem: if a user toggles th
 
 
 leaf_layer_select <- leaflet() %>% 
-  addProviderTiles(providers$Esri.WorldGrayCanvas) %>% 
+  
+  addProviderTiles(providers$Esri.WorldGrayCanvas, group = "Esri Gray") %>%
+  addProviderTiles(providers$CartoDB.Positron,     group = "CartoDB Gray") %>%
+  addProviderTiles(providers$CartoDB.DarkMatter,   group = "CartoDB Dark") %>%
+  addProviderTiles(providers$CartoDB.Voyager,      group = "CartoDB Voyager") %>%
+  addProviderTiles(providers$Esri.WorldImagery,    group = "Satellite") %>%
   
   addMapPane("borders_pane", zIndex = 460) %>%
   addMapPane("cntys_pane",   zIndex = 450) %>%
@@ -623,6 +687,7 @@ leaf_layer_select <- leaflet() %>%
   ) %>%
   
   addLayersControl(
+      baseGroups = c("Esri Gray", "CartoDB Gray", "CartoDB Dark", "CartoDB Voyager", "Satellite"),
       overlayGroups = c("State Population", "County Population"),
       options = layersControlOptions(collapsed = FALSE) 
     ) %>% 
