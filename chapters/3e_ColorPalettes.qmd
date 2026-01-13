@@ -1,12 +1,19 @@
 # Color Palettes in R
 
+```{r, echo = FALSE, include = FALSE, message = FALSE}
+
+source("_common.R")
+
+```
+
+
 ## Explore color palettes with Color Brewer {.unnumbered}
 
 **[Color Brewer Website](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)**
 
 ::: {.callout-tip}
 # Color Brewer Tip
-![](_images\color_brewer_options.png){.lightbox width=50%}
+![](..\images\color_brewer_options.png){.lightbox width=50%}
 :::
 
 -----------
@@ -28,14 +35,22 @@ htmltools::tags$iframe(src = "https://colorbrewer2.org/#type=sequential&scheme=B
 The `scale_fill_viridis_c()` function in **ggplot2** is part of the **viridis** color palette, which provides perceptually uniform, colorblind-friendly, and well-differentiated color scales for continuous data. This function works with `fill` aesthetics in ggplot to map **continuous values** to a color gradient.
 
 
-![Viridis color palettes](_images\virdis.png){.lightbox width=25%}
+![Viridis color palettes](..\images\virdis.png)
 
 -------
 
 
+## `CARTOcolor` {.unnumbered}
 
 
 
+The [rcartocolor package](https://jakubnowosad.com/rcartocolor/) uses the popular color schemes from **"CARTO"**, a leading location intelligence platform known for its exceptional design standards. While Viridis is optimized for scientific distinctness, CARTO palettes are designed specifically for maps, with softer, aesthetically pleasing scales that work really well against most standard map backgrounds.
+
+To use these palettes for continuous data (gradients), call `scale_fill_carto_c()` 
+
+```{r, echo = FALSE, fig.height = 8}
+display_carto_all()
+```
 
 
 

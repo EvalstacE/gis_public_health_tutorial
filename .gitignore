@@ -8,3 +8,4 @@ output_html/
 site_libs/
 desktop.ini
 *.DS_Store
+/.quarto/

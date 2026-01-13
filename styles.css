@@ -1,3 +1,110 @@
+/* ================================================= */
+/* ===         Global Color Palette              === */
+/* ================================================= */
+:root {
+  --brand-gold:   #ffcb57;
+  --brand-red:    #a91919;
+  --brand-blue:   #025d96;
+  --brand-teal:   #3DB4AD;
+  --brand-navy:   #021628;
+  --brand-green:  #71c670;
+  --brand-ltgrn:  #A8E1BC;
+  --brand-purple: #414081;
+
+}
+
+/* ================================================= */
+/* ===           Themable Scoped Headers        === */
+/* =============================================== */
+
+/* Default Header and Text Styles */
+.chapter-content {
+  --rc-text:   var(--brand-navy);   
+  --rc-accent: var(--brand-teal);   
+  --rc-line:   var(--brand-teal); 
+  
+  color: var(--rc-text);
+  line-height: 1.6;
+  margin: 5rem;
+}
+
+/* ------------------------------------------------- */
+/* ---           Header Element Styles           --- */
+/* ------------------------------------------------- */
+
+/* Custom H1 (Markdown: # Header) */
+.chapter-content h1 {
+  color: var(--rc-text);    
+  font-weight: 700;
+  font-size: 2.2rem;      
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  
+  /* Uses the Adjustable Line Color */
+  border-bottom: 3px solid var(--rc-line); 
+  padding-bottom: 0.5rem;
+  display: inline-block; 
+  width: 100%;            
+}
+
+/* Custom H2 (Markdown: ## Header) */
+.chapter-content h2 {
+  color: var(--rc-accent);   
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-top: 2rem;        
+  margin-bottom: 0.75rem;
+  
+  border-bottom: 2px solid var(--rc-line); 
+  padding-bottom: 0.5rem;
+  display: inline-block; 
+  width: 100%;  
+}
+
+/* Custom H3 (Markdown: ### Header) */
+.chapter-content h3 {
+  color: var(--rc-accent);     
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase; 
+  letter-spacing: 1px;        
+  margin-top: 2rem;        
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rc-line); 
+  padding-bottom: 0.5rem;
+  display: inline-block; 
+  width: 100%;    
+
+}
+
+
+/* ------------------------------------------------- */
+/* ---             Custom Headers               --- */
+/* ----------------------------------------------- */
+
+/* Example: <div class="chapter-content theme-blue"> */
+
+
+.chapter-content.theme-blue {
+  --rc-accent: var(--brand-blue);
+  --rc-line:   var(--brand-blue);
+}
+
+.chapter-content.theme-green {
+  --rc-accent: var(--brand-green);
+  --rc-line:   var(--brand-green);
+}
+
+.chapter-content.theme-red {
+  --rc-accent: var(--brand-red);
+  --rc-line:   var(--brand-red);
+}
+
+.chapter-content.theme-purp {
+  --rc-accent: var(--brand-purple);
+  --rc-line:   var(--brand-purple);
+}
+
 
 /* Reduce Quarto book navigation sidebar width */
 :root {
@@ -21,7 +128,7 @@
 /* Change inline code color */
 code {
     color: #021628; 
-    background-color: #A8E1BCFF; 
+    background-color: #A8E1BC; 
     padding: 8px 8px;
     border-radius: 10px;
     font-weight: bold;
@@ -77,3 +184,36 @@ code {
   margin-bottom: 0;
   
 }
+
+
+
+
+
+
+/* ------------------------------------------------- */
+/* ---             Custom Headers               --- */
+/* ----------------------------------------------- */
+
+/* Example: <div class="report-content theme-blue"> */
+
+
+.report-content.theme-blue {
+  --rc-accent: var(--brand-blue);
+  --rc-line:   var(--brand-blue);
+}
+
+.report-content.theme-green {
+  --rc-accent: var(--brand-green);
+  --rc-line:   var(--brand-green);
+}
+
+.report-content.theme-teal {
+  --rc-accent: var(--brand-teal);
+  --rc-line:   var(--brand-teal); 
+}
+
+.report-content.theme-red {
+  --rc-accent: var(--brand-red);
+  --rc-line:   var(--brand-red);
+}
+

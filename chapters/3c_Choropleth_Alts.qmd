@@ -1,5 +1,12 @@
 # Alternatives to Choropleths
 
+```{r, echo = FALSE}
+
+source("_common.R")
+
+```
+
+
 ## Centroids as data points {.unnumbered}
 
 We will bring in the same data as before: median household income by census tract in Montana: 
@@ -16,26 +23,13 @@ library(gridExtra)
 library(classInt)
 library(dplyr)
 
-# Brought in some census data using tidycensus
-
-# income <- get_acs(
-  #geography = "tract", 
-  #variables = "B19013_001",
-  #state = "Montana", 
-  #year = 2020,
-  #geometry = TRUE)
-
-# Convert to sf object
-## income <- st_as_sf(income)
-# Save
-## st_write(income, "income.shp")  
-
 
 # Bring in shapefiles
-income <- st_read("Shapefiles/income", "income")
+income <- st_read(here::here("data/shapefiles/income", "income.shp"))
+
 # Remove tracts without income data
 income <- income[complete.cases(st_drop_geometry(income)), ]
-TribalNations <- st_read("Shapefiles/TribalNations", "TribalNations")
+TribalNations <- st_read(here::here("data/shapefiles/TribalNations", "TribalNations.shp"))
 
 # Project to same CRS:
 income <- st_transform(income, crs = 32100)
@@ -53,18 +47,14 @@ TribalNations <- st_transform(TribalNations, crs = 32100)
 income_centroids <- st_centroid(income)
   
 ```
+
+
 ### 2. Create standard deviation breaks for centroids {.unnumbered}
 
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
 
-library(sf)
-library(tigris)
-library(ggplot2)
-library(cowplot)
-library(gridExtra)
-library(classInt)
 
 # Compute standard deviation classification breaks
 mean_income <- mean(income_centroids$estimate, na.rm = TRUE)
@@ -76,7 +66,7 @@ income_centroids <- income_centroids %>%
     SD_category = case_when(
       estimate <= (mean_income - (1.5*sd_income)) ~ "Poorest (< -1.5 SD)",
       estimate >= (mean_income + (1.5*sd_income)) ~ "Richest (> +1.5 SD)",
-      TRUE ~ "Middle"  # This will be excluded in the filter
+      TRUE ~ "Middle" 
     )
   )
 
@@ -90,12 +80,6 @@ income_centroids <- income_centroids %>%
 #| code-fold: true
 #| code-summary: "Show the code"
 
-library(sf)
-library(tigris)
-library(ggplot2)
-library(cowplot)
-library(gridExtra)
-library(classInt)
 
 # Filter only the richest and poorest tracts based on SD
 richest_poorest <- income_centroids %>%
@@ -134,13 +118,13 @@ sd_plot
 
 ::: {layout="[[1,1,1], [1]]"}
 
-![Choropleth: Unclassified](_maps\chor_poverty.png){.lightbox}
+![Choropleth: Unclassified](..\maps\chor_poverty.png){.lightbox}
 
-![Choropleth Subset: highlights high values](_maps\chor_above30.png){.lightbox}
+![Choropleth Subset: highlights high values](..\maps\chor_above30.png){.lightbox}
 
-![Geostatistical Points: centroids from census tracts](_maps\centroid_plot_poverty.png){.lightbox}
+![Geostatistical Points: centroids from census tracts](..\maps\centroid_plot_poverty.png){.lightbox}
 
-![Dorling Cartogram](_maps\dorl_plot_poverty.png){.lightbox}
+![Dorling Cartogram](..\maps\dorl_plot_poverty.png){.lightbox}
 
 :::
 

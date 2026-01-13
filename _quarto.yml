@@ -1,49 +1,57 @@
 project:
   type: book
   output-dir: "output_html"
+  
+lightbox: true
 
 book:
   title: "GIS in Public Health: R"
   author: "Val Stacey"
-  date: "7/08/2025"
+  date: "1/12/2026"
+  reader-mode: false
+  
   sidebar:
     collapse-level: 2
     style: "docked"
+    
   chapters:
     - index.qmd
-    - GIS_Structure.qmd
-    - Projections.qmd
-    - ChoosingCRS.qmd
+    - part: Introduction to GIS
+      chapters:
+      - chapters/1a_GIS_Structure.qmd
+      - chapters/1b_Projections.qmd
+      - chapters/1c_ChoosingCRS.qmd
+      - chapters/1d_Privacy.qmd
+      - chapters/1e_Bias.qmd
+    
     - part: Types of Spatial Data
       chapters:
-      - ShapefileComps.qmd
-      - Points.qmd
-      - Rasters.qmd
-    - Privacy.qmd
-    - Bias.qmd
-    - part: Census Data
-      chapters: 
-        - intro_tidycensus.qmd
-    - part: Creating Maps
+      - chapters/2a_ShapefileComps.qmd
+      - chapters/2b_Points.qmd
+      - chapters/2c_Rasters.qmd
+
+    
+    - part: Map Basics
       chapters:
-        - MapParts.qmd
-        - Choropleths.qmd
-        - Choropleth_Alts.qmd
-        - Color.qmd
-        - R_ColorPalettes.qmd
-    - sf_references.qmd
+        - chapters/3a_MapParts.qmd
+        - chapters/3b_Choropleths.qmd
+        - chapters/3c_Choropleth_Alts.qmd
+        - chapters/3d_Color.qmd
+        - chapters/3e_ColorPalettes.qmd
+        
+    - part: Maps from APIs
+      chapters:
+        - chapters/4a_census_data.qmd       
+    
+    
     - part: Interactive Maps
       chapters: 
-        - leaflet.qmd
-        - integrate_shiny.qmd
-        - mapbox.qmd
-
-    - part: putting_it_together.qmd
-      chapters: 
-        - bring_data.qmd
-        - functions.qmd
-        - map_codes.qmd
-        - packages.qmd
+        - chapters/5a_leaflet.qmd
+        
+        
+  appendices:
+    - chapters/zz_sf_references.qmd
+     
 
 execute:
   rscript: "C:\\Program Files\\R\\R-4.4.0\\bin\\x64"
@@ -64,6 +72,7 @@ format:
     code-overflow: wrap
     highlight-style: "custom-theme.json"
     code-block-border-left: "#3DB4ADFF"
+    link-external-newwindow: true
     toc: FALSE
     code-tools:
       source: true

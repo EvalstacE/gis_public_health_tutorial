@@ -1,5 +1,12 @@
 # Rasters
 
+```{r, echo = FALSE}
+
+source("_common.R")
+
+```
+
+
 To recap from previous chapters: 
 **Vector data** is made up of points, lines, and polygons
 **Raster data** is made up of points or grid cells with assigned values
@@ -8,11 +15,7 @@ To recap from previous chapters:
 
 ```{r, echo = FALSE}
 
-library(dplyr)
-library(kableExtra)
-library(knitr)
-
-raster_formats <- read.csv(file = "_info_tables/raster_formats.csv")
+raster_formats <- read.csv(file = here::here("info_tables/raster_formats.csv"))
 
 raster_formats_table <- raster_formats %>%
   kbl(caption = "Raster Formats",

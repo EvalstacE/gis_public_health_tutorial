@@ -1,5 +1,11 @@
 # `sf` package: quick references
 
+```{r, echo = FALSE}
+
+source("_common.R")
+
+```
+
 The `sf ` package provides a set of tools for working with geospatial data in R. 
 For details and a look under the hood of this package, see: **[sf github page](https://github.com/r-spatial/sf)**
  
@@ -52,9 +58,7 @@ Use this to bring in a saved shapefile within a directory on your drive
 
 ```{r, results = "hide", message = FALSE, warning = FALSE}
 
-library(sf) 
-
-MT_counties <- st_read("Shapefiles/MT_counties.shp", "MT_counties")
+MT_counties <- st_read(here::here("data/shapefiles/MT_counties", "MT_counties.shp"))
 
 ```
 
@@ -120,6 +124,7 @@ st_crs(MT_counties_projected)$proj4string
 **UTM Zone Projections:**
 
 ```{r}
+
 MT_counties_projected_zone11 <- st_transform(MT_counties, crs = 26911)
 MT_counties_projected_zone12 <- st_transform(MT_counties, crs = 26912)
 
@@ -128,9 +133,7 @@ MT_counties_projected_zone12 <- st_transform(MT_counties, crs = 26912)
 
 
 ```{r}
-
-library(ggplot2)
-library(cowplot)
+#|code-fold: true
 
 unprojected <- ggplot() + 
   geom_sf(data = MT_counties, fill = "grey90") + 

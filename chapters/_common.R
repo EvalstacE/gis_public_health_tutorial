@@ -2,16 +2,16 @@
 
 pacman::p_load(
   rmarkdown, tidyverse, dplyr, tidyr, ggplot2, eeptools, MMWRweek,
-  lubridate, knitr, kableExtra, tinytex, epitools, bookdown, 
+  lubridate, knitr, kableExtra, tinytex, epitools, bookdown, glue,
   ggforce, gridExtra, ggthemes, cowplot, classInt, tidycensus, sf,
   pak, shiny, bslib, ggtext, ggfx, ggnewscale, ggspatial, geogrid, 
-  DT, cowplot, patchwork, leaflet, here, tigris, viridis)
+  DT, cowplot, patchwork, leaflet, here, tigris, viridis, rcartocolor,
+  scales, htmlwidgets)
 
 options(scipen = 99999, tigris_use_cache = TRUE)
 census_key <- config::get("census_key")
 census_api_key(census_key, overwrite = TRUE)
 
-source("colors.R")
 
 # Bring in other custom helper functions
 func_dir <- here::here("functions")

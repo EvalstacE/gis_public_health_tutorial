@@ -1,5 +1,12 @@
 # Selecting your Coordinate Reference System
 
+```{r, echo = FALSE}
+
+source("_common.R")
+
+```
+
+
 **Key things to remember:** 
 
 * Always understand what projection you are working with - what it optimizes and what it distorts in terms of size, area, shape, distance, and direction. 
@@ -18,11 +25,7 @@ Here are two helpful reference websites for **EPSG codes**:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
-library(dplyr)
-library(kableExtra)
-library(knitr)
-
-epsg_codes <- read.csv("_info_tables/epsg_codes.csv")
+epsg_codes <- read.csv(here::here("info_tables/epsg_codes.csv"))
 
 epsg_table <- epsg_codes %>%
   kbl(caption = "Common EPSG Codes", 
@@ -30,7 +33,7 @@ epsg_table <- epsg_codes %>%
   column_spec(1:2, bold = TRUE) %>%
   row_spec(9:11, bold = TRUE, background = "#feed3f") %>%
   kable_styling(
-    bootstrap_options = c("striped", "hover", "condensed"), # Adds banded rows (striped)
+    bootstrap_options = c("striped", "hover", "condensed"), 
     full_width = TRUE)
 
 epsg_table 
@@ -52,10 +55,6 @@ Here is a helpful reference to keep handy:
 Let's bring in the boundary of the lower contiguous US to demonstrate how to work with CRS in R: 
 
 ```{r, message = FALSE, warning = FALSE}
-
-library(tigris)
-library(sf)
-library(dplyr)
 
 options(tigris_use_cache = TRUE)
 
@@ -122,9 +121,9 @@ We can also observe the distortions and optimization of each: In the first map (
 
 ::: {layout-ncol=2}
 
-![No Projection](_maps\no_projection.png){.lightbox}
+![No Projection](..\maps\no_projection.png){.lightbox}
 
-![Albers Equal Area Projection](_maps\aea_projected.png){.lightbox}
+![Albers Equal Area Projection](..\maps\aea_projected.png){.lightbox}
 
 :::
 

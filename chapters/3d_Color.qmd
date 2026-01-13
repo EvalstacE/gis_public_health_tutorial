@@ -5,7 +5,7 @@
 
 ::: {.image-left}
 <figure style="float: right; margin-left: 25px; width: 300px;">
-  <a href="_images/visual_hierarchy.png" class="lightbox">
+  <a href="images/visual_hierarchy.png" class="lightbox">
     <img src="_images/visual_hierarchy.png" style="width: 100%;">
   </a>
   <figcaption style="text-align: center;">Visual Hierarchy</figcaption>
@@ -54,7 +54,7 @@ When choosing how to display color and which dimensions of color to utilize, alw
 
 * Is the use of color critical to understanding or interpretting the map? Could we consider using a consistent grey scale instead? 
 
-![](_images\color_scales.png){.lightbox width=50%}
+![](..\images\color_scales.png){.lightbox width=50%}
 
 ----------------
 
@@ -73,11 +73,11 @@ purple, all the way to the high end, a very intense purple color.
 
 
 ::: {layout-ncol=3}
-![Hue](_images\Hue.png){.lightbox}
+![Hue](..\images\Hue.png){.lightbox}
 
-![Value](_images\Value.png){.lightbox}
+![Value](..\images\Value.png){.lightbox}
 
-![Saturation](_images\Saturation.png){.lightbox}
+![Saturation](..\images\Saturation.png){.lightbox}
 :::
 
 

@@ -2,15 +2,18 @@
 eval: false
 ---
 
+# Census Data in R: tidycensus
 
-# Census Data Extraction Pipeline: Documentation & Workflow
+## Custom workflow for extracting census data
 
 The following workflow demonstrates a reproducible method for extracting, cleaning, and calculating demographic indicators for counties using the US Census API.
 
-This approach builds upon the core concepts and functions from Kyle Walker, the developer of `tidycensus` , and his documented online book, "Analyzing US Census Data". 
+This approach builds upon the core concepts and functions from Kyle Walker, the developer of `tidycensus`  and the online book:
+
+[Walker Data: Analyzing US Census Data](https://walker-data.com/census-r/index.html)
 
 
-## The Motivation: "Don't Repeat Yourself"
+### The Motivation: "Don't Repeat Yourself"
 
 In previous iterations of this work, I found myself constantly violating a core tenet of programming: **DRY (Don't Repeat Yourself).**
 
@@ -18,15 +21,13 @@ I would write a script to fetch Population data, then copy-paste that entire blo
 
 Maybe I'm just really bad at utilizing the existing powers and processes captured in `tidycensus().` 
 
-Or maybe this could be a future development to embed in `tidycensus()` ? 
 
 
-
-Either way, here it is...
+Regardless, here it is...
 
 Instead of writing repetitive code for every subject (Housing, Income, Population), we created a **custom "topic-based" pipeline. ** The pipeline abstracts logic into a standardized process that loops through metadata files: handling the heavy lifting automatically, consistently, and all in one place.
 
-Primary Resource: [Walker Data: Analyzing US Census Data](https://walker-data.com/census-r/index.html)
+Primary Resource: 
 
 
 

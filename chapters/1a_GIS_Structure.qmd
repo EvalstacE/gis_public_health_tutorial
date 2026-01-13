@@ -1,5 +1,12 @@
 # Structure of Spatial Data 
 
+```{r, echo = FALSE}
+
+source("_common.R")
+
+```
+
+
 ## What makes spatial data special {.unnumbered}
 
 *  Always **tagged with location** (coordinates that define location, shape, and extent)
@@ -13,7 +20,7 @@
 
 ## Tobler's First Law of Geography: Spatial Autocorrelation {.unnumbered} 
 
-![Tobler's First Law of Geography](_images\tobler_law.png){.lightbox}
+![Tobler's First Law of Geography](..\images\tobler_law.png){.lightbox}
 
 **Spatial Autocorrelation** (spatial dependence) violates the assumption of independent observations, which is needed in a lot of our very basic statistical analysis.
 
@@ -41,21 +48,21 @@ Types of **"Geometric Generalization"**:
 
     + selecting what features to include and what features to suppress in your map.
     + reduces the number of features by deleting / removing features that the map maker deems as insignificant
-    ![Selection Generalization](_images\selection.png){.lightbox}
+    ![Selection Generalization](..\images\selection.png){.lightbox}
     
 
 * **Simplification**
 
     + what level of detail do you need in your map? 
     + reduces unnecessary details by simplifying or abstrating shapes
-    ![Selection Generalization](_images\simplify.png){.lightbox}
+    ![Selection Generalization](..\images\simplify.png){.lightbox}
     
 
 * **Displacement**
 
     + performed to avoid geographic interference (overlap), often for the purposes of visual clarity and understanding.
     + resolves conflicts like overlaps by repositioning features
-      ![Displacement Generalization](_images\displace.png){.lightbox}
+      ![Displacement Generalization](..\images\displace.png){.lightbox}
 
 
 * **Smoothing**
@@ -63,7 +70,7 @@ Types of **"Geometric Generalization"**:
     + a reduction in detail to enhance visual clarity and simplicity, particularly around polygon edges.
     + refines and smooths geometries to make them more aesthetically pleasing. 
     + Again, the question we must ask ourselves is what level of realistic detail is necessary to include for accurate and adequate representation of the story we want to communicate in our map. 
-    ![Selection Generalization](_images\smooth.png){.lightbox}
+    ![Selection Generalization](..\images\smooth.png){.lightbox}
     
 
 * **Enhancement**
@@ -75,15 +82,11 @@ Types of **"Geometric Generalization"**:
 
 ## Two Types of Spatial Data: Vectors and Rasters
 
-![Vectors vs Rasters](_images\vectors_rasters.png){.lightbox}
+![Vectors vs Rasters](..\images\vectors_rasters.png){.lightbox}
 
 ```{r, echo = FALSE}
 
-library(dplyr)
-library(kableExtra)
-library(knitr)
-
-vector_raster <- read.csv(file = "_info_tables/rasters_vectors.csv")
+vector_raster <- read.csv(file = here::here("info_tables/rasters_vectors.csv"))
 
 vector_raster_table <- vector_raster %>%
   kbl(caption = "Vectors vs. Rasters",

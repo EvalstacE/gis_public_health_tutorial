@@ -1,9 +1,16 @@
 # Privacy and Confidentiality
 
+```{r, echo = FALSE}
+
+source("_common.R")
+
+```
+
+
 Privacy and confidentiality should not be an afterthought, but fully integrated into the research design, process, administration, and reporting. 
 
 
-![The Fourth Amendment of the US Constitution](_images\constitution.png){.lightbox}
+![The Fourth Amendment of the US Constitution](..\images\constitution.png){.lightbox}
 
 
 ----------------------
@@ -36,11 +43,8 @@ The imperative duties that we, as public health professionals and map-makers, ha
 
 ```{r, echo = FALSE}
 
-library(dplyr)
-library(kableExtra)
-library(knitr)
 
-tensions <- read.csv("_info_tables/tensions.csv")
+tensions <- read.csv(here::here("info_tables/tensions.csv"))
 
 tensions_table <- tensions %>%
   kbl(caption = "Individual vs. Societal Benefit Tension",

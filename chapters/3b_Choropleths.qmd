@@ -1,5 +1,12 @@
 # Choropleth Maps
 
+```{r, echo = FALSE}
+
+source("_common.R")
+
+```
+
+
 **Choropleth Maps**
 A choropleth map plots the raw geographic topology and colors each geographic entity according to the value of the variable being visualized. However, based on color alone, it is difficult to make more detailed quantitative comparisons.
 
@@ -47,12 +54,11 @@ library(dplyr)
 
 # Convert to sf object
 ## income <- st_as_sf(income)
-# Save
 ## st_write(income, "income.shp")  
 
 
 # Bring in shapefile
-income <- st_read("Shapefiles/income", "income")
+income <- st_read(here::here("data/shapefiles/income", "income.shp"))
 
 
 # Remove tracts without income data
@@ -144,7 +150,7 @@ Use caution and thoughtfulness around this decision!
 
 So...
 
-![Classifying Data](_images/classify_1.png){.lightbox}
+![Classifying Data](..\images/classify_1.png){.lightbox}
 
 ---------
 
@@ -184,10 +190,10 @@ So...
 
 ::: {layout-ncol=2}
 
-![create breaks](_images\breaks1.png){.lightbox}
+![create breaks](..\images\breaks1.png){.lightbox}
 
 
-![create breaks](_images\breaks2.png){.lightbox}
+![create breaks](..\images\breaks2.png){.lightbox}
 
 
 :::

@@ -1,0 +1,58 @@
+# Shapefile structure and file extentions
+
+```{r, echo = FALSE}
+
+source("_common.R")
+
+shapefile_extns <- read.csv(file = here::here("info_tables/Shapefile_Extentions.csv"))
+
+shapefile_extns_table <- shapefile_extns %>%
+  kbl(caption = "Description of Shapefile Components",
+      align = "llc") %>%
+  column_spec(1, bold = TRUE) %>% 
+  column_spec(3, bold = TRUE) %>% 
+  row_spec(0, font_size = 20, bold = TRUE) %>%
+  kable_styling(
+    bootstrap_options = c("striped"),
+    full_width = FALSE, 
+    position = "center", 
+    font_size = 18)
+
+shapefile_extns_table
+
+```
+
+
+## Load and inspect shapefile data {.unnumbered}
+
+Using the **`st_read`**, we will bring in the geometries for Montana counties.
+
+See more on **`sf`** functions in this section, **here**
+
+```{r, message = FALSE, warning = FALSE, results = FALSE}
+
+MT_counties <- st_read(here::here("data/shapefiles/MT_counties", "MT_counties.shp"))
+
+```
+
+
+## Inspect the shapefile {.unnumbered}
+
+
+```{r}
+
+class(MT_counties)
+
+str(MT_counties$geometry)
+
+st_crs(MT_counties)$proj4string
+
+
+```
+
+
+
+
+
+
+

@@ -1,6 +1,13 @@
 # Coordinate Reference Systems and Projections
 
-![Geographic Coordinate Systems](_images\CRS.png){.lightbox}
+```{r, echo = FALSE}
+
+source("_common.R")
+
+```
+
+
+![Geographic Coordinate Systems](..\images\CRS.png){.lightbox}
 
 The Earth's reference systems are based on two types of coordinate systems: **Geographic coordinate systems** and **Projected coordinate systems.** The geographic coordinate system is a reference system for identifying or measuring locations on Earth's curved surface, and is a spherical coordinate system. A projected coordinate system or a "map projection" transforms the Earth's spherical surface onto a two-dimensional cartesian coordinate plane. 
 
@@ -10,16 +17,12 @@ The **Cartesian coordinate plane** is a two-dimensional plane defined by two per
 
 The locations in the geographic coordinate system, or GCS, are identified by either latitude or longitude. When measuring coordinates using GPS devices or mobile phones, the reported values are usually in latitude and longitude, and they are associated with World Geodetic System 1984, or WGS 84 datum. Latitude and longitude are measured in either degree-minutes-seconds, DMS, or decimal degrees, or radiance.
 
-![Geographic Coordinate Systems](_images\GCS_visual.png){.lightbox width=50% fig-align="left"} 
+![Geographic Coordinate Systems](..\images\GCS_visual.png){.lightbox width=50% fig-align="left"} 
 
 
 ```{r, echo = FALSE}
 
-library(dplyr)
-library(kableExtra)
-library(knitr)
-
-lat_long <- read.csv(file = "_info_tables/Lat_vs_Long.csv")
+lat_long <- read.csv(file = here::here("info_tables/Lat_vs_Long.csv"))
 
 lat_long_table <- lat_long %>%
   kbl(caption = "Latitude vs. Longitude",
@@ -76,11 +79,7 @@ Use the Earth's center as the origin of the geographic coordinate system to defi
 
 ```{r, echo = FALSE}
 
-library(dplyr)
-library(kableExtra)
-library(knitr)
-
-datums <- read.csv("_info_tables/Local_Geocentric_Datums.csv")
+datums <- read.csv(file = here::here("info_tables/Local_Geocentric_Datums.csv"))
 
 datums_table <- datums %>%
   kbl(caption = "Local vs Geocentric Datums",
@@ -153,11 +152,8 @@ There are three main types of projections (each with its own strengths in accura
 
 ```{r, echo = FALSE}
 
-library(dplyr)
-library(kableExtra)
-library(knitr)
 
-PCS_types <- read.csv("_info_tables/projection_types.csv")
+PCS_types <- read.csv(here::here("info_tables/projection_types.csv"))
 
 # Create a table with banded rows
 PCS_table <- PCS_types %>%
@@ -177,11 +173,11 @@ PCS_table
 
 
 ::: {layout-ncol=3}
-![Planar](_images\planar.png){.lightbox}
+![Planar](..\images\planar.png){.lightbox}
 
-![Cylindrical](_images\cylindrical.png){.lightbox}
+![Cylindrical](..\images\cylindrical.png){.lightbox}
 
-![Conical](_images\conical.png){.lightbox}
+![Conical](..\images\conical.png){.lightbox}
 
 :::
 
@@ -215,7 +211,7 @@ This coordinate system is extensively used because it offers global coverage and
 - **Zone Width:** At higher latitudes, the 6° wide zones cover much smaller distances in terms of actual ground coverage (because lines of longitude converge at the poles), which can increase distortion.
 
 
-![Conical](_images\US_UTM_zones.png){.lightbox}
+![Conical](..\images\US_UTM_zones.png){.lightbox}
 
 
 

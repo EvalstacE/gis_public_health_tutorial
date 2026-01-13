@@ -1,5 +1,12 @@
 # Critical Parts of a Map
 
+```{r, echo = FALSE}
+
+source("_common.R")
+
+```
+
+
 There are three main types of maps: 
 
 **General purpose map / Reference map / Base map**
@@ -42,7 +49,7 @@ Is the most important message intrinsically spatially related? Are there other, 
 * This ties into the purpose above regarding the question: how accurate does this need to be?
 * Is this a map intended to display a large area (such as an entire country or state)? = "small scale map" 
 * Or is this map intended to highlight a much more specific area, like a neighborhood? = "large scale map"
-  + ![Small Scale vs. Large Scale Maps](_images\map_scales.png){.lightbox width=50%}
+  + ![Small Scale vs. Large Scale Maps](..\images\map_scales.png){.lightbox width=50%}
 
 **NOTE:** the required scale of your map will also help you determine the best coordinate reference system and/or projection. 
 
@@ -72,7 +79,7 @@ Is the map intended for a more specific, technical audience?
 
 **8. Finalize and annotate the map**
 
-* ![Elements of a Map](_images\map_elements.png){.lightbox width=50%}
+* ![Elements of a Map](..\images\map_elements.png){.lightbox width=50%}
 
 ------------
 
@@ -90,7 +97,7 @@ Another way to show location and orientation is by portraying **graticules** (li
 * **Ratio:** 1:1000
 * **Sentence/word:** One centimeter represents 1000 meters
 * **Graphic:**
-  + ![Graphic Scale](_images/scale.png){.lightbox width=25%}
+  + ![Graphic Scale](..\images/scale.png){.lightbox width=25%}
 
 **Best practice:** Always include the graphic scale bar. Never a bad idea to also include a sentence. 
 

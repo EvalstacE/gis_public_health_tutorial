@@ -13,9 +13,9 @@ Points can also represent a calculated statistic, referred to as a **geostatisti
 
 ::: {layout-ncol=2}
 
-![Point-Process](_images/points_events.png){.lightbox}
+![Point-Process](..\images/points_events.png){.lightbox}
 
-![Point-Referenced](_images/geostats_points.png){.lightbox}
+![Point-Referenced](..\images/geostats_points.png){.lightbox}
 
 :::
 
@@ -98,9 +98,9 @@ A measure of **how many events occur within any specific area.** Essentially, th
 
 ::: {layout-ncol=2}
 
-![Point-Process](_images/point_intensity_circle.png){.lightbox}
+![Point-Process](..\images/point_intensity_circle.png){.lightbox}
 
-![Point-Process](_images/point_intensity_square.png){.lightbox}
+![Point-Process](..\images/point_intensity_square.png){.lightbox}
 
 :::
 
