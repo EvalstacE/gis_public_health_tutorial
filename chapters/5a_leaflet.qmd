@@ -229,10 +229,6 @@ leaf1 <- leaflet(data = us_st_leaf) %>%
 ```
 
 
-::: {.layout-columns}
-
-::: {.column width="40%"}
-
 
 
 ```{r, echo = FALSE}
@@ -258,10 +254,6 @@ ggp1 <- ggplot() +
 ```
 
 
-
-:::
-
-::: {.column width="60%"}
 
 
 
@@ -306,12 +298,6 @@ leaf1 <- leaflet(data = us_st_leaf) %>%
   )
 
 ```
-
-
-:::
-
-:::
-
 
 
 
