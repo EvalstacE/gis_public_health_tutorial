@@ -1,0 +1,7 @@
+﻿Kernel,Best for Data Distributions,Weighting Pattern,Smoothing,Computational Cost,Best for...
+Uniform (Rectangular),Only works well for uniformly distributed data. Not suitable for skewed or clustered data.,Equal weight within range,None (sharp edges),Very low,"Simple, fast estimation"
+Triangular,Works well for moderately skewed distributions. Can overemphasize tails if data is heavily skewed.,Linearly decreasing,Low,Low,Quick estimates with some smoothing
+Quadratic (Biweight),Handles unimodal distributions well. Not ideal for highly skewed data but does better than uniform.,"Parabolic, stronger near center",Medium,Medium,"Small datasets, moderate smoothing"
+Gaussian (Normal),Best for normally distributed or near-normal data. Struggles with extreme skew or heavy-tailed distributions.,Exponentially decreasing,High,High,"Most common, very smooth, large datasets"
+Cosine,"Works well for moderate skew, not ideal for long-tailed distributions.",Cosine-shaped drop-off,Medium,Medium,Balancing smoothness & efficiency
+Epanechnikov,Performs well in moderate skew but not optimal for highly skewed or heavy-tailed data.,"Parabolic, compact support",High (optimal),Low,Theoretically best efficiency

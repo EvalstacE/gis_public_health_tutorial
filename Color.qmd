@@ -1,0 +1,106 @@
+# Color and Cartography 
+
+*Notes from a lecture by Dr. Joan Casey, postdoctoral scholar at UC Berkeley and Associate Professor of Epidemiology at the University of Washington.* 
+
+
+::: {.image-left}
+<figure style="float: right; margin-left: 25px; width: 300px;">
+  <a href="_images/visual_hierarchy.png" class="lightbox">
+    <img src="_images/visual_hierarchy.png" style="width: 100%;">
+  </a>
+  <figcaption style="text-align: center;">Visual Hierarchy</figcaption>
+</figure>
+
+While color is certainly not the only visual tool or varialbe we have to try to communicate insights on a map (see visual hierarchy image here), it is certainly a major one that is used very often. 
+
+Back in the day, color was used judiciously because maps had to be printed. And it
+was quite expensive. And further back actually, color had to be added by hand to
+maps. Then, in the 1980s... bam 💥... we got these cheap color printers...and suddenly we had
+the ability to print colored maps.
+
+We also moved into this age more recently where we are not printing as much, as more and more people 
+gained access to and rely more on relatively cheap, high-quality computer monitors and other devices (tablets, smartphones, etc.) that display color very well.
+
+We see color because of the reflection of electromagnetic radiation in a small
+range of wavelengths. For example, a banana itself isn't inherently yellow. We see
+it is yellow because the banana absorbs all other wavelengths and reflects the
+wavelength that we perceive as yellow-- so kind of interesting to think about. And
+then, white light is a mixture of all of the wavelengths.
+
+On printed maps, the dies on those maps selectively absorb components of white
+light. And so it sucks up those colors and reflects back light that we perceive as
+whatever color we are seeing on the map. 
+
+The opposite is true for monitors and televisions. Monitors and televisions actually emit 
+electromagnetic radiation in red, green, and blue parts of the spectrum, and that's how 
+we end up seeing the light from them.
+
+:::
+
+
+
+## Three dimensions of color: Hue, Saturation, Value {.unnumbered}
+
+Map makers can manipulate all three of these dimensions on maps to convey
+different messages. 
+
+When choosing how to display color and which dimensions of color to utilize, always consider: 
+
+* Will people with colorblindness be able to interpret your map?
+
+* Are you displaying different categorical variables, or differences in intensity of quantitative data?
+
+* What may people interpret or associate with your color choices? e.g. bright reds and oranges are often associated with a subjective view of something "bad." 
+
+* Is the use of color critical to understanding or interpretting the map? Could we consider using a consistent grey scale instead? 
+
+![](_images\color_scales.png){.lightbox width=50%}
+
+----------------
+
+
+**HUE** is what most people think of as color. Hue is what is related to the
+wavelength on the electromagnetic spectrum. In other words: moving from orange, to
+yellow, to green, to blue, to indigo, etc. 
+
+**VALUE**  is related to light versus dark. It applies to hues, as well as shades of gray. 
+
+**SATURATION**, sometimes called "chroma", refers to the intensity of a color. 
+**Gray tones do not have saturation.** So down here, on the left, you're seeing
+this purple rectangle that's showing movement from this very light, not intense
+purple, all the way to the high end, a very intense purple color.
+
+
+
+::: {layout-ncol=3}
+![Hue](_images\Hue.png){.lightbox}
+
+![Value](_images\Value.png){.lightbox}
+
+![Saturation](_images\Saturation.png){.lightbox}
+:::
+
+
+
+
+People are generally better at differentiating between levels of **saturation** than between hues. 
+
+So here on the right, you see hue value in saturation. Just presented, again, the four
+hues across the top, then, four levels of color value, and then four gradations of
+saturation on the bottom row. So generally, humans are better at differentiating
+between levels of saturation than between hues. And so it's a good thing to keep in
+mind when you're creating a map. There's also the fact that a lot of us associate
+various things with different hues. And that's somewhat less the case with levels of
+saturation.
+
+
+## Using Color in Maps {.unnumbered}
+
+* Use **saturation** for differences in **intensity** : best for **quantitative** data
+
+    + our perceptions of color rank are subjective, and can often fail at ranking colors in the correct order
+    + For example, in a map that uses a scale of greens to yellows to oranges to reds to show intensity from least to greatest, respectively: one person might initially view the yellow a being the highest, while another person might associate red with being the highest. 
+    + This color scale would also be impossible for someone who is red-green colorblind to interpret
+
+* Use **hue** for differences in category: best for **qualitative** data
+

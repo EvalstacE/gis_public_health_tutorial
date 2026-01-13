@@ -1,0 +1,576 @@
+# Getting Started with Census Data in R
+
+|
+|
+
+---
+
+#### `tidycensus` {.unnumbered}
+
+The following link is an incredibly helpful resource for all things `tidycensus`, written by a man named Kyle Walker. What you see throughout this chapter is essentially just a subset of his incredibly comprehensive documentation, applying the concepts to the State of Montana.
+
+https://walker-data.com/census-r/index.html
+
+
+------------
+
+
+|
+
+#### Create your Census API Key: {.unnumbered}
+
+To get started working with `tidycensus`, you need a Census **API key.**
+
+A key can be obtained from: **http://api.census.gov/data/key_signup.html**
+
+|
+|
+
+#### Install and load in these libraries: {.unnumbered}
+
+```{r, results = "hide", message = FALSE, warning = FALSE}
+
+library(tidycensus)
+library(tidyverse)
+library(dplyr)
+library(stringr)
+library(cowplot)
+library(purrr)
+library(tigris)
+library(kableExtra)
+library(knitr)
+library(ggfx)
+library(ggplot2)
+library(sf)
+library(dplyr)
+
+
+```
+
+|
+
+#### Bring in your API Key {.unnumbered}
+
+```{r, eval = FALSE}
+
+census_api_key("YOUR KEY GOES HERE", install = TRUE)
+
+
+```
+
+
+|
+|
+|
+
+
+## Explore available table IDs and names {.unnumbered}
+
+
+|
+
+
+```{r, eval = FALSE}
+
+# This is pulling in all the table IDs for the ACS 5-year estimates, 
+## available for the year 2023: 
+ACS5_VariableList <- load_variables(year = 2023, 
+                                    dataset = "acs5", 
+                                    cache = TRUE)
+
+
+# I'm going to add two new columns that will identify the main table ID
+## and the subsets for each: 
+
+substrRight <- function(x, n){
+  substr(x, nchar(x)-n+1, nchar(x))
+}
+
+
+```
+
+|
+|
+
+**Here's a small subset of the dataframe we just created:**
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+ACS_vars_subset <- read.csv("_info_tables/ACS_vars_subset.csv")
+
+ACS_vars_subset_table <- ACS_vars_subset %>%
+  kbl(caption = "ACS Table of Variables Example", 
+      align = "lll") %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"), 
+    full_width = TRUE)
+
+ACS_vars_subset_table
+
+```
+
+
+|
+|
+|
+
+## Bring in your first table using the API: {.unnumbered}
+
+|
+
+You'll notice here that the variables are only listed by their table ID. This isn't a big deal if you're just bringing one thing in every once in a while. 
+
+But if you're wanting to pull in even across just a small handfull of different factors (like income, population, housing), you probably won't know whats-what. So, one thing that's helpful is to join the variable list dataframe to it. 
+
+You can see how to do this in the custom `fetch_census_data()` function created in a later section. 
+
+|
+
+
+
+```{r, eval = FALSE}
+
+## census table from the ACS 5-year; population by MT county
+
+mt_cnty_pops <- get_acs(
+  geography = "county", 
+  variables = "B01001_001", 
+  state = "MT",
+  year = 2023
+)
+
+
+```
+
+|
+|
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+example_cnty_pops <- read.csv("_info_tables/00_example_mt_cnty_pops.csv") %>%
+  arrange(desc(estimate)) %>%
+  select(-moe) %>%
+  head(10)
+
+cnty_pops_table <- example_cnty_pops %>%
+  kbl(caption = "(subset) Population by County, Montana (2023 ACS5-year)") %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"), 
+    full_width = TRUE)
+
+cnty_pops_table
+
+```
+
+
+
+
+
+## Categorizing Table IDs {.unnumbered}
+
+The `ACS5_VariableList` table we created gave me over 28,000 rows of variable names. Within that list, there over 680 unique **main** table IDs for the ACS 5-year estimates available in Montana ("main" meaning, higher-level topics like housing characteristics, population by age, income, etc...)
+
+|
+|
+
+What we can do to help us sort through all these is to create a list (or many lists) that group related variables together. This will hopefully make a bit more sense when you see how the `tidycensus` API calls work in later sections here. 
+
+|
+
+#### So now let's do that : {.unnumbered}
+
+|
+
+```{r, eval = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# I'm leaving these all as open lists in case I want to add in more table IDs to them later: 
+
+Population <- c(
+        "B01001", "B01002", "B01003", "B09001", 
+        "B09002", "B09005", "B09010", "B09018", 
+        "B09019")
+
+RaceEthnicity <- c("B02001", "B02008", "B02009", 
+                        "B02010", "B02011", "B02012", 
+                        "B02015", "B02016", "B02018",
+                        "B02019", "B02020", "B02021", 
+                        "B03001", "B03002", "B03003")
+
+
+Housing <- c("B25001", "B25002", "B25003", "B25004", 
+             "B25005", "B25006", "B25007", "B25008", 
+             "B25009", "B25010", "B25011", "B25012", 
+             "B25014", "B25032", "B25034", "B25035", 
+             "B25063", "B25081", "B25074", "B25091",
+             "B25092","B19001")
+
+
+Education <- c("B15001", "B15002", "B15003", "B14001", 
+               "B14002", "B14003", "B14004", "B14005", 
+               "B14006", "B14007")
+
+
+Employment <- c("B23001", "B23003", "B23006", "B23007", 
+                "B23008", "B23009", "B23010", "B23018", 
+                "B23020", "B23025")
+
+
+IncomePoverty <- c("B19001", "B19013", "B19019", "B19025", 
+                   "B17001", "B17003", "B17004", "B17005", 
+                   "B17006", "B17007", "B17008", "B17009", 
+                   "B17010", "B17011", "B17012", "B17013", 
+                   "B17014", "B17015", "B17016", "B17017",
+                   "B17018", "B17019", "B17020", "B06012")
+
+
+Health <- c("B27001", "B27002", "B27003", "B18101", 
+            "B18102", "B18103", "B18104", "B18105", 
+            "B18106", "B18107", "B18135")
+        
+Migration <- c("B07001", "B07002", "B07003", 
+               "B07201", "B07202", "B07203", 
+               "B07204")
+
+
+Transportation <- c("B08006", "B08007", "B08008", 
+                    "B08009", "B08011", "B08012", 
+                    "B08013", "B08014", "B08015", 
+                    "B08016", "B08017", "B08018", 
+                    "B08301", "B08302", "B08303", 
+                    "B08501", "B08503", "B08505")
+
+
+Veterans <- c("B21001", "B21002", "B21003", 
+              "B21004", "B21005")
+  
+
+Disability <- c("B18101", "B18102", "B18103", 
+                "B18104", "B18105", "B18106", 
+                "B18107")
+
+ForeignBorn  <- c("B05001", "B05002", "B05003", 
+                             "B05004", "B05005", "B05006", 
+                             "B05007", "B05008", "B05009")
+
+
+Language <- c("B16001", "B16002", "B16003", 
+              "B16004", "B16005", "B16006", 
+              "B16007", "B16008", "B16009")
+
+
+
+```
+
+|
+|
+
+Now that we've created our grouped lists of table IDs, we can combine them all into a single dataframe:
+
+|
+
+```{r, eval = FALSE}
+
+# Combine into a named list
+category_list <- list(Population = Population, 
+                      RaceEthnicity = RaceEthnicity, 
+                      Housing = Housing, 
+                      Education = Education, 
+                      Employment = Employment, 
+                      IncomePoverty = IncomePoverty, 
+                      Health = Health, 
+                      Migration = Migration, 
+                      Transportation = Transportation, 
+                      Veterans = Veterans, 
+                      Disability = Disability, 
+                      ForeignBorn = ForeignBorn, 
+                      Language = Language)
+
+# Convert list to a data frame
+category_list <- stack(category_list)
+
+
+# Rename columns for clarity
+category_list <- data.frame(main_ID = category_list$values, 
+                            category = category_list$ind, 
+                            stringsAsFactors = FALSE, 
+                            row.names = NULL)
+
+
+```
+
+
+---------------
+
+|
+|
+
+
+## Create a `function()` to get complete ACS estimates and summary variables {.unnumbered}
+
+```{r, eval = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+
+# First, we will create the "main_ID" 
+## for the ACS5_Variables dataframe, 
+### and append our categories: 
+
+ACS5_VariableList <- ACS5_VariableList %>%
+    dplyr::mutate(main_ID = str_sub(name, 1, 6),  
+                  subset_ID = str_sub(name, 9, 11)) %>%
+  select(name, main_ID, subset_ID, label, concept) %>%
+  left_join(category_list, relationship = "many-to-many") %>%
+  
+  # We will remove the tables that we did not assign: 
+  
+  filter(!is.na(category))
+
+
+# ---- DEFINE THE FUNCTION ---- #
+
+fetch_census_data <- function(variable_table, 
+                              selected_category, 
+                              my_tableID_col, 
+                              selected_state,
+                              selected_geography,
+                              selected_year) {
+  
+  # Ensure the specified column exists in the data
+  if (!my_tableID_col %in% names(variable_table)) {
+    stop("The specified column name does not exist in the data frame.")
+  }
+  
+  # Filter table IDs based on the chosen category
+  table_ids <- variable_table %>%
+    filter(category == selected_category) %>%
+    pull(!!sym(my_tableID_col)) 
+  
+  # Check if there are tables in the selected category
+  if (length(table_ids) == 0) {
+    stop("No tables found for the selected category.")
+  }
+  
+  # Initialize an empty list to store results
+  results_list <- list()
+
+  
+# ---- LOOP THROUGH TABLES ---- #
+  
+  for (i in seq_along(table_ids)) {
+    table_id <- table_ids[i]
+    
+    # Construct summary variable (tableID_001)
+    summary_var <- paste0(table_id, "_001")
+    
+    # Try fetching ACS data (catch errors to avoid breaking the loop)
+    tryCatch({
+      df <- get_acs(
+        dataset = "acs5",
+        geography = selected_geography,  
+        state = selected_state,
+        table = table_id,  
+        summary_var = summary_var,
+        year = selected_year) %>%
+        mutate(table_id = table_id, category = selected_category)  
+      
+      # Store results
+      results_list[[i]] <- df
+
+      # Prevent API overload
+      Sys.sleep(2)
+      
+    }, error = function(e) {
+      message(paste("Error fetching table:", table_id, "Skipping..."))
+    })
+  }
+  
+  # Combine all results
+  selected_ACS <- bind_rows(results_list)
+  
+  return(selected_ACS)
+}
+
+
+
+
+```
+
+
+|
+|
+|
+
+----
+
+### Now let's apply this function to start pulling in our census data {.unnumbered}
+
+|
+
+For some reason, you can only pull a "summary_var" for one table at a time, which means that we cannot apply this logic in a simple large batch based on a table ID - we have to iterate through each individual table. 
+
+Because of that, this function takes time. Depending on how many tables you subset out at once, and perhaps more importantly, the level of `geography` you are calling (i.e. census tracts for the entire state vs. a single county), it could take a lot of time. 
+
+When I first started trying this out, I told the function to pull in everything for all census tracts in the State of Montana for all tables I previously categorized as `Veterans` (see above). Even though that was my shortest list of tables, it was way too much to throw at it at once.
+
+I think the best approach is to start very small - and continue to append tables back together as needed. 
+
+|
+|
+
+Below is an example of how you could apply this function after sub-setting out a couple of main table IDs from different "categories" we created above.
+
+**Note** : while you can always call in this API and pull this data in on-the-go, I like to export/save them into my own folders 
+after pulling them, as you'll see at the end of this code chunk. 
+
+For me, I like to be able to just read in the `.csv` tables I created in future projects instead of having to re-run all the API calls. But that's just a personal preference thing, and is not a necessary step. 
+
+|
+
+```{r, eval = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+# ---- Housing and Poverty Example ---- # 
+
+# subset housing variables of interest: 
+
+housing_variables <- ACS5_VariableList %>%
+  filter(category == "Housing" & 
+           main_ID %in% c("B25074", "B25091", "B25092","B19001"))
+
+
+# housing returns 260 different stats  - let's do a couple at a time,
+## since we will be pulling for every census tract in MT: 
+
+housing_variables <- ACS5_VariableList %>%
+  filter(category == "Housing" & 
+           main_ID %in% c("B25074", "B25091"))
+
+housing_variables2 <- ACS5_VariableList %>%
+  filter(category == "Housing" & 
+           main_ID %in% c("B25092","B19001"))
+
+by_fed_poverty <- ACS5_VariableList %>%
+  filter(category == "IncomePoverty" & 
+           name %in% c("B06012_001","B06012_002", "B06012_003"))
+
+
+# using our custom function we created above --
+### pull in the data --- 
+
+census_data_by_FedPoverty <- 
+  fetch_census_data(
+          variable_table = by_fed_poverty, 
+          selected_category = "IncomePoverty", 
+          my_tableID_col = "main_ID", 
+          selected_state = "MT", 
+          selected_geography = "tract", 
+          selected_year = 2023
+          )
+
+
+# Join with the real labels from the census, and then
+## I like to export them / save them individually for safe keeping
+
+ census_data_by_FedPoverty <- census_data_by_FedPoverty %>%
+   
+     left_join(ACS5_VariableList, 
+                    by = c("variable" = "name", 
+                           "table_id" = "main_ID", 
+                           "category" = "category")
+               ) %>%
+  
+  # Create a county name variable
+     mutate(county = str_extract(NAME, ";\\s*([^;]+)\\s*;")) %>%
+     mutate(county = str_trim(str_replace_all(county, ";", "")))
+
+
+# Export and save tables: 
+
+## write.csv(census_data_by_FedPoverty, file = "_census_tables/census_data_by_FedPoverty.csv")
+
+```
+
+
+|
+|
+
+-------------
+
+
+## Final Census Data for future use {.unnumbered}
+
+|
+
+**Here is a peak at what the final table output looks like:**
+
+I filtered this down to show just a subset for Yellowstone County census tracts, and just one of the variables from our poverty table:
+
+|
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+library(dplyr)
+library(kableExtra)
+library(knitr)
+
+example_fed_poverty <- read.csv("_info_tables/00_ex1_final_fed_pov_by_mt_cnty.csv") %>%
+  filter(county == "Yellowstone County") %>%
+  head(6)
+
+fed_poverty_table <- example_fed_poverty %>%
+  kbl(caption = "Yellowstone County Census Tracts: total population at 100 to 149 percent of the poverty level") %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"), 
+    full_width = TRUE)
+
+fed_poverty_table
+
+```
+
+
+
+-------
+
+
+|
+
+After running that process through for any number of variables, 
+and since I exported and saved the final results, I can now simply 
+read in these tables anytime I want to access this information. 
+
+| 
+
+Again, that's not necessary as you can always pull this in using the
+API. But I think it's nice to be able to just run through everything
+we did above just one time, and then create a repository for yourself
+that you can read in anytime you want with ease. 
+
+In other words, for anything I do in the future where I want to bring in this census data, this is the only thing I need to run now to get me started:
+
+
+```{r, eval = FALSE}
+
+# - Read in the saved Census .csv files we created, 
+## -- grouped by category:
+
+census_data_poverty <- read_csv("_census_tables/census_data_poverty.csv")
+census_data_by_FedPoverty <- read_csv("_census_tables/census_data_by_FedPoverty.csv")
+census_data_veterans <- read_csv("_census_tables/census_data_Veterans.csv")
+census_data_housing1 <- read_csv("_census_tables/census_data_housing1.csv")
+census_data_housing2 <- read_csv("_census_tables/census_data_housing2.csv")
+
+```
+
+
+
+

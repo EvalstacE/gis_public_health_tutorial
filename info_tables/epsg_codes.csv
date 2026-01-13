@@ -1,0 +1,12 @@
+﻿Projection,EPSG,Projected,Optimizes,Distortion,Useage
+WGS84,4326,-,-,-,"GPS, global datasets"
+NAD83,4269,-,-,-,US-based GIS datasets
+Albers Equal Area Conic,5070,X,area,shape and distance distorted slightly,"Thematic, demographic, environmental mapping"
+Lambert Conformal Conic,102004,X,shape,area and distance distorted slightly,General cartography; maps that require shape accuracy
+NAD83 / UTM + Zone,269<ZONE>; e.g.: 26911 for UTM Zone 11 North,X,local accuracy,distortion increases outside of each zone,"Large-scale maps (specific states, counties, cities, etc.)"
+WGS84 / Mercator,3857,X,angles and shapes,distortion increases further from equator,global-scale mapping applications; navigation
+WGS84 / Mercator,3395,X,angles and shapes,less distortion at mid-latitudes but still high near poles,"Web mapping for direction (used by Google Maps, OpenStreetMap)"
+Web Mercator Auxiliary Sphere,3587,X,angles and shapes,similar to 3857 but used in some GIS systems,Used in ESRI and ArcGIS Online web mapping
+NAD83/Montana,32100,X,area,,a good general purpose projection for the State of Montana; Albers Equal Area Conic projection; works best for mapping the entire state (wider east-west areas)
+NAD83/Zone 11N,26911,X,areas between 120°W and 114°W,,optimizes area for Zone 11N; works best for narrower longitudincal bands (focuss on specific counties)
+NAD83/Zone 12N,26912,X,areas between 114°W and 108°W,,optimizes area for Zone 12N; works best for narrower longitudincal bands (focuss on specific counties)

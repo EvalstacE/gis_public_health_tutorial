@@ -1,0 +1,74 @@
+# Bias and other challenges working with spatial data
+
+Bias can impact research and its interpretations in many different ways. In spatial data analysis, there are four categories in particular that are the most common, that we should be particularly mindful of and thoughtful in addressing or reducing their influences. Understanding these spatial analysis challenges is crucial in public health research. By recognizing and addressing the ecological fallacy, MAUP, boundary problem, and small numbers problem, researchers can ensure more accurate and reliable analyses, leading to better-informed public health decisions.
+
+## **Ecological Fallacy** {.unnumbered}
+
+* The **ecological fallacy** arises when inferences about individual behavior are drawn from aggregate data, leading to potential misinterpretations. This occurs because relationships observed at the group level may not hold true at the individual level.
+
+Aggregated data can mask individual variations, leading to incorrect assumptions about individual behaviors based on group statistics. For instance, a study might find a high correlation between two variables at the regional level, but this does not necessarily imply that the same relationship exists at the individual level within those regions. 
+
+In public health, relying solely on aggregated data without considering individual-level variations can lead to misguided policies. For example, if a region shows high rates of a particular health outcome, it might be tempting to assume that all individuals in that region are at equal risk, which may not be the case.
+
+To avoid ecological fallacies, it's essential to analyze data at the appropriate level. When possible, individual-level data should be used to draw conclusions about individual behaviors. If only aggregate data is available, researchers should be cautious in making inferences about individuals.
+
+----------
+
+## **Modifiable Areal Unit Problem (MAUP)** {.unnumbered}
+
+* altering the boundaries of spatial units (like districts or regions) can drastically change the results of spatial analysis, even with the same data
+
+* introduces bias due to variability in the data within and between units of analysis
+
+  +  Scale Effect and Aggregation
+  +  Zoning Effect
+  
+![MAUP Scale Effect](_images\MAUP_scale_effect.png){.lightbox width = 50%}
+
+
+* **Mitigation Strategies** 
+
+  + Conduct sensitivity analyses using multiple zoning schemes and scales to assess the robustness of findings.
+  + Where possible, use individual-level data to minimize aggregation biases.
+
+----------
+
+## **Boundary Problem** {.unnumbered}
+The **boundary problem** arises when artificial boundaries imposed on continuous spatial phenomena lead to biased analyses. These boundaries can create a) **edge effects**, where data outside the study area are ignored and influence the results / conclusions or b) **shape effects** (similar to MAUP's Zoning Effects), .
+
+* **Edge Effects**
+  + Ignoring data beyond artificial boundaries can lead to incomplete or biased analyses, especially when the phenomenon under study does not adhere to these boundaries. 
+  + When we cut our bound our data to a specific shape, we might be losing critical information that is happening outside of that shape. 
+  + **For example:** A study on air pollution confined to a city's administrative boundaries might overlook pollution sources just outside the city limits (air pollution does not reasonalbly adhere to any sort of administrative boundary), leading to an incomplete understanding of pollution patterns.
+
+* **Shape effects**
+  + The shape of the study area can influence spatial analyses, potentially leading to misinterpretations
+  + depending on what shapes you choose to "cut" or "slice" or "bin" your data, you may get very different results, especially for spatial processes like clustering
+  + Related to MAUP's 
+  + **Gerrymandering is exploitation of a shape effect** 
+
+* **Mitigation Strategies**
+
+  + Extend the study area beyond artificial boundaries to capture relevant data.
+  + Use methods like repeated random boundary estimation to assess the stability of findings.
+
+
+------------
+
+## **Small Numbers Problem** {.unnumbered}
+
+* The **small numbers problem** occurs when analyses are based on small populations or case counts, leading to high variability and potential misinterpretations.
+
+* In areas with small populations, even a slight change in case numbers can lead to significant fluctuations in rates, making it challenging to distinguish between random variation and actual trends.
+
+* **For example:** A rural county with a small population might show a high disease rate due to a few cases, but this rate may not be statistically significant or indicative of a broader trend.
+
+* **Mitigation Strategies**
+
+  + Aggregate data over longer time periods to increase case counts and stabilize rates.
+  + Use statistical techniques that account for variability in small populations, such as Bayesian hierarchical models.
+
+
+
+
+

@@ -1,0 +1,186 @@
+# Point Data
+
+When we talk about point data, we mean that the locations themselves (coordinates) ARE the data. The point / location marks something very specific such as the existence of an object or of a disease case, and/or the the exact location that an event occurred. 
+
+Assessing patterns in point data can help us answer really important questions, can can provide insights on many things: from figuring out if disease cases are clustered around specific areas or locations, to assessing temporal and spatial trends over time, and much more. 
+
+In public health, our main interests in point data lie in: 
+
+* The distribution of events in space, and 
+* whether there is any possible interaction between the events themselves and where they are located
+  
+Points can also represent a calculated statistic, referred to as a **geostatistical or point-referenced data**
+
+::: {layout-ncol=2}
+
+![Point-Process](_images/points_events.png){.lightbox}
+
+![Point-Referenced](_images/geostats_points.png){.lightbox}
+
+:::
+
+
+---------
+
+## Considerations for Point Data in Public Health
+
+**Disease ascertainment**
+
+* ascertainment = available / reported / collected data
+* registries improve ascertainment
+* stigma reduces ascertainment
+* ascertainment changes throughout space and time
+  
+**Exposure misclassification**
+
+* Points usually represent a home address or the location of a clinic. This would not accurately reflect someone's full (or arguably sometimes, most significant) exposure sources such as: 
+* Occupational exposures
+* Transportation exposures
+* much more...
+    
+**Privacy and Confidentiality**
+
+* more detail in this chapter: *chapter link* 
+
+----------
+
+## Point Patterns
+
+**Point pattern data**: randomness (point process) lies in the event
+**locations**
+  - We are interested in the spatial pattern of these events
+  - How are the locations themselves distributed within a region of interest?
+
+**Geostatistical/point-referenced data**: randomness lies in
+the **value of the measurement** taken at each location
+  - We consider the sample locations fixed (e.g., selected by
+researcher)
+  - We are interested in the measured value at that location, 
+  - not the location itself
+  - e.g. air quality index at monitoring stations
+
+
+### Spatial Process {.unnumbered}
+
+When we say **"spatial processes"**, what we are referring to is how we can describe how the observed spatial pattern may have been generated. 
+
+As a baseline, we consider all processes to have some element of <span class = "highlight"> **stochasticity,** </span> a fancy word for **randomness.**
+
+The map we generate to display our points is *the realization of such a process*. 
+In theory, if we applied the same process again, and again, and again, to infinity and beyond, we would have a slightly different map each time because of the element of this natural randomness. This concept directly relates to randomly sampling from a theoretical "population" with a known distribution. Even though the samples are coming from the same "population," each time we grab a random sample, there will be some level of variability due to the intrinsic randomness within a population. 
+
+
+### Complete Spatial Randomness (CPR) {.unnumbered}
+
+The concept of "complete spatial randomness" is, in a way, analogous to thinking about what our "null hypothesis" is. Except, instead of thinking about the "null" scenario in terms of distributions or densities of the values themselves, we are looking at it through a lens of spatial patterns. 
+
+In other words, if there were absolutely no detectable patterns in the *spatial* distribution of our points, what would that look like? 
+
+This is our theoretical starting point to think about when evaluating a point / spatial process. There are two hypotheses associated with CSR: 
+    **1. No regions where events more or less likely to occur**
+    **2. Cases occur independently of one another**
+
+
+## Jittering Points
+
+**Jittering** is a technique used to offset / change the location of the locations of points radomly, to preserve privacy while still maintaining spatial process / trends.
+
+Below is a short script that brings in some point data and demonstrates how to apply this technique using the `st_jitter` function within the `sf` package. 
+
+
+-----------
+
+
+## Point Intensity (aka density)
+
+A measure of **how many events occur within any specific area.** Essentially, this is **density.** The specified area could be in terms of a grid (squares), circles, essentially any shape as long as we can calculate its area. 
+
+
+::: {layout-ncol=2}
+
+![Point-Process](_images/point_intensity_circle.png){.lightbox}
+
+![Point-Process](_images/point_intensity_square.png){.lightbox}
+
+:::
+
+
+### Intensity Estimate: "Quadrants" {.unnumbered}
+
+If we have underlay a grid - where each quadrant is a set area -  we can calculate the point density (intensity) within each, and use those density values to visualize through the use of color, shape, size, etc. 
+
+**Advantages of this approach:** 
+  - Simple
+  - An improvement compared to the "constant intensity" assumption
+  
+**Disadvantages:**
+
+  - Altering the shape and size of the quadrants can lead to wildly different estimates and insights
+  - Patterns within quadrants are ignored and lost 
+  - **Does NOT borrow information from neighboring quadrants** * 
+  
+* Meaning, if the intensity within quadrant **A** is somehow related to the intensity that we see within quadrant **B**, there is no way to account for this.
+
+
+----------
+
+
+### Intensity Estimate: "Moving Window" {.unnumbered}
+
+A "moving window intensity estimate" refers to a method of calculating the average intensity (or another statistical measure) within a sliding window of data points, where the window moves through a given region.
+
+The biggest advantage is that this provides a much **smoother** estimate of intensity over the given region, because you lose the rigid boundaries of the quadrants. 
+
+However, we still lose and ignore information within each window. And so‐‐
+again‐‐ you have to think carefully about the size of your area you're looking at, the size and shape of the window, and
+whether it's important to change the scale or change your approach altogether.
+
+**Sliding window:**
+The "window" is a fixed-size subset of the data that moves along the data sequence, calculating the desired statistic (like mean, median, standard deviation) for each window position
+
+**Window size selection:**
+Choosing the appropriate window size is crucial, as a small window can be sensitive to noise while a large window might miss subtle changes in the data
+
+**Edge effects:**
+When the window reaches the beginning or end of the data, special handling might be needed to avoid skewed calculations.
+
+### Kernel Density: A Type of "Moving Window Estimate"
+
+<span class = "highlight"> AKA: **KDE** </span>
+
+The most defining feature of the **KDE** moving window intensity estimate is that **it accounts for spatial relationships** within a defined search window. 
+
+**Advantages of KDE:** 
+
+  - It avoids the abrupt cutoffs of simple moving window approaches, where all points inside the window are counted equally.
+  - It provides a smoother, more continuous estimation of density.
+  - **It captures spatial patterns more effectively than standard moving window estimate**, especially in cases where events cluster in space.
+  
+<span class = "highlight"> **Search Window == "Kernel."** </span> The center of the kernel == **$S$**
+
+Larger radius of kernel/search window == smoother intensity estimate. Why? Because, the further out we look, the more we are averaging out across the surface. If you have an extremely small search window, it's almost as if you lose the strength of this approach: you no longer account for neighboring information. This will result in a "rougher" looking surface - similar to a quadrant. 
+
+**Example Application in Public Health:**
+If you were analyzing the intensity of disease cases across a geographic region:
+
+  - A simple moving window method might just count cases within a 5-km radius of each location.
+  - A kernel density approach would assign higher weight to cases near the center of the search area and lower weight to those near the edge.
+  - This helps in identifying hotspots more accurately, reflecting the reality that nearby cases influence disease spread more than distant ones.
+
+**How it works:**
+
+  1. You define a search window, $S$ (size and shape) that then "moves across" the study area. 
+    - This window includes events (e.g., points, cases, incidents) that fall within a certain range.
+    - The intensity at any given window $S$ is estimated based on how many events fall within the search window.
+
+  2. Weight Events by Distance to Other Events
+    - Simply counting points in a search window ignores the fact that closer events are often more relevant than those further away.
+    - This is based on **Tobler’s First Law of Geography:** 
+    - *“Everything is related to everything else, but near things are more related than distant things.”*
+    - To incorporate this principle, KDE assigns weights to events based on their distance from the center of each $S$
+      - **Closer points → Higher weight**
+      - **Farther points → Lower weight**
+      
+  3. Apply Kernel Function:
+    - A kernel function is applied to assign these weights. 
+    - A common choice is the **Gaussian (Normal) kernel**, which creates a smooth intensity surface by giving high weight to events near the center of $S$ and tapering off gradually.

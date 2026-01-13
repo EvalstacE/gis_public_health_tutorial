@@ -1,0 +1,183 @@
+# Introduction to GIS and Public Health
+
+## Define GIS {.unnumbered}
+
+**Geographic Information Systems** create, manage, analyze, and map data by integrating descriptive information with location data. It is used in numerous fields, including public health and environmental health science to understand patterns, relationships, and geographical contexts. 
+
+### Functions and strengths of GIS {.unnumbered}
+
+Maps can be fantastic resources for public health professionals. Maps:
+
+* Can make data readily accessible for a wide variety of audiences. 
+* Allow us to locate and visualize data on the Earth's surface. 
+* Help us simplify our surroundings.
+
+We know that our world is quite complex, but we can take elements that we want to highlight and put them on a map so that we're only conveying the information that is useful for us. We're cutting through all the additional noise to convey a very specific message. 
+
+
+## Spatial Data for Public Health
+
+**Place matters in public health, but why?** The place or location provides valuable insights into relevant exposure, disease distribution, and populations including vulnerable populations. Additionally, it provides information about cities, provinces, counties, and countries. Having information about an individual's residence, work, recreational activities, and movement can help in understanding the source of an exposure or illness and spatial relationship. This information can be used to allocate resources more effectively to improve the public health situation. 
+
+Besides place, **person and time** are also important attributes in epidemiology, environmental health, or public health because they also help us identify patterns and trends of diseases.
+
+**Personal characteristics** such as age, sex, race, and ethnicity can significantly influence or impact health outcomes. Other personal characteristics such as occupation, diet, smoking, alcohol consumption, medication intake, and family history of disease also contribute to exposure and disease risk. 
+
+**Time** is important in studying or characterizing illness. For example, it provides valuable information on changes in the number of cases or incidence rates over time or if there is a seasonal pattern of illness. For example, in outbreak investigation, determining the relationship between time and uncertain illness can help in identifying the source of the outbreak.
+
+## GIS in Epidemiology {.unnumbered}
+
+Epidemiology identify patterns and trends in disease occurrence and distribution by examining attributes like who, where, and when. For example, epidemiologists calculate measure of disease in population by time such as prevalence or incidence. Prevalence is the proportion of the population that has a disease at a particular time, while incidence is the number of new cases of a disease that occur in a population over a specified period of time. This answer the question of who. Epidemiologists also examine the distribution of disease by place to identify geographic pattern and trends in disease occurrence. 
+
+Epidemiological measures such as rates, ratios, and proportions are used to compare disease occurrence across different geographic areas such as cities, province, territories, counties, municipalities, or countries. This answers the question of where. In the case of when, epidemiologists also examine the distribution of disease by time to identify the temporal patterns and trends in disease occurrence measures. Such as incidents rate, case counts, time series analysis are used to examine changes in disease occurrence over time such as seasonal variation or trends over multiple years.
+
+* Mapping disease risk across space and time
+* Where is disease occurring?
+* Where is disease spreading?
+* Locating disease clusters
+* Target limited resources and interventions in areas that need it most
+
+
+### GIS and Social Determinants of Health / Health Equity {.unnumbered}
+
+It can be used to visualize and analyze important social factors such as poverty rates, education levels, housing, transportation, and access to healthy food. These factors are crucial in understanding health disparities and promoting equity in health care. By combining and mapping data related to health economics and population, we can identify areas where interventions are needed to improve overall population health.
+
+We can also use GIS to map health equity metric, such as population density, race and ethnicity, and poverty. This information is often available at different geographic levels, ranging from national to local. We can use GIS to investigate spatial and statistical relationship between particular health outcomes and health equity metrics.
+
+Therefore, GIS technology provides us with the ability to analyze and assess health risk factors as well as social determinants that contribute to overall health outcomes using both empirical and visual frameworks.
+
+By quantifying and analyzing data related to exposure, health, economy, and population, we can pinpoint areas that require interventions to enhance the overall health of the population. With the use of GIS, we can visualize complex patterns and relationships that may not be easily observed, enabling us to create a targeted intervention to improve community well-being.
+
+
+### GIS in Health Services {.unnumbered}
+
+GIS can and has been helpful in planning and providing healthcare services. For example, it can help assess healthcare utilization, identify areas with the highest or lowest burden of disease and greatest health care need. The GIS tool can also be used to calculate the distance between the household and healthcare facility, which can help healthcare providers better understand the healthcare needs of their parents and tailor their services to meet.
+
+### GIS in Intervention Monitoring {.unnumbered}
+
+We can use GIS mapping to overlay areas of implementation of intervention and health outcomes to hypothesize about the intervention's effectiveness.
+
+As an example, one study analyzed the effectiveness of insecticide treated nets or insecticide treated bed nets in controlling malaria in Laos. They employed GIS map to study the impact of the intervention and found that villages with higher malaria cases had lower intervention coverage and lower adherence to insecticide treated nets.
+
+
+### GIS in Disease Surveillance {.unnumbered}
+
+GIS has been used to track disease outbreaks and monitor the effectiveness of intervention in controlling outbreaks. For example, one study used geospatial modeling to identify areas with a high risk of microcephaly and zika virus infection in Brazil. This information was then used to target public health intervention.
+
+
+## Geography of Health Risk {.unnumbered}
+
+The Geography of Risk framework explains how spatial patterns in health risks emerge by considering three interconnected factors: geography of **exposure**, geography of **adaptation**, and geography of **susceptibility*. Each of these factors contributes to the overall risk faced by individuals and communities.
+
+By understanding these three factors, public health officials can **better predict, prevent, and respond to health risks** using targeted interventions that address exposure, improve adaptation, and reduce susceptibility.
+
+#### Geography of Exposure {.unnumbered}
+
+This factor refers to where and how people come into contact with health risks. It considers the **physical and environmental hazards present in a particular location**, such as pollution, extreme weather events, disease outbreaks, or access to contaminated food and water. Exposure can be shaped by factors such as:
+
+* **Environmental conditions** – Proximity to toxic waste sites, poor air quality, or unsafe drinking water.
+
+* **Climate and natural disasters** – Living in areas prone to hurricanes, wildfires, or floods.
+
+* **Infectious disease dynamics** – Locations with high population density, poor sanitation, or frequent human-animal interactions that increase disease transmission.
+
+For example, individuals living in low-lying coastal areas may be at greater risk of flooding, which can lead to waterborne disease outbreaks and displacement.
+
+
+#### Geography of Adaptation {.unnumbered}
+
+This factor refers to the **ability of individuals or communities to respond to and mitigate health risks** based on available resources, infrastructure, and policies. Some key determinants include:
+
+* **Healthcare access** – Availability of hospitals, clinics, and emergency services.
+
+* **Economic resources** – Wealthier communities can invest in protective measures, such as flood barriers or improved healthcare systems.
+
+* **Social networks and support systems** – Strong community ties can facilitate disaster response and access to resources.
+
+* **Government policies and preparedness** – Public health interventions, vaccination campaigns, and emergency response plans affect a community’s resilience.
+
+For example, two regions exposed to extreme heat may experience different health outcomes depending on their capacity to adapt—cities with robust cooling centers and heat emergency plans will have lower health impacts than those without such infrastructure.
+
+
+#### Geography of Susceptibility {.unnumbered}
+
+This factor examines who is **most vulnerable to health risks based on individual and population characteristics.** It considers biological, social, and economic factors that influence a person’s ability to withstand exposure. Key determinants include:
+
+* **Age and preexisting health conditions** – The elderly, infants, and those with chronic illnesses (e.g., asthma, diabetes) are more susceptible to environmental hazards.
+Socioeconomic status – Low-income populations often lack access to healthcare, nutritious food, and safe housing, increasing their vulnerability.
+
+* **Occupational risks** – Workers in hazardous industries (e.g., agriculture, construction) may have greater susceptibility to environmental exposures.
+
+* **Historical and structural inequalities** – Marginalized communities, such as Indigenous populations or racial minorities, may face disproportionate health risks due to historical disinvestment and systemic barriers to resources.
+
+For instance, during heatwaves, low-income older adults living in poorly ventilated apartments without air conditioning are more susceptible to heat-related illnesses compared to younger, wealthier individuals with access to cooling.
+
+![Geography of Health Risk](_images\Geography_of_Risk.png){.lightbox width=50%}
+
+#### How These Factors Interact {.unnumbered}
+
+These three factors—exposure, adaptation, and susceptibility — **do not act in isolation** but interact to create spatial patterns in health risks. For example: 
+
+* **A high-risk region**  would be one where people are highly exposed (e.g., flood-prone areas), have low adaptation capacity (e.g., poor infrastructure, lack of resources), and include vulnerable populations (e.g., elderly or low-income groups).
+
+* **A low-risk region** would have lower exposure (e.g., minimal environmental hazards), strong adaptation mechanisms (e.g., disaster preparedness, robust healthcare access), and less susceptibility (e.g., healthier, well-resourced populations).
+
+
+#### Example: Hurricane Katrina (2005) {.unnumbered}
+
+* **Geography of Exposure:**  New Orleans was highly exposed due to its low-lying location and vulnerability to severe storms.
+
+* **Geography of Adaptation:**  Weak infrastructure (e.g., failing levees) and an inadequate emergency response led to catastrophic flooding.
+
+* **Geography of Susceptibility:**  Disproportionate impacts were seen among low-income, elderly, and Black communities, who faced barriers to evacuation and recovery.
+
+
+
+
+---------
+
+
+## The History of Health and Spatial Data: John Snow {.unnumbered}
+
+::: {.image-left}
+<figure style="float: left; margin-right: 25px; width: 200px;">
+  <img src="_images/John_Snow.jpg" style="width: 100%;">
+  <figcaption style="font-size: 12px; text-align: center;">John Snow, a pioneer in disease mapping. Image from: https://en.wikipedia.org/wiki/John_Snow </figcaption>
+</figure>
+
+The use of geographic information systems (GIS) in public health has a long and continuously evolving history. One of the earliest and most well-known applications of spatial analysis in public health dates back to the 19th century, during a cholera epidemic in Europe. This period is often regarded as the "inception" of GIS in public health, marking a pivotal moment in medical mapping and epidemiology.  
+:::
+
+The use of geographic information systems (GIS) in public health has a long and continuously evolving history. One of the earliest and most well-known applications of spatial analysis in public health dates back to the 19th century, during a cholera epidemic in Europe. This period is often regarded as the "inception" of GIS in public health, marking a pivotal moment in medical mapping and epidemiology.
+
+The first cholera pandemic began in 1817 in the Ganges Delta of India and rapidly spread both eastward to Southeast Asia and westward to the Middle East and Europe. By 1831, cholera had reached Germany and England, causing widespread illness and death. At the time, the dominant theory of disease transmission was **miasma theory**, which held that diseases spread through "bad air" or foul odors. This belief shaped early public health responses, leading to efforts to clean the air rather than address water contamination.
+
+A major breakthrough in understanding cholera transmission came in 1854 when John Snow, a British physician, used spatial analysis to investigate an outbreak in London. Snow meticulously mapped cholera cases in the Soho district and identified a cluster of cases centered around the Broad Street pump. By overlaying cases on a street map, he demonstrated that those who drank water from this pump were far more likely to contract cholera. His analysis provided strong evidence that cholera was transmitted through contaminated water rather than through the air.
+
+
+![John Snow's Chelora Map](_images\snow_map.jpg){.lightbox}
+
+*image source: https://en.wikipedia.org/wiki/File:Snow-cholera-map-1.jpg*
+
+
+To confirm his hypothesis, Snow gathered additional data, interviewing affected households and identifying outliers, such as a local brewery where workers drank beer instead of pump water and remained largely unaffected. His findings led to the removal of the Broad Street pump handle, effectively ending the outbreak. Although germ theory had not yet been widely accepted, Snow’s work laid the foundation for modern epidemiology and demonstrated the power of spatial analysis in understanding disease patterns.
+
+Following Snow’s work, public health mapping continued to evolve. In the late 19th and early 20th centuries, maps were increasingly used to study tuberculosis, malaria, and other infectious diseases. The development of computational mapping techniques in the mid-20th century, along with advancements in computer science and remote sensing, further expanded the role of spatial data in health research.
+
+By the late 20th and early 21st centuries, the rise of GIS technology allowed public health officials to integrate diverse data sources, including environmental, demographic, and epidemiological data, to track disease patterns, assess health disparities, and inform policy decisions. Today, GIS is widely used in outbreak response, chronic disease surveillance, healthcare access planning, and disaster preparedness.
+
+From John Snow’s hand-drawn cholera maps to modern digital GIS tools, the use of spatial data in public health has continually advanced, reinforcing its role as an essential tool in disease prevention and health planning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+label,variable,stat_type,denominator,category
+Median Household Income,B19013_001,currency,NA,Income
+Per Capita Income,B19301_001,currency,NA,Income
+Total People in Poverty,B17001_002,count,B17001_001,Income
+Children (0-17) in Poverty,B17001_004,count,B17001_001,Income
+Deep Poverty (<50% FPL),C17002_002,count,C17002_001,Income
+Poverty Rate: Overall,S1701_C03_001,percent,NA,Income
+Poverty Rate: Under 18,S1701_C03_002,percent,NA,Income
+Poverty Rate: Seniors (65+),S1701_C03_010,percent,NA,Income
+Income <$10k,B19001_002,count,B19001_001,Income
+"Income $10k-$14,999",B19001_003,count,B19001_001,Income
+"Income $15k-$19,999",B19001_004,count,B19001_001,Income
+"Income $20k-$24,999",B19001_005,count,B19001_001,Income
+"Income $25k-$29,999",B19001_006,count,B19001_001,Income
+"Income $30k-$34,999",B19001_007,count,B19001_001,Income
+"Income $35k-$39,999",B19001_008,count,B19001_001,Income
+"Income $40k-$44,999",B19001_009,count,B19001_001,Income
+"Income $45k-$49,999",B19001_010,count,B19001_001,Income
+"Income $50k-$59,999",B19001_011,count,B19001_001,Income
+"Income $60k-$74,999",B19001_012,count,B19001_001,Income
+"Income $75k-$99,999",B19001_013,count,B19001_001,Income
+"Income $100k-$124,999",B19001_014,count,B19001_001,Income
+"Income $125k-$149,999",B19001_015,count,B19001_001,Income
+"Income $150k-$199,999",B19001_016,count,B19001_001,Income
+Income $200k+,B19001_017,count,B19001_001,Income
+Total Households (Denom),B19001_001,denom,NA,Income
+Poverty Universe (Denom),B17001_001,denom,NA,Income
+Poverty Universe Ratio (Denom),C17002_001,denom,NA,Income

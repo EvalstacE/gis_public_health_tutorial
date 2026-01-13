@@ -1,0 +1,165 @@
+# Alternatives to Choropleths
+
+## Centroids as data points {.unnumbered}
+
+We will bring in the same data as before: median household income by census tract in Montana: 
+
+```{r, results = "hide", message = FALSE, warning = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+library(sf)
+library(tigris)
+library(ggplot2)
+library(cowplot)
+library(gridExtra)
+library(classInt)
+library(dplyr)
+
+# Brought in some census data using tidycensus
+
+# income <- get_acs(
+  #geography = "tract", 
+  #variables = "B19013_001",
+  #state = "Montana", 
+  #year = 2020,
+  #geometry = TRUE)
+
+# Convert to sf object
+## income <- st_as_sf(income)
+# Save
+## st_write(income, "income.shp")  
+
+
+# Bring in shapefiles
+income <- st_read("Shapefiles/income", "income")
+# Remove tracts without income data
+income <- income[complete.cases(st_drop_geometry(income)), ]
+TribalNations <- st_read("Shapefiles/TribalNations", "TribalNations")
+
+# Project to same CRS:
+income <- st_transform(income, crs = 32100)
+TribalNations <- st_transform(TribalNations, crs = 32100)
+
+```
+
+--------
+
+### 1. Create centroids {.unnumbered}
+
+```{r, warning = FALSE, message = FALSE, results = "hide"}
+
+# Compute centroids
+income_centroids <- st_centroid(income)
+  
+```
+### 2. Create standard deviation breaks for centroids {.unnumbered}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+library(sf)
+library(tigris)
+library(ggplot2)
+library(cowplot)
+library(gridExtra)
+library(classInt)
+
+# Compute standard deviation classification breaks
+mean_income <- mean(income_centroids$estimate, na.rm = TRUE)
+sd_income <- sd(income_centroids$estimate, na.rm = TRUE)
+
+# Create categories for SD-based classification
+income_centroids <- income_centroids %>%
+  mutate(
+    SD_category = case_when(
+      estimate <= (mean_income - (1.5*sd_income)) ~ "Poorest (< -1.5 SD)",
+      estimate >= (mean_income + (1.5*sd_income)) ~ "Richest (> +1.5 SD)",
+      TRUE ~ "Middle"  # This will be excluded in the filter
+    )
+  )
+
+```
+
+-------
+
+### Plot data as points {.unnumbered}
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+library(sf)
+library(tigris)
+library(ggplot2)
+library(cowplot)
+library(gridExtra)
+library(classInt)
+
+# Filter only the richest and poorest tracts based on SD
+richest_poorest <- income_centroids %>%
+  filter(SD_category %in% c("Poorest (< -1.5 SD)", "Richest (> +1.5 SD)")) %>%
+  arrange(desc(estimate))
+
+
+# Plot only richest and poorest centroids based on SD classification
+sd_plot <- ggplot() +
+  geom_sf(data = income, fill = "#021628", color = alpha("#345460",0.3), alpha = 0.3) +
+  geom_sf(data = TribalNations, fill = "white", color = "white", alpha = 0.5) + 
+  geom_sf(data = richest_poorest, 
+          aes(fill = SD_category),
+          shape = 21,
+          color = "black",
+          alpha = 0.9, 
+          size = 4) +  
+  scale_fill_manual(name = "Median Household \nIncome",
+                    values = c("Poorest (< -1.5 SD)" = "#f47d59", 
+                               "Richest (> +1.5 SD)" = "#a1de5f")) +
+
+  labs( title = "Lowest and Highest Median Household Incomes",
+        subtitle = "Census Tracts in Montana",
+        caption = "categorized based on +/- 1.5 standard deviations\n from the average median household income \nacross census tracts in Montana") +
+  theme_void()
+
+sd_plot
+
+```
+
+
+-------
+
+
+
+
+::: {layout="[[1,1,1], [1]]"}
+
+![Choropleth: Unclassified](_maps\chor_poverty.png){.lightbox}
+
+![Choropleth Subset: highlights high values](_maps\chor_above30.png){.lightbox}
+
+![Geostatistical Points: centroids from census tracts](_maps\centroid_plot_poverty.png){.lightbox}
+
+![Dorling Cartogram](_maps\dorl_plot_poverty.png){.lightbox}
+
+:::
+
+
+## Dorling cartograms {.unnumbered}
+
+What the dorling does is very similar to the process above, but instead of plotting the exact center location of the census tract, it prioritizes **reducing overlap.** Of course, this distorts the location of the census tracts, but its algorithms try their darnedest to preserve the general location. And honestly, I think it does a pretty good job.
+
+    -   the biggest benefit I see with this approach is that you can very quickly understand **the proportion** and **the quantity** of census tracts with high levels of poverty without having to look deeper into a data table.
+
+    -   This "take-away" is near impossible to obtain in the first point map, because so many of the census tracts sit very close to each other, and many of the points end up overlapping. Because the larger points stick out, it exaggerates a notion that we have a very high proportion of census tracts with high poverty rates, which is not entirely true.
+
+    -   While it does distort their locations a bit, I can still get a decent sense of where the most burdened communities are located throughout the state.
+
+    -   So, it sort of has the best of both worlds here: it does not emphasize area of census tract over the value it contains (like in choropleths), and it also allows us to see the overall proportion of communities where poverty rates are high (unlike pure centroid-based plots).
+
+
+
+
+
+
+

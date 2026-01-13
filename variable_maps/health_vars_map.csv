@@ -1,0 +1,15 @@
+label,variable,stat_type,denominator,category
+Uninsured Population,S2701_C05_001,count,S2701_C01_001,Health
+Uninsured Rate (%),S2701_C05_001,percent,NA,Health
+With Private Insurance,S2701_C02_001,count,S2701_C01_001,Health
+With Public Insurance,S2701_C03_001,count,S2701_C01_001,Health
+Total With Disability,S1810_C02_001,count,S1810_C01_001,Health
+Disability Rate (%),S1810_C03_001,percent,NA,Health
+Under 18 w/ Disability,S1810_C02_002,count,S1810_C01_002,Health
+Seniors (65+) w/ Disability,S1810_C02_014,count,S1810_C01_014,Health
+Births in Past 12 Months,B13002_002,count,B13002_001,Health
+Total Civ Noninst Pop (Ins),S2701_C01_001,denom,NA,Health
+Total Civ Noninst Pop (Dis),S1810_C01_001,denom,NA,Health
+Pop Under 18 (Dis Denom),S1810_C01_002,denom,NA,Health
+Seniors 65+ (Dis Denom),S1810_C01_014,denom,NA,Health
+Women 15-50 (Births Denom),B13002_001,denom,NA,Health

@@ -1,0 +1,8 @@
+﻿Extension,Purpose,Mandatory
+.shp,"The main file that stores the feature's geometric shapes (points, lines, polygons) that define spatial features.",Yes
+.shx,"The index file that allows rapid access to the geometric shapes in the .shp file. It stores 1)  The offset (byte position) of where each shape begins in the .shp file and 2) The total length of each shape (so the software knows where it ends). We can think of this as an analogy to the table of contents within a book. The .shp file is the full content of the ""book"" (all shapes). The .shx file is the table of contents that lists the starting point and size of each shape. Instead of flipping through the entire file to find shapes, the GIS software can go directly to each specific shape and understand it's size and positioning relative to all others.",Yes
+.dbf,"The database file that stores attribute data for the features (e.g., names, population).",Yes
+.prj,"The projection file that defines the coordinate system and projection (e.g., WGS84, UTM).","No, but highly recommended for accurate geolocation."
+.cpg,"Specifies the character encoding used in the .dbf file (e.g., UTF-8).",No
+.sbn and .sbx,Spatial index files that improve performance in spatial queries and rendering.,No
+.shp.xml,"Metadata file in XML format, providing information about the shapefile's content, purpose, and usage.",No

@@ -1,0 +1,5 @@
+﻿Feature,Tigris,Geodata
+Scope,U.S.-specific spatial datasets,Global spatial datasets
+Data Type,"Administrative boundaries, roads","Climate, elevation, global boundaries"
+Primary Audience,U.S.-centric analysis,International/global analysis
+Output Format,sf or sp objects,"sf, raster, or terra objects"

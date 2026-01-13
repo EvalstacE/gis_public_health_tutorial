@@ -1,0 +1,71 @@
+label,variable,stat_type,denominator,category
+Total Population,B01003_001,denom,NA,Population
+Median Age (Total),B01002_001,median,NA,Population
+Median Age (Male),B01002_002,median,NA,Population
+Median Age (Female),B01002_003,median,NA,Population
+Total Male,B01001_002,count,B01003_001,Demographics
+Total Female,B01001_026,count,B01003_001,Demographics
+Median Household Income,B19013_001,currency,NA,Economics
+Total Households,B19001_001,denom,NA,Economics
+"Less than $10,000",B19001_002,count,B19001_001,Income Brackets
+"$10,000 to $14,999",B19001_003,count,B19001_001,Income Brackets
+"$15,000 to $19,999",B19001_004,count,B19001_001,Income Brackets
+"$20,000 to $24,999",B19001_005,count,B19001_001,Income Brackets
+"$25,000 to $29,999",B19001_006,count,B19001_001,Income Brackets
+"$30,000 to $34,999",B19001_007,count,B19001_001,Income Brackets
+"$35,000 to $39,999",B19001_008,count,B19001_001,Income Brackets
+"$40,000 to $44,999",B19001_009,count,B19001_001,Income Brackets
+"$45,000 to $49,999",B19001_010,count,B19001_001,Income Brackets
+"$50,000 to $59,999",B19001_011,count,B19001_001,Income Brackets
+"$60,000 to $74,999",B19001_012,count,B19001_001,Income Brackets
+"$75,000 to $99,999",B19001_013,count,B19001_001,Income Brackets
+"$100,000 to $124,999",B19001_014,count,B19001_001,Income Brackets
+"$125,000 to $149,999",B19001_015,count,B19001_001,Income Brackets
+"$150,000 to $199,999",B19001_016,count,B19001_001,Income Brackets
+"$200,000 or more",B19001_017,count,B19001_001,Income Brackets
+Male Under 5 years,B01001_003,count,B01003_001,Age Sex Detail
+Male 5 to 9 years,B01001_004,count,B01003_001,Age Sex Detail
+Male 10 to 14 years,B01001_005,count,B01003_001,Age Sex Detail
+Male 15 to 17 years,B01001_006,count,B01003_001,Age Sex Detail
+Male 18 and 19 years,B01001_007,count,B01003_001,Age Sex Detail
+Male 20 years,B01001_008,count,B01003_001,Age Sex Detail
+Male 21 years,B01001_009,count,B01003_001,Age Sex Detail
+Male 22 to 24 years,B01001_010,count,B01003_001,Age Sex Detail
+Male 25 to 29 years,B01001_011,count,B01003_001,Age Sex Detail
+Male 30 to 34 years,B01001_012,count,B01003_001,Age Sex Detail
+Male 35 to 39 years,B01001_013,count,B01003_001,Age Sex Detail
+Male 40 to 44 years,B01001_014,count,B01003_001,Age Sex Detail
+Male 45 to 49 years,B01001_015,count,B01003_001,Age Sex Detail
+Male 50 to 54 years,B01001_016,count,B01003_001,Age Sex Detail
+Male 55 to 59 years,B01001_017,count,B01003_001,Age Sex Detail
+Male 60 and 61 years,B01001_018,count,B01003_001,Age Sex Detail
+Male 62 to 64 years,B01001_019,count,B01003_001,Age Sex Detail
+Male 65 and 66 years,B01001_020,count,B01003_001,Age Sex Detail
+Male 67 to 69 years,B01001_021,count,B01003_001,Age Sex Detail
+Male 70 to 74 years,B01001_022,count,B01003_001,Age Sex Detail
+Male 75 to 79 years,B01001_023,count,B01003_001,Age Sex Detail
+Male 80 to 84 years,B01001_024,count,B01003_001,Age Sex Detail
+Male 85 years and over,B01001_025,count,B01003_001,Age Sex Detail
+Female Under 5 years,B01001_027,count,B01003_001,Age Sex Detail
+Female 5 to 9 years,B01001_028,count,B01003_001,Age Sex Detail
+Female 10 to 14 years,B01001_029,count,B01003_001,Age Sex Detail
+Female 15 to 17 years,B01001_030,count,B01003_001,Age Sex Detail
+Female 18 and 19 years,B01001_031,count,B01003_001,Age Sex Detail
+Female 20 years,B01001_032,count,B01003_001,Age Sex Detail
+Female 21 years,B01001_033,count,B01003_001,Age Sex Detail
+Female 22 to 24 years,B01001_034,count,B01003_001,Age Sex Detail
+Female 25 to 29 years,B01001_035,count,B01003_001,Age Sex Detail
+Female 30 to 34 years,B01001_036,count,B01003_001,Age Sex Detail
+Female 35 to 39 years,B01001_037,count,B01003_001,Age Sex Detail
+Female 40 to 44 years,B01001_038,count,B01003_001,Age Sex Detail
+Female 45 to 49 years,B01001_039,count,B01003_001,Age Sex Detail
+Female 50 to 54 years,B01001_040,count,B01003_001,Age Sex Detail
+Female 55 to 59 years,B01001_041,count,B01003_001,Age Sex Detail
+Female 60 and 61 years,B01001_042,count,B01003_001,Age Sex Detail
+Female 62 to 64 years,B01001_043,count,B01003_001,Age Sex Detail
+Female 65 and 66 years,B01001_044,count,B01003_001,Age Sex Detail
+Female 67 to 69 years,B01001_045,count,B01003_001,Age Sex Detail
+Female 70 to 74 years,B01001_046,count,B01003_001,Age Sex Detail
+Female 75 to 79 years,B01001_047,count,B01003_001,Age Sex Detail
+Female 80 to 84 years,B01001_048,count,B01003_001,Age Sex Detail
+Female 85 years and over,B01001_049,count,B01003_001,Age Sex Detail

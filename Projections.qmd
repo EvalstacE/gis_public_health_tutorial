@@ -1,0 +1,222 @@
+# Coordinate Reference Systems and Projections
+
+![Geographic Coordinate Systems](_images\CRS.png){.lightbox}
+
+The Earth's reference systems are based on two types of coordinate systems: **Geographic coordinate systems** and **Projected coordinate systems.** The geographic coordinate system is a reference system for identifying or measuring locations on Earth's curved surface, and is a spherical coordinate system. A projected coordinate system or a "map projection" transforms the Earth's spherical surface onto a two-dimensional cartesian coordinate plane. 
+
+The **Cartesian coordinate plane** is a two-dimensional plane defined by two perpendicular number lines: the x-axis (horizontal) and the y-axis (vertical). These axes intersect at a point called the origin (0, 0). The `x-axis` corresponds to longitude (horizontal lines), and the `y-axis` corresponds to latitude (vertical lines).
+
+## Geographic Coordinate Systems (GCS)
+
+The locations in the geographic coordinate system, or GCS, are identified by either latitude or longitude. When measuring coordinates using GPS devices or mobile phones, the reported values are usually in latitude and longitude, and they are associated with World Geodetic System 1984, or WGS 84 datum. Latitude and longitude are measured in either degree-minutes-seconds, DMS, or decimal degrees, or radiance.
+
+![Geographic Coordinate Systems](_images\GCS_visual.png){.lightbox width=50% fig-align="left"} 
+
+
+```{r, echo = FALSE}
+
+library(dplyr)
+library(kableExtra)
+library(knitr)
+
+lat_long <- read.csv(file = "_info_tables/Lat_vs_Long.csv")
+
+lat_long_table <- lat_long %>%
+  kbl(caption = "Latitude vs. Longitude",
+      align = "ll") %>%
+  row_spec(0, font_size = 20, bold = TRUE) %>%
+  kable_styling(
+    bootstrap_options = c("striped"),
+    full_width = TRUE, 
+    position = "center", 
+    font_size = 18)
+
+lat_long_table
+
+```
+
+
+## How a GCS is Created {.unnumbered}
+
+The **Geographic Coordinate System** is created and defined by three parts:
+
+![Datum, source:[github](https://mgimond.github.io/Spatial/chp09_0.html)](_images\datum.png){.lightbox}
+
+* **Geoid** : represents the actual shape of the Earth, accounting for its irregularities 
+
+*  **Ellipsoid** : the mathematical modelling of the Earth which is smoothed and theoretical or idealized
+
+* **Datum** : A datum defines how one aligns the ellipsoid to the geoid. In summary, datum describes the shape of the Earth in mathematical terms and provides the rules or parameters for aligning the ellipsoid with the geoid. This alignment involves specifying the position and orientation of the ellipsoid relative to the geoid. Such orientation allows for consistent and accurate mapping and geolocation by ensuring that a coordinate reference system to the ellipsoid aligns with the physical surface of the Earth as closely as possible
+
+----------
+
+## Two Types of Datums: Local and Geocentric {.unnumbered}
+
+### Local Datums {.unnumbered}
+
+Serve as a basis for measurements over a limited area of the Earth. This enables local variation on the Earth's surface, such as those caused by large mountain range to accommodate in a local coordinate reference system. Examples of common local datums include: 
+
+* **North American Datum of 1927 (NAD27)** is best for the Continental US. It is an old datum but is still prevalent today because of the wide use of it in older maps.
+
+* **European Datum of 1950 (ED50)** is best for Western Europe. It was developed after World War II and still quite popular today. However, it is not used the UK. 
+
+* **World Geodetic System 1972 (WGS72)** is best for global maps. It was developed by the US Department of Defense. 
+
+
+### Geocentric Datums {.unnumbered}
+
+Use the Earth's center as the origin of the geographic coordinate system to define global locations. Examples of common Geocentric datums include: 
+
+* **World Geodetic System 1984 (WGS84)** Developed by the US Department of Defense.
+
+* **North American Datum of 1983 (NAD83)** This is one of the most popular modern datums for the contiguous US. 
+
+* **European Terrestrial Reference System 1989 (ETRS89)** This is the most popular modern datum for much of Europe.  
+
+
+```{r, echo = FALSE}
+
+library(dplyr)
+library(kableExtra)
+library(knitr)
+
+datums <- read.csv("_info_tables/Local_Geocentric_Datums.csv")
+
+datums_table <- datums %>%
+  kbl(caption = "Local vs Geocentric Datums",
+      align = "ll") %>%
+  row_spec(0, font_size = 20, bold = TRUE) %>%
+  kable_styling(
+    bootstrap_options = c("striped"),
+    full_width = TRUE, 
+    position = "center", 
+    font_size = 18)
+
+datums_table
+
+```
+
+
+
+## Projected Coordinate Systems (PCS) 
+
+Once your data knows where to draw, it needs to know how. The earth’s surface—and your GCS—are round, but your map—and your computer screen—are flat. That’s a problem. You can’t draw the round earth on a flat surface without deforming it. Imagine peeling an orange and trying to lay the peel flat on a table. You can get close, but only if you start tearing the peel apart. This is where map projections come in. They tell you how to distort the earth—how to tear and stretch that orange peel—so the parts that are most important to your map get the least distorted and are displayed best on the flat surface of the map.
+
+![Projection, source:[Esri](https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/gcs_vs_pcs/)](_images\projection_visual.png){.lightbox width=50%}
+
+
+
+### From GCS to a 2-D projected map {.unnumbered}
+
+Projections preserve certain features (e.g., area, shape, distance, direction) but distort others.
+
+The selection of projection depends on the purpose and geographic extent of the analysis. 
+
+During the transformation or projection, we attempt to preserve area, direction, shape, and distance. **A projected coordinate system, however, can preserve only one or two of these properties. Therefore, projections are often named based on property they preserve.**
+
+**For example**: *equal area projection* preserves area, *asymthyl projection* preserves direction, *equidistance* preserves distance, and *conformal projection* preserves a local shape.
+
+* **Conformal** projections (e.g. Mercator) preserve local shapes and angles. It is very good for navigation because lines are drawn in a direction that will appear "straight." So, it's very helpful for direction and navigation, but distances and area will be distorted. 
+
+    + For example: when we use this type of projection to map the US, it helps us understand what is north, south, east, and west very clearly, but it also makes some states appear larger than they are (especially the northern ones), and it makes some distances also appear larger than they are. 
+
+* **Equal-Area** projections (e.g. Albers' equal-area) preserves area. This type of projection is especially helpful if we wanted to calculate and visualize something such as population density - to more accurately represent the total area of a particular region. However, this projection distorts direction significantly, so as an example, this would not be a good map for navigation purposes.  
+
+* **Equidistance** projections preserve distance. This type of projection would be especially important if we wanted to more accurately calculate a measured distance between any two locations. A public health application that would benefit from this type of projection would be, for example: calculating the distance between a power plant and some sort of jurisdiction boundary aggregating incidence or mortality of cancer to evaluate possible relationships between distance / exposure to pollution and cancer.
+
+
+### Why distortions can be harmful {.unnumbered}
+
+**Size matters**
+
+Distortions in map projections can be harmful, not just in terms of accuracy but also in how they shape our perceptions of the world. For example, when we use the World Mercator projection, while countries in the Global South are relatively true to size, the area of countries in the Global North, like the US, Iceland, Greenland, Canada, and Russia, are grossly distorted and appear absolutely huge in comparison. 
+
+When we switch our view to an area-preserving projection, it becomes clear just how much smaller these northern countries actually are in comparison to continents like Africa and South America. The difference is striking — Africa, for instance, is much larger than most people realize. The image below is from **(https://www.visualcapitalist.com/)**,  illustrating how many countries can fit into Africa to emphasize its true size.
+
+This is important to think about because, in our society, we often unconsciously associate size with importance or power. By over-representing the size of northern countries on maps while diminishing the true scale of Africa and South America, these distortions can validate and perpetuate imbalanced perceptions of global power. It can unintentionally downplay the significance of the Global South and over-inflate the influence of countries like the United States. Using maps that preserve area instead of distorting it allows us to better understand the true scale and significance of different regions, which is critical for fostering a more equitable worldview.
+
+
+::: {layout-ncol=2}
+
+![Mercator Projection vs. True Area, source: [reddit](https://www.reddit.com/r/dataisbeautiful/comments/9nkg7k/map_projections_can_be_deceptive_oc/)](_images\mercator_vs_size.png){.lightbox}
+
+![True Size of Africa, source:[Visual Capitalist](https://www.visualcapitalist.com/map-true-size-of-africa/)](_images\true_size_Africa.png){.lightbox}
+
+:::
+
+
+
+### Methods for projection {.unnumbered}
+
+There are three main types of projections (each with its own strengths in accuracy and weaknesses in distortion): **planar, conical, and cylindrical.** Below is a summary table and a series of images to describe the major differences and distinct circumstances for when you would want to use one over the other: 
+
+
+```{r, echo = FALSE}
+
+library(dplyr)
+library(kableExtra)
+library(knitr)
+
+PCS_types <- read.csv("_info_tables/projection_types.csv")
+
+# Create a table with banded rows
+PCS_table <- PCS_types %>%
+  kbl(caption = "Latitude vs. Longitude", 
+      align = "llll") %>%
+  row_spec(0, font_size = 20, bold = TRUE) %>%
+  column_spec(1, bold = TRUE) %>%
+  kable_styling(
+    bootstrap_options = c("striped"),
+    full_width = TRUE)
+
+PCS_table
+
+```
+
+
+
+
+::: {layout-ncol=3}
+![Planar](_images\planar.png){.lightbox}
+
+![Cylindrical](_images\cylindrical.png){.lightbox}
+
+![Conical](_images\conical.png){.lightbox}
+
+:::
+
+-----
+
+## Universal Transverse Mercator (UTM) and State Plane Coordinate Systems
+
+The **Universal Transverse Mercator (UTM) system** is a method for horizontal position representation, meaning it focuses on the Earth's two-dimensional surface and disregards altitude. It treats the Earth's surface as an ellipsoid rather than a perfect sphere, providing greater accuracy for mapping.
+
+UTM is based on the **Transverse Mercator projection**, which is a **conformal** (angle-preserving) map projection. Instead of wrapping the map around the globe along the equator (as in the standard Mercator projection), it wraps the map around the globe along a meridian (a line of longitude). This "transverse" orientation is key to reducing distortion for smaller areas.
+
+Unlike the global latitude and longitude system, the UTM system **divides the Earth into 60 longitudinal zones, each spanning 6 degrees of longitude from east to west**. Each zone has its own central meridian, which is at the center of the 6° range. Each zone is projected onto a flat plane to create a local coordinate grid, which serves as the basis for determining positions. Locations within the UTM system are specified by the zone number and the X and Y coordinates (also referred to as easting and northing) within that zone.
+
+The UTM projection minimizes distortion by focusing on one small slice of the Earth at a time (a single zone). **Distortion is smallest along the central meridian of the zone** (where the projection is tangent to the Earth) and increases as you move toward the edges of the zone.
+Within a zone, angles (conformal property) and small shapes are preserved, making it highly accurate for local surveying and mapping.
+
+This coordinate system is extensively used because it offers global coverage and precise localization. The UTM system is especially popular for creating local and national topographic maps, as it accommodates areas spanning multiple zones. For example, the United States, Canada, and parts of Europe use the UTM system to address their geographical diversity effectively. 
+
+**Advantages of UTM:**
+
+- **High Local Accuracy:** By focusing on narrow zones (6° wide), distortion is minimized, especially near the central meridian.
+
+- **Conformal Projection:** It preserves angles and shapes well, making it useful for navigation, military applications, and surveying.
+
+- **Global Coverage:** The system provides seamless mapping across the entire globe, with zones tailored to local regions.
+
+**Limitations of UTM:**
+
+- **Zone Boundaries:** Distortion becomes noticeable at the edges of a zone. This makes mapping across zone boundaries challenging because you must reconcile two separate coordinate systems.
+
+- **Zone Width:** At higher latitudes, the 6° wide zones cover much smaller distances in terms of actual ground coverage (because lines of longitude converge at the poles), which can increase distortion.
+
+
+![Conical](_images\US_UTM_zones.png){.lightbox}
+
+
+
+

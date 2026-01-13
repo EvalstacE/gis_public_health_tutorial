@@ -1,0 +1,218 @@
+# Privacy and Confidentiality
+
+Privacy and confidentiality should not be an afterthought, but fully integrated into the research design, process, administration, and reporting. 
+
+
+![The Fourth Amendment of the US Constitution](_images\constitution.png){.lightbox}
+
+
+----------------------
+
+This study:
+*Pereira, Stacey, et al. "Do privacy and security regulations need a status update? Perspectives from an intergenerational survey." PloS one 12.9 (2017): e0184525.* 
+
+surveyed 1310 participants in the US: 
+  - (mean age: 36 years, 50% female, 78% non-Hispanic white, 54% college graduates or higher)
+  - categorized by generations: Millennials, Generation X, and Baby Boomers.
+
+The authors concluded that the "majority within all generations reported concern about both the privacy and security of their health information (~70%). Thus, there is no intergenerational imperative to relax privacy and security standards, and it would be advisable to take privacy and security of health information more seriously."
+
+<div class = "large-text-left"> 
+The imperative duties that we, as public health professionals and map-makers, have to protect information:
+</div> 
+
+**Only collect the minimum necessary geographic information** to answer research questions.
+
+**Use appropriate anonymization techniques like aggregation, jittering, or geomasking.**
+
+**Assess re-identification risks carefully**, especially when working with small populations or stigmatized conditions.
+
+**Engage ethical review boards** to ensure compliance with legal and ethical standards.
+
+------------------------
+
+## Tension: Individual vs. Societal Benefits
+
+
+```{r, echo = FALSE}
+
+library(dplyr)
+library(kableExtra)
+library(knitr)
+
+tensions <- read.csv("_info_tables/tensions.csv")
+
+tensions_table <- tensions %>%
+  kbl(caption = "Individual vs. Societal Benefit Tension",
+      align = "ll") %>%
+  row_spec(0, font_size = 20, bold = TRUE) %>%
+  row_spec(7, bold = TRUE) %>%
+  kable_styling(
+    bootstrap_options = c("striped"),
+    full_width = TRUE, 
+    position = "center", 
+    font_size = 18)
+
+tensions_table
+
+```
+
+
+
+---------------------------
+
+
+## Ethical and Legal Frameworks 
+
+The **National Commission for the Protection of Human Services of Biomedical and Behavioral Research** was created in response to egregious violations of human rights from research scandals (Tuskegee, Willowbrook, Jewish Chronic Disease Hospital). 
+
+-------------------
+
+### The Belmont Report (1978) {.unnumbered}
+
+Established three core ethical principles:
+
+  - **Beneficence** – Minimizing risks and balancing them with benefits.
+  - **Justice** – Fair selection of research participants and equitable distribution of benefits and burdens.
+  - **Respect for Persons (Autonomy)** – Includes informed consent and the protection of privacy and confidentiality.
+  
+-----------
+
+### Council for International Organizations of Medical Sciences (CIOMS) {.unnumbered} 
+
+
+Provides guidelines for investigators from technologically-advanced countries conducting research in less developed communities 
+
+  - Deals with special / vulnerable populations
+  - Stronger emphasis on **justice** than Belmont Report
+  - Stresses the importance of the **fair distribution of research benefits**
+  - Also emphasizes privacy
+
+-----------
+
+### HIPAA Privacy Rule (1996) {.unnumbered} 
+
+Later strengthened under the HITECH Act (2013)
+
+  - HIPAA established strict regulations on the handling of Protected Health Information **(PHI)**, which includes:
+    - 18 specific identifiers considered PHI (what you would expect - but also includes dates, phone numbers, emails, fingerprints, full face photos, etc.)
+    - Any **geographic subdivisions smaller than a state** (e.g., counties, census tracts, ZIP codes) linked to individual health information.
+    - Provides safe harbor methods for de-identifying data, such as removing specific geographic details or using statistical techniques.
+    
+    
+-----------
+
+## Privacy vs. Security
+
+**Privacy:** Individuals’ rights to control their personal information and its use. Those accessing, using, or disclosing that information have an obligation to respect those rights by using fair and safe practicies
+
+**Security:** Measures taken to protect health data from unauthorized access, modification, or misuse.
+
+  - Integrity: protecting and ensuring integrity of the data itself
+  - Availability: making sure that data is accessible to those that need it
+  - **Confidentiality** 
+  
+**Confidentiality:** The duty of researchers and institutions to protect data from unauthorized access, use, disclosure, modification, disruption. The duty to respectfully handle health data that was provided in confidence - not breaching any individual's trust
+
+----------------
+
+
+## Challenges in Protecting Spatial Health Data
+
+**Risk of Re-Identification:**
+
+  - Combining geographic coordinates with demographic information (age, gender, income, etc.) can make individuals identifiable.
+  - The risk is particularly high in small geographic areas or when studying sensitive conditions.
+
+**Public Concerns About Data Privacy:**
+
+  - Surveys indicate that ~70% of people are concerned about privacy and security of their health data.
+  - Older individuals tend to express greater concern.
+
+**Ethical Dilemmas in Data Use:**
+
+  - There is an inherent tension between protecting individuals’ privacy and maximizing the public health benefits of spatial data.
+  - Example: Including real-time location data in studies can improve disease tracking but also increases privacy risks.
+  
+-----------
+
+## Protecting Spatial Health Data
+
+In public health research, **de-identification** is a critical process used to protect individual privacy. Traditional studies remove personally identifiable information (PII) such as names, birth dates, phone numbers, and other identifiers, replacing them with random identification codes to limit re-identification risks.
+
+However, **spatial data presents additional privacy concerns** because it includes location information, which can be used to pinpoint an individual’s home or workplace. Even without direct identifiers, **combining spatial data with other demographic details (e.g., age, smoking status, number of children, car ownership) can make re-identification easier.** This is referred to as <span class = "highlight"> reverse geocoding (or, re-identification) </span>
+
+  - The more personal attributes (e.g., age, sex, income, marital status) linked to a location, the easier it is to identify individuals.
+  
+  - Studies show that basic attributes (e.g., age + sex) are not highly identifying, but 
+  
+  - **combining multiple factors (age, disability, income, schooling) increases uniqueness up to 95%, making individuals easily identifiable**
+  
+  - Monitoring location patterns over time (e.g., frequent visits to specific places) can reveal personal details and habits, further increasing re-identification risks.
+  
+  
+----------
+
+## Techniques for Privacy Protection in Map-Making
+
+**Do not show a map**
+
+* This seems obvious, but nevertheless, an important consideration, especially if the map is not an inherently or intrinsically critical tool to communicate your message. If there are other reasonable ways to communicate your message, the risk of potentially violating individual privacy and confidentiality may far outweigh the benefits of the map itself. 
+
+**Random Perturbation (Jittering)**
+
+  - Shifting spatial points randomly within a predefined radius.
+  - Used to obscure precise locations while maintaining general geographic patterns.
+  - **Pros:** Retains broad spatial trends.
+  - **Cons:** Can distort local-level analysis, especially in environmental exposure studies.
+  
+  
+**Donut Geomasking**
+
+  - A refinement of jittering where points are displaced beyond a minimum distance to prevent clustering around the original location.
+  - Helps balance anonymity and spatial accuracy.  
+  
+**Spatial Aggregation**
+
+  - Reporting data at coarser geographic scales (e.g., ZIP codes instead of precise addresses).
+  - **Pros:** Strong protection against re-identification.
+  - **Cons:** Can obscure fine-scale variations important in epidemiological research.
+
+**Transformation Techniques** 
+
+  - Systematic shifting of points by fixed increments, rotations, or scaling transformations.
+  - **Pros:** Preserves relative spatial relationships.
+  - **Cons:** Can be reverse-engineered if transformation parameters are disclosed.
+
+
+**Removing Identifiable Map Features**
+
+  - Excluding street maps, county boundaries, or other features that could help pinpoint locations.
+  
+**Create a False Coordinate System**
+
+  - Adjusts spatial data while preserving relative distances and directions.
+  - Ensures that locations remain unidentifiable in real-world contexts.
+
+
+**Access Controls and Restricted Data Use**
+
+  - Limiting data access to approved researchers under strict confidentiality agreements.
+  - Example: The National Hospital Care Survey restricts use of spatial health data to on-site researchers at controlled facilities.
+  
+--------------------
+
+
+## Examples {.unnumbered}
+
+* **Poor Example**: 
+    + 👎 🚫 A Lancet study (2015) mapped tuberculosis patients' homes in Pakistan without privacy protections. 
+  
+* **Much Better Exmaple**: 
+
+    + ✅  A study on particulate matter pollution in Los Angeles jittered participant home locations to obscure exact addresses while maintaining overall patterns.
+
+
+
+
+

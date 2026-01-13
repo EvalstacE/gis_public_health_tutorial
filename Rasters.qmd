@@ -1,0 +1,86 @@
+# Rasters
+
+To recap from previous chapters: 
+**Vector data** is made up of points, lines, and polygons
+**Raster data** is made up of points or grid cells with assigned values
+
+## Raster Formats {.unnumbered}
+
+```{r, echo = FALSE}
+
+library(dplyr)
+library(kableExtra)
+library(knitr)
+
+raster_formats <- read.csv(file = "_info_tables/raster_formats.csv")
+
+raster_formats_table <- raster_formats %>%
+  kbl(caption = "Raster Formats",
+      align = "llccl") %>%
+  column_spec(1, bold = TRUE) %>%  
+  row_spec(0, font_size = 20, bold = TRUE) %>%
+  kable_styling(
+    bootstrap_options = c("striped"),
+    full_width = TRUE, 
+    position = "center", 
+    font_size = 18)
+
+raster_formats_table
+
+```
+
+Rasters can be stored and downloaded in a variety of formats, most commonly: 
+
+* **.TIFF:** Tagged Image File Format
+  + one of the most widely used in GIS and remote sensing
+  + supports high-resolution images and can store **multiple bands** (RGB, infrared, DEMs, etc.)
+  + often **georeferenced** (GeoTIFF) for spatial analysis in GIS software
+  + use cases: satellite imagery and aerial photos, Digital Elevation Models (DEM), land cover classification and environmental modellin
+  + Cons: can result in very large file sizes
+  
+* **.netCDF:** Network Common Data Form 
+  + a self-describing format used for multidimensional data
+  + commonly used in climate modeling, atmospheric research, and oceanographic data
+  + supports **multiple dimensions** (latitude, longitude, altitude, time)
+  + handles large multidimensional dataets (time series, 3D spatial models)
+  + more efficient storage and compression (HDF-based structure)
+  + highly compatible with computing tools and software (R, Python, MATLAB, C, etc.)
+  + Cons: not always natively supported by GIS software (might need to convert to a GeoTIFF); steeper learning curve for beginners 
+  + use cases: climate models and weather forecasting (NASA and NOAA datasets, e.g.); sea surface temperature, wind patterns, other oceanic data; long-term environmental monitoring (e.g. precipitation trends over time); 3D spatial models (e.g. atmospheric data with altitude layers integrated) 
+  
+* **.JPG:** Joint Photographic Experts Group
+  + lossy-compresssed raster format that reduces file size but sacrifices image quality
+  + highly compressed with small file size
+  + good for web mapping applications
+  + widely supported across platforms
+  + does not support multi-band or georeferencing
+  + unsuitable for spatial analyses but good for display (such as using as a basemap)
+  
+* **.PNG:** Portable Network Graphics
+  + lossless raster format
+  + often used for web visualization and cartographic outputs
+  + supports transparency (useful for overlays in maps)
+  + larger file size compared to .JPG
+  + does not support multi-band or georeferencing
+  + unsuitable for spatial analyses but good for display (such as using as a basemap)
+
+
+
+---------------
+
+**The challenge:** Figuring out when raster data is useful or not to your mapping goals 
+
+The same real- world scenario can be represented in both a raster or a vector representation.
+
+Examples of information that is best represented as a raster: 
+
+* **Elevation**
+* **Terrain**
+* **Land cover**
+* **Disease risk or incidence?** 
+
+  + typically, we are only ever able to visualize disease incidence and risk as vectorized data, generalized to arbitrary and artificial administrative boundaries. However, it we have the individual-level point data, rasterizing disease risk can provide a very interesting visualization as it will transcend issues related to the **MAUP** (link to bias chapter here) bias problems. 
+  
+  + rasterizing diseases can enable us to see the fine scale variation of risk across a smooth surface, and
+  
+  + we can generate rasters of disease risk and assess them as potential functions of other variables, such as investigating the raster of malaria cases as a function of temperature. In this case, it *would* make sense to keep this data as a raster. 

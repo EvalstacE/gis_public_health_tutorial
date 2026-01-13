@@ -1,0 +1,159 @@
+# Selecting your Coordinate Reference System
+
+**Key things to remember:** 
+
+* Always understand what projection you are working with - what it optimizes and what it distorts in terms of size, area, shape, distance, and direction. 
+
+* Different goals and purposes for a map will necessitate using different projections. 
+
+* Distortion is minimized when mapping and focusing on smaller regions (like a specific country, state, county, etc.). Distortion becomes especially apparent when mapping very large areas, such as the entire globe.
+
+**The European Survey Control Group (EPSG)** maintains definitions of coordinate reference systems and coordinate transformations (global, regional, national, or local). 
+
+Here are two helpful reference websites for **EPSG codes**: 
+
+* **[epsg.io](https://epsg.io/)**
+* **[spatialreference.org](https://spatialreference.org/ref/epsg/)**
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+library(dplyr)
+library(kableExtra)
+library(knitr)
+
+epsg_codes <- read.csv("_info_tables/epsg_codes.csv")
+
+epsg_table <- epsg_codes %>%
+  kbl(caption = "Common EPSG Codes", 
+      align = "cc") %>%
+  column_spec(1:2, bold = TRUE) %>%
+  row_spec(9:11, bold = TRUE, background = "#feed3f") %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"), # Adds banded rows (striped)
+    full_width = TRUE)
+
+epsg_table 
+
+```
+
+
+----------
+
+
+## Working with Coordinate Reference Systems (CRS) in R
+
+Here is a helpful reference to keep handy:   
+
+* **[CRS in R reference](https://www.nceas.ucsb.edu/sites/default/files/2020-04/OverviewCoordinateReferenceSystems.pdf)**
+
+
+
+Let's bring in the boundary of the lower contiguous US to demonstrate how to work with CRS in R: 
+
+```{r, message = FALSE, warning = FALSE}
+
+library(tigris)
+library(sf)
+library(dplyr)
+
+options(tigris_use_cache = TRUE)
+
+#us state geometry
+us_states <- states(cb = TRUE, progress = F) %>%
+  filter(as.numeric(STATEFP) <= 56) %>%
+  filter(!(STUSPS %in% c("AK", "HI")))
+
+#Dissolve counties for USA boundary:
+US_boundary <- st_union(us_states)
+
+
+```
+
+
+
+## Investigate CRS associated with shapefile {.unnumbered}
+
+After bringing in a shapefile, it's always important to first investigate its current CRS: 
+
+You can use the `st_crs()` function to print it out: 
+
+```{r}
+
+st_crs(US_boundary)
+
+```
+
+You can specifically call in the variable `$proj4string` like this:  **`st_crs()$proj4string`**, and it will return a more concise description of the CRS: 
+
+```{r}
+
+st_crs(US_boundary)$proj4string
+
+```
+
+ - `+proj` = longlat: tells us there is no projection
+ 
+ - `+datum` = NAD83: utilizes the North American Datum of 1983 (NAD83)
+ 
+
+## Changing the CRS of a shapefile {.unnumbered}
+
+Using the **`st_transform()`** function, we can transform a shapefile to any other projection system, utilizing the specific **EPSG** codes: 
+
+```{r}
+
+US_boundary_aea <- st_transform(US_boundary, 5070)
+st_crs(US_boundary_aea)$proj4string
+
+```
+
+After running the `st_transform()` function and and the `st_crs()`, we can see that the projection worked as expected and this is reflected in the output: 
+
+ - `+proj` = aea: Albers Equal Area projection
+ 
+ - `+lat_1` = 29.5, `+lat_2` = 45.5: Standard lines for EPSG 5070
+ 
+ - `+datum` = NAD83: utilizes the North American Datum of 1983 (NAD83)
+ 
+ - `+units` = m: indicates the map is now measured in meters
+
+We can also observe the distortions and optimization of each: In the first map (without projection), distance and directionality are optimized. In the second (projected with Alber's Equal Area), distance and direction are a bit distorted, but the area is more accurately represented. 
+
+::: {layout-ncol=2}
+
+![No Projection](_maps\no_projection.png){.lightbox}
+
+![Albers Equal Area Projection](_maps\aea_projected.png){.lightbox}
+
+:::
+
+
+------------
+
+::: {.callout-note}
+## When making maps in **`ggplot`**
+If you do not know what the projection code is, but you want it to match some other shapefile's projection, you can insert the **`st_crs(shp_NAD83)$proj4string`** into the **`+ coord_sf(crs = )`** call: 
+:::
+
+* `coord_sf(crs = st_crs(<shapefile>)$wkt)`
+
+```{r, eval = FALSE}
+
+ggplot(data = one_shapefile) +
+  geom_sf() +
+  coord_sf(crs = st_crs(other_shapefile)$wkt)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+

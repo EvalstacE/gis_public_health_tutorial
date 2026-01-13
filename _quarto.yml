@@ -1,0 +1,72 @@
+project:
+  type: book
+  output-dir: "output_html"
+
+book:
+  title: "GIS in Public Health: R"
+  author: "Val Stacey"
+  date: "7/08/2025"
+  sidebar:
+    collapse-level: 2
+    style: "docked"
+  chapters:
+    - index.qmd
+    - GIS_Structure.qmd
+    - Projections.qmd
+    - ChoosingCRS.qmd
+    - part: Types of Spatial Data
+      chapters:
+      - ShapefileComps.qmd
+      - Points.qmd
+      - Rasters.qmd
+    - Privacy.qmd
+    - Bias.qmd
+    - part: Census Data
+      chapters: 
+        - intro_tidycensus.qmd
+    - part: Creating Maps
+      chapters:
+        - MapParts.qmd
+        - Choropleths.qmd
+        - Choropleth_Alts.qmd
+        - Color.qmd
+        - R_ColorPalettes.qmd
+    - sf_references.qmd
+    - part: Interactive Maps
+      chapters: 
+        - leaflet.qmd
+        - integrate_shiny.qmd
+        - mapbox.qmd
+
+    - part: putting_it_together.qmd
+      chapters: 
+        - bring_data.qmd
+        - functions.qmd
+        - map_codes.qmd
+        - packages.qmd
+
+execute:
+  rscript: "C:\\Program Files\\R\\R-4.4.0\\bin\\x64"
+  eval: TRUE
+  warning: FALSE
+  message: FALSE
+  
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    css: "styles.css"
+    number-sections: true
+    number-depth: 1
+    code-summary: "Show the code"
+    code-copy: true
+    code-overflow: wrap
+    highlight-style: "custom-theme.json"
+    code-block-border-left: "#3DB4ADFF"
+    toc: FALSE
+    code-tools:
+      source: true
+      toggle: false
+      caption: none
+

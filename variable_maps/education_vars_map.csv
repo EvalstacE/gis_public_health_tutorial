@@ -1,0 +1,36 @@
+label,variable,stat_type,denominator,category
+Total Enrolled in School,B14001_002,count,B14001_001,Education
+Total Not Enrolled in School,B14001_010,count,B14001_001,Education
+Enrolled in Nursery/Preschool,B14001_003,count,B14001_001,Education
+Enrolled in Kindergarten,B14001_004,count,B14001_001,Education
+Enrolled in Grade 1 to 4,B14001_005,count,B14001_001,Education
+Enrolled in Grade 5 to 8,B14001_006,count,B14001_001,Education
+Enrolled in Grade 9 to 12,B14001_007,count,B14001_001,Education
+Enrolled in College (Undergrad),B14001_008,count,B14001_001,Education
+Enrolled in Grad/Professional School,B14001_009,count,B14001_001,Education
+No schooling completed,B15003_002,count,B15003_001,Education
+Nursery school,B15003_003,count,B15003_001,Education
+Kindergarten,B15003_004,count,B15003_001,Education
+1st grade,B15003_005,count,B15003_001,Education
+2nd grade,B15003_006,count,B15003_001,Education
+3rd grade,B15003_007,count,B15003_001,Education
+4th grade,B15003_008,count,B15003_001,Education
+5th grade,B15003_009,count,B15003_001,Education
+6th grade,B15003_010,count,B15003_001,Education
+7th grade,B15003_011,count,B15003_001,Education
+8th grade,B15003_012,count,B15003_001,Education
+9th grade,B15003_013,count,B15003_001,Education
+10th grade,B15003_014,count,B15003_001,Education
+11th grade,B15003_015,count,B15003_001,Education
+"12th grade, no diploma",B15003_016,count,B15003_001,Education
+Regular high school diploma,B15003_017,count,B15003_001,Education
+GED or alternative credential,B15003_018,count,B15003_001,Education
+"Some college, less than 1 year",B15003_019,count,B15003_001,Education
+"Some college, 1 or more years, no degree",B15003_020,count,B15003_001,Education
+Associate's degree,B15003_021,count,B15003_001,Education
+Bachelor's degree,B15003_022,count,B15003_001,Education
+Master's degree,B15003_023,count,B15003_001,Education
+Professional school degree,B15003_024,count,B15003_001,Education
+Doctorate degree,B15003_025,count,B15003_001,Education
+Total Pop 3+ (Enrollment),B14001_001,denom,NA,Education
+Total Pop 25+ (Attainment),B15003_001,denom,NA,Education

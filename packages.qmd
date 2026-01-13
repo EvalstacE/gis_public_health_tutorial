@@ -1,0 +1,57 @@
+# R Packages Used in This Book {.unnumbered}
+
+The content created here relies on the following R packages. My deepest gratitude goes out to these authors and the entire R community.
+
+## GIS and Spatial Analysis {.unnumbered}
+
+### `cartogram` {.unnumbered}
+
+Jeworutzki S (2023). *cartogram: Create Cartograms with R*. R package version 0.3.0, <https://CRAN.R-project.org/package=cartogram>.
+
+### `ggfx` {.unnumbered}
+
+Pedersen T (2022). *ggfx: Pixel Filters for 'ggplot2' and 'grid'*. R package version 1.0.1, <https://CRAN.R-project.org/package=ggfx>.
+
+### `ggspatial` {.unnumbered}
+
+Dunnington D (2023). *ggspatial: Spatial Data Framework for ggplot2*. R package version 1.1.9, <https://CRAN.R-project.org/package=ggspatial>.
+
+### `sf` {.unnumbered}
+
+Pebesma, E., & Bivand, R. (2023). *sf: Spatial Data Science: With Applications in R*. Chapman and Hall/CRC. <https://doi.org/10.1201/9780429459016>
+
+### `tigris` {.unnumbered}
+
+Walker K (2024). *tigris: Load Census TIGER/Line Shapefiles*. R package version 2.1, <https://CRAN.R-project.org/package=tigris>.
+
+### `tidycensus` {.unnumbered}
+
+Walker K, Herman M (2024). *tidycensus: Load US Census Boundary and Attribute Data as 'tidyverse' and 'sf'-Ready Data Frames*. R package version 1.6.7, <https://CRAN.R-project.org/package=tidycensus>.
+
+## Data Wrangling {.unnumbered}
+
+### `classInt` {.unnumbered}
+
+Bivand R (2023). *classInt: Choose Univariate Class Intervals*. R package version 0.4-10, <https://CRAN.R-project.org/package=classInt>.
+
+### `dplyr` {.unnumbered}
+
+Wickham H, François R, Henry L, Müller K, Vaughan D (2023). *dplyr: A Grammar of Data Manipulation*. R package version 1.1.4, <https://CRAN.R-project.org/package=dplyr>.
+
+### `purrr` {.unnumbered}
+
+Wickham H, Henry L (2025). *purrr: Functional Programming Tools*. R package version 1.0.4, <https://CRAN.R-project.org/package=purrr>.
+
+### `stringr` {.unnumbered}
+
+Wickham H (2023). *stringr: Simple, Consistent Wrappers for Common String Operations*. R package version 1.5.1, <https://CRAN.R-project.org/package=stringr>.
+
+### `tidyverse` {.unnumbered}
+
+Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E, Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K, Vaughan D, Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.” *Journal of Open Source Software*, *4*(43), 1686. doi:10.21105/joss.01686 <https://doi.org/10.21105/joss.01686>.
+
+## Data Visualization {.unnumbered}
+
+### `ggplot2` {.unnumbered}
+
+H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.

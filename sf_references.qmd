@@ -1,0 +1,325 @@
+# `sf` package: quick references
+
+The `sf ` package provides a set of tools for working with geospatial data in R. 
+For details and a look under the hood of this package, see: **[sf github page](https://github.com/r-spatial/sf)**
+ 
+Huge shout out to the creators of the `sf` package and those who continue to improve upon it - for making spatial analyses free and accessible and feasible: 
+
+
+:::{.citationbox}
+::::{.citationbox-header}
+:::::{.citationbox-icon}
+:::::
+🙏 `sf` creators:
+::::
+::::{.citationbox-body}
+  * Pebesma, E., & Bivand, R. (2023). Spatial Data Science: With Applications in R. Chapman and Hall/CRC.
+  https://doi.org/10.1201/9780429459016
+
+  * Pebesma, E., 2018. Simple Features for R: Standardized Support for Spatial Vector Data. The R Journal 10 (1),
+  439-446, https://doi.org/10.32614/RJ-2018-009
+::::
+:::
+
+
+---------
+
+Below is a subset of the most common `sf` functions that I use for basic mapping with simple features. For a complete list, check out this reference guide to download and keep: **[sf package cheat sheet](https://rstudio.github.io/cheatsheets/sf.pdf)** 
+
+Also, this: **[online `sf` guide:](https://r-spatial.github.io/sf/index.html)**
+
+You can run this code to get an output of all possible methods to pass an `sf` object to: 
+
+```{r, eval = FALSE}
+
+methods(class = "sf")
+
+```
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+##### `st_read` {.unnumbered}
+Use this to bring in a saved shapefile within a directory on your drive
+
+
+```{r, results = "hide", message = FALSE, warning = FALSE}
+
+library(sf) 
+
+MT_counties <- st_read("Shapefiles/MT_counties.shp", "MT_counties")
+
+```
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+##### `st_as_sf()` {.unnumbered}
+Creates an `sf` object from a non-geospatial dataframe 
+
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+
+##### `st_crs()` {.unnumbered}
+Retrieve coordinate reference system from sf or sfc object
+
+* add `$proj4string` for a more concise report
+
+
+```{r}
+
+st_crs(MT_counties)$proj4string
+
+```
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+
+##### `st_transform()` {.unnumbered}
+Transform or convert coordinates of simple feature; set the coordinate reference system (crs) using EPSG code
+
+```{r}
+
+MT_counties_projected <- st_transform(MT_counties, crs = 32100)
+
+st_crs(MT_counties_projected)$proj4string
+
+```
+
+**UTM Zone Projections:**
+
+```{r}
+MT_counties_projected_zone11 <- st_transform(MT_counties, crs = 26911)
+MT_counties_projected_zone12 <- st_transform(MT_counties, crs = 26912)
+
+```
+
+
+
+```{r}
+
+library(ggplot2)
+library(cowplot)
+
+unprojected <- ggplot() + 
+  geom_sf(data = MT_counties, fill = "grey90") + 
+  ggtitle("unprojected (GCS)") +
+  theme_void()
+
+projected <- ggplot() + 
+  geom_sf(data = MT_counties_projected, fill = "grey90") + 
+  ggtitle("projected (ESPG:32100)") +
+  theme_void()
+
+projected_zone11 <- ggplot() + 
+  geom_sf(data = MT_counties_projected_zone11, fill = "grey90") +
+  ggtitle("projected for Zone 11N (ESPG:26911)") +
+  theme_void()
+
+projected_zone12 <- ggplot() + 
+  geom_sf(data = MT_counties_projected_zone12, fill = "grey90") +
+  ggtitle("projected for Zone 12N (ESPG:26912)") +
+  theme_void()
+
+# Create the 2x2 grid of plots
+grid_plot <- plot_grid(
+  unprojected, projected, 
+  projected_zone11, projected_zone12, 
+  ncol = 2, nrow = 2, align = "hv"
+)
+
+# Add vertical and horizontal separators
+grid_plot +
+  draw_line(x = c(0.5, 0.5), y = c(0, 1), color = "black", size = 0.5) + # Vertical line
+  draw_line(x = c(0, 1), y = c(0.5, 0.5), color = "black", size = 0.5)   # Horizontal line
+
+
+```
+
+
+
+
+
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+##### `st_centroid()` {.unnumbered}
+
+```{r}
+
+
+
+
+```
+
+
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+
+##### `st_bbox()` {.unnumbered}
+
+
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+
+
+
+
+##### `st_make_grid()` {.unnumbered}
+
+
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+
+##### `st_buffer()` {.unnumbered}
+
+
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+
+##### `st_crop()` {.unnumbered}
+
+
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+
+---------- 
+
+
+##### `st_join()` {.unnumbered}
+
+Performs a spatial left or inner join between "x" and "y"
+
+
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+
+##### `st_union()` {.unnumbered}
+creates a single geometry from multiple geometries, consisting of all geometry elements
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+##### `st_intersection()` {.unnumbered}
+creates a geometry from the shared portion of "x" and "y"
+
+
+
+\newpage 
+
+```{r, results='asis', echo = FALSE}
+
+cat('<hr style="border: none; margin-bottom: 30px;">')
+
+```
+ 
+---------- 
+
+
+##### `st_difference()` {.unnumbered}
+creates a gemoetry from "x" that **does not** intersect with "y"
+
+
+
+
+
+
+
