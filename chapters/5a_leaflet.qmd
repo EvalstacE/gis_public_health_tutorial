@@ -165,7 +165,7 @@ us_st_joined <- us_st_sf %>%
 
 
 
-## 1. Simple Map Build
+### Simple Map Build
 
 
 ```{r, echo = FALSE}
@@ -476,7 +476,7 @@ leaf_labels
 
 Sometimes, more is just... more. 
 
-We’ve all seen maps that try to do too much at once: layering points over polygons over lines until the result is a muddy and unreadable. As the map-maker, you shouldn't have to force your user to choose between seeing the "State" level data or the "County" level data, or details like roads. You can give them the power to choose and select the layers they want to see, just like most Esri maps natively support.
+We’ve all seen maps that try to do too much at once: layering points over polygons over lines until the result is a muddy and unreadable. As the map-maker, you shouldn't have to force your user to choose between seeing the "State" level data or the "County" level data, or details like roads. With interactive maps, you can give them the power to choose and select the layers they want to see, just like most Esri maps natively support.
 
 In Leaflet, we can accomplish this with **Panes**, **Groups** and **Layer Controls**.
 
@@ -862,24 +862,6 @@ leaf_cnty_zoom <- leaflet() %>%
 leaf_cnty_zoom
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-As we learned earlier, choropleth maps are often not the best choice. So we can use varying point sizes instead by abstracting the polygon's central points. 
-
-
 
 
 
